@@ -1,4 +1,4 @@
-name: Continuous Integration
+name: ESLint
 
 on:
   push:
@@ -9,8 +9,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  ci:
-    name: Build and Test
+  eslint:
+    name: Eslint running
     runs-on: ubuntu-22.04
 
     steps:
@@ -26,5 +26,5 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Build the application
-        run: yarn build
+      - name: Eslint
+        run: yarn lint --no-cache
