@@ -5,7 +5,9 @@ const customTheme: ThemeConfig = {
     colorPrimary: '#274464',
     colorBgBase: '#0e1823',
     colorError: '#f48a8a',
-    colorInfo: '#63a4ff'
+    colorInfo: '#63a4ff',
+    fontSize: 16,
+    fontFamily: 'Lora, IBM Plex Sans'
   },
   algorithm: theme.darkAlgorithm
 }
