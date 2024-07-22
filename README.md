@@ -1,6 +1,6 @@
-# BANGMOD HACKATHON 2025
+# BANGMOD HACKATHON 2024 - 2
 
-This is a repository for the "Bangmod Hackathon 2025" registration platform. We contributed to [CPE KMUTT](https://github.com/cpe-kmutt-student/)
+This is a repository for the "Bangmod Hackathon 2024 - 2" registration platform. We contributed to [CPE KMUTT](https://github.com/cpe-kmutt-student/)
 
 ## :hammer: For develop 
 
