@@ -3,6 +3,7 @@ import ButtonOutlined from './components/Buttons/ButtonOutlined'
 import ButtonPrimary from './components/Buttons/ButtonPrimary'
 import ButtonSecondary from './components/Buttons/ButtonSecondary'
 import Input from './components/Form/Input'
+import Upload from './components/Form/Upload'
 import ModalTemplate from './components/ModalTemplate'
 import ThemeProvider from './lib/ThemeProvider'
 
@@ -34,6 +35,28 @@ function App() {
 
           <div>
             <Input required title="Username" />
+            <Upload
+              title="2.สำเนาบัตรประชาชนผู้เข้าแข่งขันพร้อมเซ็นสำเนาถูกต้อง  หรือบัตรประจำตัวคนซึ่งไม่ได้ถือสัญชาติไทย เฉพาะด้านหน้า"
+              description="อัปโหลดเอกสารไม่เกิน 10 MB ( PDF เท่านั้น )"
+              required
+              maxCount={1}
+            >
+              <div className="flex flex-row gap-4 text-lg">
+                เพิ่มไฟล์ <span className="text-primary-400">+</span>
+              </div>
+            </Upload>
+
+            <Upload
+              title="3.ปพ.7 ฉบับจริงของผู้เข้าแข่งขัน"
+              description="อัปโหลดเอกสารไม่เกิน 10 MB ( PDF เท่านั้น )"
+              required
+              maxCount={1}
+            >
+              <div className="flex flex-row gap-4 text-lg">
+                เพิ่มไฟล์ <span className="text-primary-400">+</span>
+              </div>
+            </Upload>
+
             <ModalTemplate />
           </div>
         </div>

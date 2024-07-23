@@ -93,3 +93,11 @@
     margin: 0;
     padding: 0;
 }
+
+.ant-upload-wrapper{
+    width: 100%;
+}
+
+.ant-upload {
+    width: 100%;
+}
