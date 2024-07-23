@@ -3,12 +3,12 @@ module.exports = {
   env: {
     node: true,
     browser: true,
-    es2020: true,
+    es2020: true
   },
   settings: {
     react: {
-      version: 'detect',
-    },
+      version: 'detect'
+    }
   },
   extends: [
     'eslint:recommended',
@@ -16,6 +16,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
     'plugin:react-hooks/recommended',
+    'plugin:tailwindcss/recommended'
   ],
   overrides: [],
   parser: '@typescript-eslint/parser',
@@ -23,8 +24,8 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
     ecmaFeatures: {
-      jsx: true,
-    },
+      jsx: true
+    }
   },
   plugins: ['react', '@typescript-eslint', 'react-refresh'],
   rules: {
@@ -48,6 +49,6 @@ module.exports = {
     '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/no-var-requires': 'off',
-  },
+    '@typescript-eslint/no-var-requires': 'off'
+  }
 }
