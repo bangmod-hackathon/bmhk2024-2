@@ -81,7 +81,7 @@ function App() {
           </div>
         </div>
         <div className="flex flex-col items-center mt-8">
-          <div className="flex flex-row justify-center items-center bg-[rgba(199,_199,_199,_0.21)] border border-[#C7C7C7] p-4 rounded-3xl text-center lg:h-24 lg:w-[586px] md:w-64	sm:w-64	md:h-12 sm:h-12">
+          <div className="flex flex-row justify-center items-center bg-[rgba(199,_199,_199,_0.21)] border border-[#C7C7C7] p-4 rounded-xl md:rounded-xl sm:rounded-xl text-center lg:h-24 lg:w-[586px] md:w-64	sm:w-64	md:h-12 sm:h-12">
             <Text className="lg:lg:text-2xl md:text-xl sm:text-xl text-[#EBD176] text-center font-body [text-shadow:_0_2px_4px_rgba(255,_255,_255,_0.56)] mr-2">
               {consolationPrize.title}
             </Text>
