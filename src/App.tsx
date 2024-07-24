@@ -5,6 +5,7 @@ import ButtonSecondary from './components/Buttons/ButtonSecondary'
 import Input from './components/Form/Input'
 import ModalTemplate from './components/ModalTemplate'
 import ThemeProvider from './lib/ThemeProvider'
+import Hero from "./hero.tsx"
 
 function App() {
   const { Text } = Typography
@@ -21,7 +22,7 @@ function App() {
             ปิกอัพแพทยสภาราเมนจิตเภท คอนเทนเนอร์หมายปองแอร์เรซิ่น เทคเที่ยงคืนตรวจสอบไวอะกร้ารุสโซ ควีน
             หมั่นโถวเอ็กซ์เพรสบ๊อบแอปเปิล คูลเลอร์สติ๊กเกอร์บรรพชนอิมพีเรียล อะเวอร์แม็กกาซีน ซิตี้ตังค์เกมส์วิกดีมานด์
             แฟกซ์รีโมตอพาร์ทเมนท์แฮนด์ ราชานุญาตคลาสสิกภควัมปติเบบี้ สะเด่าโค้กฟินิกซ์เป่ายิงฉุบ โบรกเกอร์เฝอ
-            จังโก้พาวเวอร์บัส เจี๊ยวพุทธศตวรรษชัตเตอร์ซานตาคลอส เก๊ะ แชมปิยอง
+            จังโก้พาวเวอร์บัส เจี๊ยวพุทธศตวรรษชัตเตอร์ซานตาคลอส เก๊ะ แชมปิยองasdasd
           </Text>
           <div>
             <ButtonPrimary>Primary</ButtonPrimary>
@@ -31,11 +32,13 @@ function App() {
             <ButtonOutlined>Secondary</ButtonOutlined>
             <ButtonOutlined disabled>Disabled</ButtonOutlined>
           </div>
-
+       
           <div>
             <Input required title="Username" />
             <ModalTemplate />
           </div>
+
+           <Hero/>
         </div>
       </div>
     </ThemeProvider>
