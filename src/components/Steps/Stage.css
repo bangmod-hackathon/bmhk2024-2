@@ -1,0 +1,4 @@
+.ant-steps-item-tail::after {
+  background-color: #fff !important;
+  color: #fff !important;
+}
