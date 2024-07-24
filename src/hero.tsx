@@ -1,61 +1,77 @@
-import { useEffect, useState } from 'react'
-import Logo from '../public/Landing/Logo.svg'
-import Start from '../public/Landing/watashiwastart.gif'
-import ButtonPrimary from './components/Buttons/ButtonPrimary'
+import { useEffect, useState } from 'react';
+import Logo from '../public/Landing/Logo.svg';
+import Start from '../public/Landing/watashiwastart.gif';
+import Start2 from '../public/Landing/Starr.gif';
+import ButtonPrimary from './components/Buttons/ButtonPrimary';
+import './fade.css';
 
-const getRandomPosition = (maxWidth: number, maxHeight: number) => {
-  const x = Math.floor(Math.random() * maxWidth)
-  const y = Math.floor(Math.random() * maxHeight)
-  return { x, y }
-}
+const getRandomPosition = (maxWidth, maxHeight) => {
+  const x = Math.floor(Math.random() * maxWidth);
+  const y = Math.floor(Math.random() * maxHeight);
+  return { x, y };
+};
+
+const images = [Start, Start2];
+const getRandomImage = () => images[Math.floor(Math.random() * images.length)];
 
 function Hero() {
-  const [positions, setPositions] = useState<{ x: number; y: number }[][]>([])
+  const [positions, setPositions] = useState([[], []]);
+  const [animation, setAnimation] = useState('fade-out');
+
+  const updatePositions = () => {
+    const container1 = document.getElementById('random-container-1');
+    const container2 = document.getElementById('random-container-2');
+    if (container1 && container2) {
+      const { clientWidth: width1, clientHeight: height1 } = container1;
+      const { clientWidth: width2, clientHeight: height2 } = container2;
+      const newPositions = [
+        Array.from({ length: 3 }, () => ({ ...getRandomPosition(width1 - 130, height1 - 100), img: getRandomImage() })),
+        Array.from({ length: 3 }, () => ({ ...getRandomPosition(width2 - 130, height2 - 100), img: getRandomImage() })),
+      ];
+      setPositions(newPositions);
+    }
+  };
 
   useEffect(() => {
-    const updatePositions = () => {
-      const container1 = document.getElementById('random-container-1')
-      const container2 = document.getElementById('random-container-2')
-      if (container1 && container2) {
-        const { clientWidth: width1, clientHeight: height1 } = container1
-        const { clientWidth: width2, clientHeight: height2 } = container2
-        const newPositions = [
-          Array.from({ length: 3 }, () => getRandomPosition(width1 - 130, height1 - 100)),
-          Array.from({ length: 3 }, () => getRandomPosition(width2 - 130, height2 - 100))
-        ]
-        setPositions(newPositions)
-      }
-    }
+    updatePositions();
+    window.addEventListener('resize', updatePositions);
+    return () => window.removeEventListener('resize', updatePositions);
+  }, []);
 
-    updatePositions()
-    window.addEventListener('resize', updatePositions)
-    return () => window.removeEventListener('resize', updatePositions)
-  }, [])
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAnimation('fade-out');
+      setTimeout(() => {
+        updatePositions();
+        setAnimation('fade-in');
+      }, 2000); // Match the duration of the fade-out animation
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="grid w-full grid-cols-[0.5fr_1fr_0.5fr] bg-[#0E2A3F]">
       <div id="random-container-1" className="relative">
-        {positions[0] &&
-          positions[0].map((pos, index) => (
+        <div className={animation}>
+          {positions[0].map((pos, index) => (
             <img
               key={index}
-              src={Start}
-              alt="Logo-bmhk2025"
+              src={pos.img}
+              alt="Random GIF"
               className="absolute h-[100px] w-[130px]"
               style={{ left: pos.x, top: pos.y }}
             />
           ))}
+        </div>
       </div>
       <div className="flex justify-center">
         <div className="flex flex-col items-center">
-          <div className="">
-            <img
-              src={Logo}
-              alt="Logo-bmhk2025"
-              className="min-h-[280px] min-w-[349px]   sm:h-[280px] sm:w-[349px] lg:h-[280px] lg:w-[349px]  xl:h-[466px] xl:w-[580px]"
-            />
-          </div>
-          <div className="m-0 flex flex-col items-center gap-[22px] xl:h-[504px]  xl:w-[756px]  xl:px-[21.141px] xl:pb-[30px] xl:pt-[80px]">
+          <img
+            src={Logo}
+            alt="Logo-bmhk2025"
+            className="min-h-[280px] min-w-[349px] sm:h-[280px] sm:w-[349px] lg:h-[280px] lg:w-[349px] xl:h-[466px] xl:w-[580px]"
+          />
+          <div className="m-0 flex flex-col items-center gap-[22px] xl:h-[504px] xl:w-[756px] xl:px-[21.141px] xl:pb-[30px] xl:pt-[80px]">
             <div className="flex w-full items-center justify-center lg:h-[96px] lg:w-[333] xl:h-[58px] xl:w-[714]">
               <h1 className="font-heading text-[40px] text-white sm:text-[40px] lg:text-[40px] xl:text-[48px]">
                 Now-5 August 2024
@@ -70,10 +86,10 @@ function Hero() {
             <div className="flex w-full flex-col items-center text-center font-body text-lg font-normal text-white xl:h-[150px] xl:w-[714]">
               <ul>
                 <li> เป็นโครงการที่เปิดโอกาสให้นักเรียนระดับชั้นมัธยมศึกษาตอนต้น และตอนปลาย</li>
-                <li> รวมถึงนักศึกษาอาชีวศึกษาในระดับ ปวช. หรือเทียบเท่า ได้เข้ามาแข่งขันการเขียน โปรแกรม</li>
+                <li> รวมถึงนักศึกษาอาชีวศึกษาในระดับ ปวช. หรือเทียบเท่า ได้เข้ามาแข่งขันการเขียนโปรแกรม</li>
                 <li>โดยใช้ภาษาซี ซึ่งจะเป็นการแข่งขันในรูปแบบทีม</li>
                 <li>ทำให้ผู้เข้าแข่งขันนั้นได้รับทั้งประสบการณ์ใหม่ ๆ ในการเขียนโปรแกรม</li>
-                <li>และฝึกการทำงานร่วมกันเป็นทีมอีกด้วย asd</li>
+                <li>และฝึกการทำงานร่วมกันเป็นทีมอีกด้วย</li>
               </ul>
             </div>
             <ButtonPrimary>
@@ -83,19 +99,20 @@ function Hero() {
         </div>
       </div>
       <div id="random-container-2" className="relative">
-        {positions[1] &&
-          positions[1].map((pos, index) => (
+        <div className={animation}>
+          {positions[1].map((pos, index) => (
             <img
               key={index}
-              src={Start}
-              alt="Logo-bmhk2025"
+              src={pos.img}
+              alt="Random GIF"
               className="absolute h-[100px] w-[130px]"
               style={{ left: pos.x, top: pos.y }}
             />
           ))}
+        </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Hero
+export default Hero;
