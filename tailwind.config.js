@@ -38,6 +38,14 @@ export default {
           400: '#FFF9F3'
         }
       }
+    },
+    // Add list style to edit modal content
+    listStyleType: {
+      none: 'none',
+      disc: 'disc',
+      decimal: 'decimal',
+      alpha: 'lower-alpha',
+      roman: 'upper-roman'
     }
   },
   plugins: [],
