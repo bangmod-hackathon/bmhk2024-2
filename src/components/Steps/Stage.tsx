@@ -26,11 +26,7 @@ const Stage: React.FC<StageProps> = ({ numberOfMembers, statuses }) => {
     icon: <div className={getIconClasses(statusColors[statuses[index]])}>{index + 1}</div>
   }))
 
-  return (
-    <div className="bg-[#274464]">
-      <Steps labelPlacement="vertical" responsive={false} items={items} />
-    </div>
-  )
+  return <Steps labelPlacement="vertical" responsive={false} items={items} />
 }
 
 export default Stage
