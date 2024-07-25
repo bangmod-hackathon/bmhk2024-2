@@ -1,8 +1,10 @@
 import { Typography } from 'antd'
+import { useState } from 'react'
 import ButtonOutlined from './components/Buttons/ButtonOutlined'
 import ButtonPrimary from './components/Buttons/ButtonPrimary'
 import ButtonSecondary from './components/Buttons/ButtonSecondary'
 import Input from './components/Form/Input'
+import Upload from './components/Form/Upload'
 import ModalTemplate from './components/ModalTemplate'
 import ThemeProvider from './lib/ThemeProvider'
 import Hero from "./hero.tsx"
@@ -10,9 +12,12 @@ import Hero from "./hero.tsx"
 function App() {
   const { Text } = Typography
 
+  const [file1, setFile1] = useState<File>()
+  const [file2, setFile2] = useState<File>()
+
   return (
     <ThemeProvider>
-      <div className="flex h-screen bg-[#0E2A3F]">
+      <div className="flex h-full bg-[#0E2A3F]">
         <div className="m-auto px-3">
           <p className="font-heading text-3xl font-bold text-text_color-100">HOME</p>
           <Text className="text-lg font-normal text-text_color-100">
@@ -35,6 +40,33 @@ function App() {
 
           <div>
             <Input required title="Username" />
+            <Upload
+              title="1.รูปภาพนักเรียน 1.5 นิ้ว"
+              description="อัปโหลดเอกสารไม่เกิน 10 MB ( JPG/PNG เท่านั้น )"
+              required
+              maxCount={1}
+              imageUpload
+              file={file1}
+              setFile={setFile1}
+            >
+              <div className="flex flex-row gap-4 text-lg">
+                เพิ่มไฟล์ <span className="text-primary-400">+</span>
+              </div>
+            </Upload>
+
+            <Upload
+              title="2.สำเนาบัตรประชาชนผู้เข้าแข่งขันพร้อมเซ็นสำเนาถูกต้อง  หรือบัตรประจำตัวคนซึ่งไม่ได้ถือสัญชาติไทย เฉพาะด้านหน้า"
+              description="อัปโหลดเอกสารไม่เกิน 10 MB ( PDF เท่านั้น )"
+              required
+              maxCount={1}
+              file={file2}
+              setFile={setFile2}
+            >
+              <div className="flex flex-row gap-4 text-lg">
+                เพิ่มไฟล์ <span className="text-primary-400">+</span>
+              </div>
+            </Upload>
+
             <ModalTemplate />
           </div>
            <Hero/>
