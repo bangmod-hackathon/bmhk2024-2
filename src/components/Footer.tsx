@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
             <h2 className="text-yellow-400 text-3xl md:text-5xl text-left md:text-right font-heading w-full">
               SENIOR CONTACT
             </h2>
-            <div className="flex flex-col md:flex-row text-left md:text-right justify-between mt-4">
+            <div className="flex flex-col xl:flex-row text-left md:text-right md:justify-between mt-4">
               <div>
                 <p>พี่ฟ้า</p>
                 <p>080 493 5928</p>
