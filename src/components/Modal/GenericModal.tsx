@@ -16,7 +16,8 @@ const GenericModal: React.FC<GenericModalProps> = ({ content }): JSX.Element => 
       <ButtonOutlined onClick={() => setIsModalOpen(true)}>รายละเอียด</ButtonOutlined>
       <AntModal
         open={isModalOpen}
-        className="h-[550px] w-[711px] p-[25px]"
+        centered
+        className="px-5"
         classNames={{
           body: 'bg-transparent',
           header: 'bg-transparent',
@@ -31,7 +32,7 @@ const GenericModal: React.FC<GenericModalProps> = ({ content }): JSX.Element => 
         ]}
       >
         <button onClick={() => setIsModalOpen(false)} className="absolute right-4 top-4 text-lg text-white">
-          <img src="public\diamon_img\Angle double.png" />
+          <img src="/diamon_img/Angle-double.png" />
         </button>
         {content}
       </AntModal>

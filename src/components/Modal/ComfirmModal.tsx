@@ -11,7 +11,7 @@ const ConfirmModal: React.FC = (): JSX.Element => {
       <ButtonPrimary onClick={() => setIsModalOpen(true)}>Confirm Modal</ButtonPrimary>
       <AntModal
         open={isModalOpen}
-        className="flex w-[534px] flex-col pb-[36px] pl-[63px] pr-[63px] pt-[36px]"
+        className="flex w-[534px] flex-col px-[63px] py-[36px]"
         classNames={{
           body: 'bg-transparent',
           header: 'bg-transparent',
@@ -20,20 +20,18 @@ const ConfirmModal: React.FC = (): JSX.Element => {
         }}
         closable={false}
         footer={[
-          <>
-            <div className="item-center flex w-full justify-center gap-[12px]">
-              <ButtonOutlined key="cancel" onClick={() => setIsModalOpen(false)}>
-                ยกเลิก
-              </ButtonOutlined>
-              <ButtonPrimary key="confirm" onClick={() => setIsModalOpen(false)}>
-                ยืนยัน
-              </ButtonPrimary>
-            </div>
-          </>
+          <div key={'button'} className="flex w-full items-center justify-center gap-[12px]">
+            <ButtonOutlined key="cancel" onClick={() => setIsModalOpen(false)}>
+              ยกเลิก
+            </ButtonOutlined>
+            <ButtonPrimary key="confirm" onClick={() => setIsModalOpen(false)}>
+              ยืนยัน
+            </ButtonPrimary>
+          </div>
         ]}
       >
-        <div className="item-center flex justify-center">
-          <img src="public\Confirm_icon\AiTwotoneCheckCircle.png" />
+        <div className="flex items-center justify-center">
+          <img src="/Confirm_icon/AiTwotoneCheckCircle.png" />
         </div>
         <h1 className="mb-2 text-center text-2xl font-normal text-white">ยืนยันความถูกต้อง</h1>
         <p className="text-center font-body text-sm font-normal text-white">

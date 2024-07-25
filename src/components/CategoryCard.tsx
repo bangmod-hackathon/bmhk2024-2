@@ -16,7 +16,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ title, imgSrc, content }): 
       <div className="inline-flex h-auto flex-col gap-6 rounded-[10px] bg-[#274464] p-6 md:h-[199px] md:gap-[30px] md:px-[20px] md:py-[24px]">
         <div className="flex items-center gap-6 text-[#FDEDDC] md:gap-[24px]">
           <img src={imgSrc} className="size-12 md:size-16" />
-          <div className="shadow-[0px 2px 4px rgba(39, 68, 100, 0.25)] flex flex-col justify-center font-body text-lg text-[#FDEDDC] md:text-2xl">
+          <div className="flex flex-col justify-center font-body text-lg text-[#FDEDDC] shadow-[0px_2px_4px_rgba(39,68,100,0.25)] md:text-2xl">
             {title}
           </div>
         </div>
