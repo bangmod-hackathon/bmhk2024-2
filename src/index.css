@@ -87,8 +87,18 @@
     font-display: swap;
   }
 }
+
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
+
+.ant-upload-wrapper{
+    width: 100%;
+}
+
+.ant-upload {
+    width: 100%;
+}
+
