@@ -23,3 +23,21 @@
         opacity: 0;
     }
 }
+
+  #random-container-1,
+  #random-container-2 {
+    position: relative; 
+    z-index: 1; 
+  }
+  
+  #random-container-1 img,
+  #random-container-2 img {
+    transition: opacity 2s ease-in-out;
+    z-index: 1; 
+  }
+  
+  .main-content {
+    position: relative; 
+    z-index: 10; 
+  }
+  

@@ -5,22 +5,25 @@ import Start from '../public/Landing/watashiwastart.gif'
 import ButtonPrimary from './components/Buttons/ButtonPrimary'
 import './fade.css'
 
-const getRandomPosition = (maxWidth, maxHeight) => {
+// Function to get a random position
+const getRandomPosition = (maxWidth: number, maxHeight: number) => {
   const x = Math.floor(Math.random() * maxWidth)
   const y = Math.floor(Math.random() * maxHeight)
   return { x, y }
 }
 
+// Array of images
 const images = [Start, Start2]
 const getRandomImage = () => images[Math.floor(Math.random() * images.length)]
 
 function Hero() {
+  // State to hold the positions of the stars
   const [positions, setPositions] = useState({
     container1: Array.from({ length: 5 }, () => ({ ...getRandomPosition(0, 0), img: getRandomImage() })),
     container2: Array.from({ length: 5 }, () => ({ ...getRandomPosition(0, 0), img: getRandomImage() }))
   })
-  const [shouldUpdate, setShouldUpdate] = useState(false)
 
+  // Function to update positions of stars
   const updatePositions = () => {
     const container1 = document.getElementById('random-container-1')
     const container2 = document.getElementById('random-container-2')
@@ -47,11 +50,12 @@ function Hero() {
   }, [])
 
   useEffect(() => {
-    const fadeInterval = 1000
-    const fadeDuration = 2000
+    const fadeInterval = 5000 // Duration between fade animations
+    const fadeDuration = 2000 // Duration of fade effect
     const fadeDelay = 500 // Delay between each star's fade-in
 
-    const fadeOutStars = (containerId, callback) => {
+    // Function to apply fade-out effect
+    const fadeOutStars = (containerId: string, callback: () => void) => {
       const container = document.getElementById(containerId)
       if (!container) return
 
@@ -61,11 +65,11 @@ function Hero() {
           star.classList.add('fade-out')
         }, index * fadeDelay)
       })
-      // Wait for fade-out duration before calling the callback
       setTimeout(callback, fadeDuration)
     }
 
-    const fadeInStars = (containerId) => {
+    // Function to apply fade-in effect
+    const fadeInStars = (containerId: string) => {
       const container = document.getElementById(containerId)
       if (!container) return
 
@@ -78,6 +82,7 @@ function Hero() {
       })
     }
 
+    // Function to animate stars
     const animate = () => {
       fadeOutStars('random-container-1', () => {
         fadeOutStars('random-container-2', () => {
@@ -91,7 +96,7 @@ function Hero() {
     const interval = setInterval(animate, fadeInterval)
 
     return () => clearInterval(interval)
-  }, [shouldUpdate])
+  }, [])
 
   return (
     <div className="grid w-full grid-cols-[0.5fr_1fr_0.5fr] bg-[#0E2A3F]">
@@ -101,12 +106,12 @@ function Hero() {
             key={index}
             src={pos.img}
             alt="Random GIF"
-            className="absolute size-8 fade-out" // Ensure all images start hidden
+            className="absolute h-[12px] w-[16px] xl:h-[22px] xl:w-[26px] fade-out" // Ensure all images start hidden
             style={{ left: pos.x, top: pos.y }}
           />
         ))}
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center main-content">
         <div className="flex flex-col items-center">
           <img
             src={Logo}
@@ -125,7 +130,7 @@ function Hero() {
                 <p>BangMod Hackathon</p>
               </div>
             </div>
-            <div className="flex w-full flex-col items-center text-center font-body font-normal text-white lg:text-[16px] xl:w-[714] xl:text-[18px]">
+            <div className="flex w-full flex-col items-center text-center font-body font-normal text-white text-[14px] xl:w-[714] xl:text-[18px]">
               <p className='xl:w-[420px] lg:w-[400px]'>
                 เป็นโครงการที่เปิดโอกาสให้นักเรียนระดับชั้นมัธยมศึกษา ตอนต้น และ ตอนปลาย รวมถึงนักศึกษาอาชีวศึกษาในระดับ
                 ปวช. หรือเทียบเท่า ได้เข้ามาแข่งขันการเขียน โปรแกรม โดยใช้ภาษาซี ซึ่งจะเป็นการแข่งขันในรูปแบบทีม
@@ -133,7 +138,7 @@ function Hero() {
               </p>
             </div>
             <ButtonPrimary>
-              <div className="font-body">ลงทะเบียน</div>
+              <div className="font-body text-[18px]">ลงทะเบียน</div>
             </ButtonPrimary>
           </div>
         </div>
@@ -144,7 +149,7 @@ function Hero() {
             key={index}
             src={pos.img}
             alt="Random GIF"
-            className="absolute size-8 fade-out" // Ensure all images start hidden
+            className="absolute h-[12px] w-[16px] xl:h-[22px] xl:w-[26px] fade-out" // Ensure all images start hidden
             style={{ left: pos.x, top: pos.y }}
           />
         ))}
