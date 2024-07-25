@@ -1,8 +1,5 @@
 import { useEffect, useState } from 'react'
-import Logo from '../public/Landing/Logo.svg'
-import Start2 from '../public/Landing/Starr.gif'
-import Start from '../public/Landing/watashiwastart.gif'
-import ButtonPrimary from './components/Buttons/ButtonPrimary'
+import ButtonPrimary from '../Buttons/ButtonPrimary'
 import './fade.css'
 
 // Function to get a random position
@@ -13,7 +10,7 @@ const getRandomPosition = (maxWidth: number, maxHeight: number) => {
 }
 
 // Array of images
-const images = [Start, Start2]
+const images = ['Landing/watashiwastart.gif', 'Landing/Starr.gif']
 const getRandomImage = () => images[Math.floor(Math.random() * images.length)]
 
 function Hero() {
@@ -27,13 +24,19 @@ function Hero() {
   const updatePositions = () => {
     const container1 = document.getElementById('random-container-1')
     const container2 = document.getElementById('random-container-2')
-    
+
     if (container1 && container2) {
       const { clientWidth: width1, clientHeight: height1 } = container1
       const { clientWidth: width2, clientHeight: height2 } = container2
 
-      const newPositions1 = positions.container1.map(() => ({ ...getRandomPosition(width1 - 130, height1 - 100), img: getRandomImage() }))
-      const newPositions2 = positions.container2.map(() => ({ ...getRandomPosition(width2 - 130, height2 - 100), img: getRandomImage() }))
+      const newPositions1 = positions.container1.map(() => ({
+        ...getRandomPosition(width1 - 130, height1 - 100),
+        img: getRandomImage()
+      }))
+      const newPositions2 = positions.container2.map(() => ({
+        ...getRandomPosition(width2 - 130, height2 - 100),
+        img: getRandomImage()
+      }))
 
       // Update state with new positions
       setPositions({
@@ -46,6 +49,7 @@ function Hero() {
   useEffect(() => {
     updatePositions()
     window.addEventListener('resize', updatePositions)
+
     return () => window.removeEventListener('resize', updatePositions)
   }, [])
 
@@ -106,15 +110,15 @@ function Hero() {
             key={index}
             src={pos.img}
             alt="Random GIF"
-            className="absolute h-[12px] w-[16px] xl:h-[22px] xl:w-[26px] fade-out" // Ensure all images start hidden
+            className="fade-out absolute h-[12px] w-[16px] xl:h-[22px] xl:w-[26px]" // Ensure all images start hidden
             style={{ left: pos.x, top: pos.y }}
           />
         ))}
       </div>
-      <div className="flex justify-center main-content">
+      <div className="main-content flex justify-center">
         <div className="flex flex-col items-center">
           <img
-            src={Logo}
+            src={'Landing/Logo.svg'}
             alt="Logo-bmhk2025"
             className="min-h-[280px] min-w-[349px] sm:h-[280px] sm:w-[349px] lg:h-[280px] lg:w-[349px] xl:h-[466px] xl:w-[580px]"
           />
@@ -130,8 +134,8 @@ function Hero() {
                 <p>BangMod Hackathon</p>
               </div>
             </div>
-            <div className="flex w-full flex-col items-center text-center font-body font-normal text-white text-[14px] xl:w-[714] xl:text-[18px]">
-              <p className='xl:w-[420px] lg:w-[400px]'>
+            <div className="flex w-full flex-col items-center text-center font-body text-[14px] font-normal text-white xl:w-[714] xl:text-[18px]">
+              <p className="lg:w-[400px] xl:w-[420px]">
                 เป็นโครงการที่เปิดโอกาสให้นักเรียนระดับชั้นมัธยมศึกษา ตอนต้น และ ตอนปลาย รวมถึงนักศึกษาอาชีวศึกษาในระดับ
                 ปวช. หรือเทียบเท่า ได้เข้ามาแข่งขันการเขียน โปรแกรม โดยใช้ภาษาซี ซึ่งจะเป็นการแข่งขันในรูปแบบทีม
                 ทำให้ผู้เข้าแข่งขันได้รับทั้งประสบการณ์ใหม่ ๆ ในการเขียนโปรแกรม และฝึกการทำงานร่วมกันเป็นทีม
@@ -149,7 +153,7 @@ function Hero() {
             key={index}
             src={pos.img}
             alt="Random GIF"
-            className="absolute h-[12px] w-[16px] xl:h-[22px] xl:w-[26px] fade-out" // Ensure all images start hidden
+            className="fade-out absolute h-[12px] w-[16px] xl:h-[22px] xl:w-[26px]" // Ensure all images start hidden
             style={{ left: pos.x, top: pos.y }}
           />
         ))}
