@@ -15,8 +15,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
-    'plugin:react-hooks/recommended',
-    'plugin:tailwindcss/recommended'
+    'plugin:react-hooks/recommended'
   ],
   overrides: [],
   parser: '@typescript-eslint/parser',
@@ -50,6 +49,6 @@ module.exports = {
     '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/no-var-requires': 'off'
   }
 }
