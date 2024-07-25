@@ -15,20 +15,28 @@ const images = [Start, Start2]
 const getRandomImage = () => images[Math.floor(Math.random() * images.length)]
 
 function Hero() {
-  const [positions, setPositions] = useState([[], []])
-  const [animation, setAnimation] = useState('fade-out')
+  const [positions, setPositions] = useState({
+    container1: Array.from({ length: 5 }, () => ({ ...getRandomPosition(0, 0), img: getRandomImage() })),
+    container2: Array.from({ length: 5 }, () => ({ ...getRandomPosition(0, 0), img: getRandomImage() }))
+  })
+  const [shouldUpdate, setShouldUpdate] = useState(false)
 
   const updatePositions = () => {
     const container1 = document.getElementById('random-container-1')
     const container2 = document.getElementById('random-container-2')
+    
     if (container1 && container2) {
       const { clientWidth: width1, clientHeight: height1 } = container1
       const { clientWidth: width2, clientHeight: height2 } = container2
-      const newPositions = [
-        Array.from({ length: 5 }, () => ({ ...getRandomPosition(width1 - 130, height1 - 100), img: getRandomImage() })),
-        Array.from({ length: 5 }, () => ({ ...getRandomPosition(width2 - 130, height2 - 100), img: getRandomImage() }))
-      ]
-      setPositions(newPositions)
+
+      const newPositions1 = positions.container1.map(() => ({ ...getRandomPosition(width1 - 130, height1 - 100), img: getRandomImage() }))
+      const newPositions2 = positions.container2.map(() => ({ ...getRandomPosition(width2 - 130, height2 - 100), img: getRandomImage() }))
+
+      // Update state with new positions
+      setPositions({
+        container1: newPositions1,
+        container2: newPositions2
+      })
     }
   }
 
@@ -39,30 +47,64 @@ function Hero() {
   }, [])
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setAnimation('fade-out')
-      setTimeout(() => {
-        updatePositions()
-        setAnimation('fade-in')
-      }, 2000) // Match the duration of the fade-out animation
-    }, 5000)
+    const fadeInterval = 1000
+    const fadeDuration = 2000
+    const fadeDelay = 500 // Delay between each star's fade-in
+
+    const fadeOutStars = (containerId, callback) => {
+      const container = document.getElementById(containerId)
+      if (!container) return
+
+      const stars = Array.from(container.getElementsByTagName('img'))
+      stars.forEach((star, index) => {
+        setTimeout(() => {
+          star.classList.add('fade-out')
+        }, index * fadeDelay)
+      })
+      // Wait for fade-out duration before calling the callback
+      setTimeout(callback, fadeDuration)
+    }
+
+    const fadeInStars = (containerId) => {
+      const container = document.getElementById(containerId)
+      if (!container) return
+
+      const stars = Array.from(container.getElementsByTagName('img'))
+      stars.forEach((star, index) => {
+        setTimeout(() => {
+          star.classList.remove('fade-out')
+          star.classList.add('fade-in')
+        }, index * fadeDelay)
+      })
+    }
+
+    const animate = () => {
+      fadeOutStars('random-container-1', () => {
+        fadeOutStars('random-container-2', () => {
+          updatePositions()
+          fadeInStars('random-container-1')
+          fadeInStars('random-container-2')
+        })
+      })
+    }
+
+    const interval = setInterval(animate, fadeInterval)
+
     return () => clearInterval(interval)
-  }, [])
+  }, [shouldUpdate])
 
   return (
     <div className="grid w-full grid-cols-[0.5fr_1fr_0.5fr] bg-[#0E2A3F]">
       <div id="random-container-1" className="relative">
-        <div className={animation}>
-          {positions[0].map((pos, index) => (
-            <img
-              key={index}
-              src={pos.img}
-              alt="Random GIF"
-              className="absolute lg:size-12 xl:size-14"
-              style={{ left: pos.x, top: pos.y }}
-            />
-          ))}
-        </div>
+        {positions.container1.map((pos, index) => (
+          <img
+            key={index}
+            src={pos.img}
+            alt="Random GIF"
+            className="absolute size-8 fade-out" // Ensure all images start hidden
+            style={{ left: pos.x, top: pos.y }}
+          />
+        ))}
       </div>
       <div className="flex justify-center">
         <div className="flex flex-col items-center">
@@ -97,17 +139,15 @@ function Hero() {
         </div>
       </div>
       <div id="random-container-2" className="relative">
-        <div className={animation}>
-          {positions[1].map((pos, index) => (
-            <img
-              key={index}
-              src={pos.img}
-              alt="Random GIF"
-              className="absolute size-6 lg:size-12 xl:size-14"
-              style={{ left: pos.x, top: pos.y }}
-            />
-          ))}
-        </div>
+        {positions.container2.map((pos, index) => (
+          <img
+            key={index}
+            src={pos.img}
+            alt="Random GIF"
+            className="absolute size-8 fade-out" // Ensure all images start hidden
+            style={{ left: pos.x, top: pos.y }}
+          />
+        ))}
       </div>
     </div>
   )
