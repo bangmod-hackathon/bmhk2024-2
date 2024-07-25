@@ -93,3 +93,9 @@
     margin: 0;
     padding: 0;
 }
+
+.nav:hover {
+    color: #F5DD8B;
+    text-shadow: 0px 4px 8px #f7e49f68;
+    
+}
