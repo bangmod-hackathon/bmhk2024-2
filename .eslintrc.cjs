@@ -29,6 +29,7 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint', 'react-refresh'],
   rules: {
+    'prettier/prettier': 'warn',
     'react/no-unknown-property': ['off', { ignore: ['css'] }],
     'react-refresh/only-export-components': 'warn',
     'react-hooks/rules-of-hooks': 'error',
