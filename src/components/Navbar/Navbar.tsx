@@ -81,9 +81,7 @@ const Navbar = () => {
               <div className="flex gap-x-8 px-3 font-body text-white">
                 {menuList.map((item, index) => (
                   <button key={index} className=" group flex flex-col " onClick={() => handleOnSelect(index)}>
-                    <p className={`nav duration-300`}>
-                      {item}
-                    </p>
+                    <p className={`nav duration-300`}>{item}</p>
                   </button>
                 ))}
               </div>
