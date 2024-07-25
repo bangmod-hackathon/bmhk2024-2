@@ -4,6 +4,7 @@ import Hero from '../components/Hero/Hero'
 import Qualifications from '../components/Qualifications'
 import Rewards from '../components/Rewards'
 import Scope from '../components/Scope'
+import Footer from '../components/Footer'
 
 const LandingPage: React.FC = () => {
   return (
@@ -16,7 +17,7 @@ const LandingPage: React.FC = () => {
       {/* <Timeline /> */}
       <Scope />
       {/* <Sponsor /> */}
-      {/* <Footer /> */}
+      <Footer />
     </React.Fragment>
   )
 }
