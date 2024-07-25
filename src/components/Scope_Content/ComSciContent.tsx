@@ -16,7 +16,7 @@ const ComSciContent: React.FC = (): JSX.Element => {
   return (
     <>
       <h1 className="mb-5 text-center text-2xl font-normal text-primary_yellow-100">หมวดพื้นฐานวิทยาการคอมพิวเตอร์</h1>
-      <div className="custom-scroll max-h-[500px] w-[auto] self-stretch overflow-y-auto pl-[25px]">
+      <div className="custom-scroll max-h-[500px] w-auto self-stretch overflow-y-auto pl-[25px]">
         <ol className="list-decimal">
           <li className={classNames.MainTopic}>พื้นฐานด้านการเขียนโปรแกรม</li>
           <li className={classNames.MainTopic}>ทักษะการแก้ปัญหา (problem-solving skill)</li>

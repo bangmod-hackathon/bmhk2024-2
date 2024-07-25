@@ -16,7 +16,7 @@ const MathContent: React.FC = (): JSX.Element => {
   return (
     <>
       <h1 className="mb-5 text-center text-2xl font-normal text-primary_yellow-100">หมวดคณิตศาสตร์</h1>
-      <div className="custom-scroll max-h-[500px] w-[auto] self-stretch overflow-y-auto pl-[25px]">
+      <div className="custom-scroll max-h-[500px] w-auto self-stretch overflow-y-auto pl-[25px]">
         <ol className="list-decimal">
           <li className={classNames.MainTopic}>เลขคณิตและเรขาคณิต</li>
           <ul className={classNames.SubTopic}>
