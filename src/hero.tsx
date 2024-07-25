@@ -1,53 +1,53 @@
-import { useEffect, useState } from 'react';
-import Logo from '../public/Landing/Logo.svg';
-import Start from '../public/Landing/watashiwastart.gif';
-import Start2 from '../public/Landing/Starr.gif';
-import ButtonPrimary from './components/Buttons/ButtonPrimary';
-import './fade.css';
+import { useEffect, useState } from 'react'
+import Logo from '../public/Landing/Logo.svg'
+import Start2 from '../public/Landing/Starr.gif'
+import Start from '../public/Landing/watashiwastart.gif'
+import ButtonPrimary from './components/Buttons/ButtonPrimary'
+import './fade.css'
 
 const getRandomPosition = (maxWidth, maxHeight) => {
-  const x = Math.floor(Math.random() * maxWidth);
-  const y = Math.floor(Math.random() * maxHeight);
-  return { x, y };
-};
+  const x = Math.floor(Math.random() * maxWidth)
+  const y = Math.floor(Math.random() * maxHeight)
+  return { x, y }
+}
 
-const images = [Start, Start2];
-const getRandomImage = () => images[Math.floor(Math.random() * images.length)];
+const images = [Start, Start2]
+const getRandomImage = () => images[Math.floor(Math.random() * images.length)]
 
 function Hero() {
-  const [positions, setPositions] = useState([[], []]);
-  const [animation, setAnimation] = useState('fade-out');
+  const [positions, setPositions] = useState([[], []])
+  const [animation, setAnimation] = useState('fade-out')
 
   const updatePositions = () => {
-    const container1 = document.getElementById('random-container-1');
-    const container2 = document.getElementById('random-container-2');
+    const container1 = document.getElementById('random-container-1')
+    const container2 = document.getElementById('random-container-2')
     if (container1 && container2) {
-      const { clientWidth: width1, clientHeight: height1 } = container1;
-      const { clientWidth: width2, clientHeight: height2 } = container2;
+      const { clientWidth: width1, clientHeight: height1 } = container1
+      const { clientWidth: width2, clientHeight: height2 } = container2
       const newPositions = [
-        Array.from({ length: 3 }, () => ({ ...getRandomPosition(width1 - 130, height1 - 100), img: getRandomImage() })),
-        Array.from({ length: 3 }, () => ({ ...getRandomPosition(width2 - 130, height2 - 100), img: getRandomImage() })),
-      ];
-      setPositions(newPositions);
+        Array.from({ length: 5 }, () => ({ ...getRandomPosition(width1 - 130, height1 - 100), img: getRandomImage() })),
+        Array.from({ length: 5 }, () => ({ ...getRandomPosition(width2 - 130, height2 - 100), img: getRandomImage() }))
+      ]
+      setPositions(newPositions)
     }
-  };
+  }
 
   useEffect(() => {
-    updatePositions();
-    window.addEventListener('resize', updatePositions);
-    return () => window.removeEventListener('resize', updatePositions);
-  }, []);
+    updatePositions()
+    window.addEventListener('resize', updatePositions)
+    return () => window.removeEventListener('resize', updatePositions)
+  }, [])
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setAnimation('fade-out');
+      setAnimation('fade-out')
       setTimeout(() => {
-        updatePositions();
-        setAnimation('fade-in');
-      }, 2000); // Match the duration of the fade-out animation
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
+        updatePositions()
+        setAnimation('fade-in')
+      }, 2000) // Match the duration of the fade-out animation
+    }, 5000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <div className="grid w-full grid-cols-[0.5fr_1fr_0.5fr] bg-[#0E2A3F]">
@@ -58,7 +58,7 @@ function Hero() {
               key={index}
               src={pos.img}
               alt="Random GIF"
-              className="absolute h-[100px] w-[130px]"
+              className="absolute lg:size-12 xl:size-14"
               style={{ left: pos.x, top: pos.y }}
             />
           ))}
@@ -77,20 +77,18 @@ function Hero() {
                 Now-5 August 2024
               </h1>
             </div>
-            <div className="flex w-full flex-col items-center text-center font-body text-[24px] font-normal text-white xl:h-full xl:w-[714]">
+            <div className="flex w-full flex-col items-center text-center font-body font-normal text-white lg:text-[16px] xl:h-full xl:w-[714] xl:text-[24px]">
               <div>
                 <p>โครงการแข่งขันการเขียนโปรแกรมคอมพิวเตอร์ </p>
                 <p>BangMod Hackathon</p>
               </div>
             </div>
-            <div className="flex w-full flex-col items-center text-center font-body text-lg font-normal text-white xl:h-[150px] xl:w-[714]">
-              <ul>
-                <li> เป็นโครงการที่เปิดโอกาสให้นักเรียนระดับชั้นมัธยมศึกษาตอนต้น และตอนปลาย</li>
-                <li> รวมถึงนักศึกษาอาชีวศึกษาในระดับ ปวช. หรือเทียบเท่า ได้เข้ามาแข่งขันการเขียนโปรแกรม</li>
-                <li>โดยใช้ภาษาซี ซึ่งจะเป็นการแข่งขันในรูปแบบทีม</li>
-                <li>ทำให้ผู้เข้าแข่งขันนั้นได้รับทั้งประสบการณ์ใหม่ ๆ ในการเขียนโปรแกรม</li>
-                <li>และฝึกการทำงานร่วมกันเป็นทีมอีกด้วย</li>
-              </ul>
+            <div className="flex w-full flex-col items-center text-center font-body font-normal text-white lg:text-[16px] xl:w-[714] xl:text-[18px]">
+              <p className='xl:w-[420px] lg:w-[400px]'>
+                เป็นโครงการที่เปิดโอกาสให้นักเรียนระดับชั้นมัธยมศึกษา ตอนต้น และ ตอนปลาย รวมถึงนักศึกษาอาชีวศึกษาในระดับ
+                ปวช. หรือเทียบเท่า ได้เข้ามาแข่งขันการเขียน โปรแกรม โดยใช้ภาษาซี ซึ่งจะเป็นการแข่งขันในรูปแบบทีม
+                ทำให้ผู้เข้าแข่งขันได้รับทั้งประสบการณ์ใหม่ ๆ ในการเขียนโปรแกรม และฝึกการทำงานร่วมกันเป็นทีม
+              </p>
             </div>
             <ButtonPrimary>
               <div className="font-body">ลงทะเบียน</div>
@@ -105,14 +103,14 @@ function Hero() {
               key={index}
               src={pos.img}
               alt="Random GIF"
-              className="absolute h-[100px] w-[130px]"
+              className="absolute size-6 lg:size-12 xl:size-14"
               style={{ left: pos.x, top: pos.y }}
             />
           ))}
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Hero;
+export default Hero
