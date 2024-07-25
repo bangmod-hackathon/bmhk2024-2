@@ -6,8 +6,8 @@ import ButtonSecondary from './components/Buttons/ButtonSecondary'
 import Input from './components/Form/Input'
 import Upload from './components/Form/Upload'
 import ModalTemplate from './components/ModalTemplate'
+import Hero from './hero'
 import ThemeProvider from './lib/ThemeProvider'
-import Hero from "./hero.tsx"
 
 function App() {
   const { Text } = Typography
@@ -69,7 +69,7 @@ function App() {
 
             <ModalTemplate />
           </div>
-           <Hero/>
+          <Hero />
         </div>
       </div>
     </ThemeProvider>

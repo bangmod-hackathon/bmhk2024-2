@@ -27,13 +27,19 @@ function Hero() {
   const updatePositions = () => {
     const container1 = document.getElementById('random-container-1')
     const container2 = document.getElementById('random-container-2')
-    
+
     if (container1 && container2) {
       const { clientWidth: width1, clientHeight: height1 } = container1
       const { clientWidth: width2, clientHeight: height2 } = container2
 
-      const newPositions1 = positions.container1.map(() => ({ ...getRandomPosition(width1 - 130, height1 - 100), img: getRandomImage() }))
-      const newPositions2 = positions.container2.map(() => ({ ...getRandomPosition(width2 - 130, height2 - 100), img: getRandomImage() }))
+      const newPositions1 = positions.container1.map(() => ({
+        ...getRandomPosition(width1 - 130, height1 - 100),
+        img: getRandomImage()
+      }))
+      const newPositions2 = positions.container2.map(() => ({
+        ...getRandomPosition(width2 - 130, height2 - 100),
+        img: getRandomImage()
+      }))
 
       // Update state with new positions
       setPositions({
@@ -131,7 +137,7 @@ function Hero() {
               </div>
             </div>
             <div className="flex w-full flex-col items-center text-center font-body font-normal text-white text-[14px] xl:w-[714] xl:text-[18px]">
-              <p className='xl:w-[420px] lg:w-[400px]'>
+              <p className="xl:w-[420px] lg:w-[400px]">
                 เป็นโครงการที่เปิดโอกาสให้นักเรียนระดับชั้นมัธยมศึกษา ตอนต้น และ ตอนปลาย รวมถึงนักศึกษาอาชีวศึกษาในระดับ
                 ปวช. หรือเทียบเท่า ได้เข้ามาแข่งขันการเขียน โปรแกรม โดยใช้ภาษาซี ซึ่งจะเป็นการแข่งขันในรูปแบบทีม
                 ทำให้ผู้เข้าแข่งขันได้รับทั้งประสบการณ์ใหม่ ๆ ในการเขียนโปรแกรม และฝึกการทำงานร่วมกันเป็นทีม
