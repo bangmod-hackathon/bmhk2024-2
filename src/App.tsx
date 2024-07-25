@@ -4,7 +4,6 @@ import ButtonPrimary from './components/Buttons/ButtonPrimary'
 import ButtonSecondary from './components/Buttons/ButtonSecondary'
 import Input from './components/Form/Input'
 import ModalTemplate from './components/ModalTemplate'
-import Stage from './components/Steps/Stage'
 import ThemeProvider from './lib/ThemeProvider'
 
 function App() {
@@ -32,8 +31,6 @@ function App() {
             <ButtonOutlined>Secondary</ButtonOutlined>
             <ButtonOutlined disabled>Disabled</ButtonOutlined>
           </div>
-
-          <Stage numberOfMembers={3} statuses={['finish', 'process', 'wait', 'wait']} />
 
           <div>
             <Input required title="Username" />
