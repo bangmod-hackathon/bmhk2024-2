@@ -9,7 +9,7 @@ function Qualifications() {
         <div className="m-auto flex w-full flex-col items-center justify-center gap-4">
           <div className="mb-9 text-center font-heading text-3xl md:text-4xl lg:text-5xl text-white ">คุณสมบัติผู้สมัคร</div>
           <div className=" flex w-10/12 rounded-full  bg-gradient-to-b from-bg-400/25 to-secondary_blue-200/25 p-5 pr-12 ">
-            <div className="mr-7 flex aspect-square w-44 justify-center overflow-visible rounded-full bg-primary_yellow-200 text-center">
+            <div className="mr-5 md:mr-6 lg:mr-7 flex aspect-square w-44 justify-center overflow-visible rounded-full bg-primary_yellow-200 text-center">
               <img className="scale-125" src={FirstStudent} />
             </div>
             <div className="m-auto w-full font-body text-white text-sm md:text-base lg:text-lg ">
@@ -17,7 +17,7 @@ function Qualifications() {
             </div>
           </div>
           <div className=" flex w-10/12 rounded-full bg-gradient-to-b from-bg-400/25 to-secondary_blue-200/25 p-5 pr-12 ">
-            <div className="mr-7 flex aspect-square w-44 justify-center overflow-visible rounded-full bg-primary_yellow-200 text-center">
+            <div className="mr-5 md:mr-6 lg:mr-7 flex aspect-square w-44 justify-center overflow-visible rounded-full bg-primary_yellow-200 text-center">
               <img className="scale-125" src={Teacher} />
             </div>
             <div className="m-auto w-full font-body text-white text-sm md:text-base lg:text-lg ">
@@ -25,7 +25,7 @@ function Qualifications() {
             </div>
           </div>
           <div className=" flex w-10/12 rounded-full border bg-gradient-to-b from-bg-400/25 to-secondary_blue-200/25 p-5 pr-12 ">
-            <div className="mr-7 flex aspect-square w-44 justify-center overflow-visible rounded-full bg-primary_yellow-200 text-center">
+            <div className="mr-5 md:mr-6 lg:mr-7 flex aspect-square w-44 justify-center overflow-visible rounded-full bg-primary_yellow-200 text-center">
               <img className="scale-125" src={SecondStudent} />
             </div>
             <div className="m-auto w-full font-body text-white text-sm md:text-base lg:text-lg ">
