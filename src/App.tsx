@@ -18,8 +18,8 @@ function App() {
     <ThemeProvider>
       <div className="flex h-full bg-[#0E2A3F]">
         <div className="m-auto px-3">
-          <p className="font-heading text-text_color-100 text-3xl font-bold">HOME</p>
-          <Text className="text-text_color-100 text-lg font-normal">
+          <p className="font-heading text-3xl font-bold text-text_color-100">HOME</p>
+          <Text className="text-lg font-normal text-text_color-100">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos dolores, veritatis qui error perspiciatis
             neque ratione vitae architecto nam, dolore eum repellendus laudantium, commodi fugiat. Doloribus voluptas
             unde eius iusto. <br />

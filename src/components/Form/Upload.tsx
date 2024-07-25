@@ -43,23 +43,23 @@ const Upload: React.FC<UploadPropsForm> = ({ imageUpload = false, required = fal
   }
 
   const uploadButton = (
-    <button className="text-text_color-200 flex h-[63px] w-full flex-col items-center justify-center rounded-[10px] bg-white px-[9px] py-[8px]">
+    <button className="flex h-[63px] w-full flex-col items-center justify-center rounded-[10px] bg-white px-[9px] py-[8px] text-text_color-200">
       {props.children}
     </button>
   )
 
   const previewUpload = (
     <div
-      className={`text-primary-400 flex h-[63px] w-full flex-row items-center justify-between rounded-[10px] bg-white px-[9px] py-[8px] font-normal ${errorUploadMessage === '' ? '' : 'border-danger border'}`}
+      className={`flex h-[63px] w-full flex-row items-center justify-between rounded-[10px] bg-white px-[9px] py-[8px] font-normal text-primary-400 ${errorUploadMessage === '' ? '' : 'border border-danger'}`}
     >
       <div className="flex flex-row items-start overflow-hidden">
-        <BiSolidFileBlank className="text-text_color-300 size-12" />
+        <BiSolidFileBlank className="size-12 text-text_color-300" />
         <div className="flex flex-col">
           <p className="text-lg font-normal ">{props.file?.name && truncateFilename(props.file?.name)}</p>
           <div className="flex flex-row items-center gap-4 text-sm">
             <p>{props.file && Math.round((props.file.size / (1024 * 1024) + Number.EPSILON) * 100) / 100} MB</p>
             {errorUploadMessage && (
-              <div className="text-danger flex flex-row items-center">
+              <div className="flex flex-row items-center text-danger">
                 <IoIosWarning className="size-4" />
                 <p>Upload failed</p>
               </div>
@@ -89,7 +89,7 @@ const Upload: React.FC<UploadPropsForm> = ({ imageUpload = false, required = fal
 
   return (
     <div className="my-5 grid grid-cols-1 items-center gap-4 lg:grid-cols-2">
-      <label className="font-body text-text_color-100 text-lg">
+      <label className="font-body text-lg text-text_color-100">
         {props.title} {required && <span className="text-primary_yellow-100">*</span>}
       </label>
       <div className=" col-span-1 flex flex-col justify-center gap-[10px]">
