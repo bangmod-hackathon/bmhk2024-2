@@ -3,89 +3,89 @@
 @tailwind utilities;
 
 @layer base {
-    @font-face {
-        font-family: 'Chonburi';
-        src: url(./fonts/Chonburi/Chonburi-Regular.ttf) format('truetype');
-        font-style: normal;
-        font-display: swap;
-    }
+  @font-face {
+    font-family: 'Chonburi';
+    src: url(./fonts/Chonburi/Chonburi-Regular.ttf) format('truetype');
+    font-style: normal;
+    font-display: swap;
+  }
 
-    @font-face {
-        font-family: 'IBM Plex Sans';
-        src: url('./fonts/IBMPlexSans/IBMPlexSansThaiLooped-Thin.ttf') format('truetype');
-        font-weight: 100;
-        font-style: normal;
-        font-display: swap;
-    }
+  @font-face {
+    font-family: 'IBM Plex Sans';
+    src: url('./fonts/IBMPlexSans/IBMPlexSansThaiLooped-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+  }
 
-    @font-face {
-        font-family: 'IBM Plex Sans';
-        src: url('./fonts/IBMPlexSans/IBMPlexSansThaiLooped-ExtraLight.ttf') format('truetype');
-        font-weight: 200;
-        font-style: normal;
-        font-display: swap;
-    }
+  @font-face {
+    font-family: 'IBM Plex Sans';
+    src: url('./fonts/IBMPlexSans/IBMPlexSansThaiLooped-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+  }
 
-    @font-face {
-        font-family: 'IBM Plex Sans';
-        src: url('./fonts/IBMPlexSans/IBMPlexSansThaiLooped-Light.ttf') format('truetype');
-        font-weight: 300;
-        font-style: normal;
-        font-display: swap;
-    }
+  @font-face {
+    font-family: 'IBM Plex Sans';
+    src: url('./fonts/IBMPlexSans/IBMPlexSansThaiLooped-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
 
-    @font-face {
-        font-family: 'IBM Plex Sans';
-        src: url('./fonts/IBMPlexSans/IBMPlexSansThaiLooped-Regular.ttf') format('truetype');
-        font-weight: normal;
-        font-style: normal;
-        font-display: swap;
-    }
+  @font-face {
+    font-family: 'IBM Plex Sans';
+    src: url('./fonts/IBMPlexSans/IBMPlexSansThaiLooped-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
 
-    @font-face {
-        font-family: 'IBM Plex Sans';
-        src: url('./fonts/IBMPlexSans/IBMPlexSansThaiLooped-Medium.ttf') format('truetype');
-        font-weight: 500;
-        font-style: normal;
-        font-display: swap;
-    }
+  @font-face {
+    font-family: 'IBM Plex Sans';
+    src: url('./fonts/IBMPlexSans/IBMPlexSansThaiLooped-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
 
-    @font-face {
-        font-family: 'IBM Plex Sans';
-        src: url('./fonts/IBMPlexSans/IBMPlexSansThaiLooped-SemiBold.ttf') format('truetype');
-        font-weight: 600;
-        font-style: normal;
-        font-display: swap;
-    }
+  @font-face {
+    font-family: 'IBM Plex Sans';
+    src: url('./fonts/IBMPlexSans/IBMPlexSansThaiLooped-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
 
-    @font-face {
-        font-family: 'IBM Plex Sans';
-        src: url('./fonts/IBMPlexSans/IBMPlexSansThaiLooped-Bold.ttf') format('truetype');
-        font-weight: bold;
-        font-style: normal;
-        font-display: swap;
-    }
+  @font-face {
+    font-family: 'IBM Plex Sans';
+    src: url('./fonts/IBMPlexSans/IBMPlexSansThaiLooped-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
 
-    @font-face {
-        font-family: 'Lora';
-        src: url(./fonts/Lora/Lora-VariableFont_wght.ttf) format('truetype');
-        font-style: normal;
-        font-display: swap;
-    }
+  @font-face {
+    font-family: 'Lora';
+    src: url(./fonts/Lora/Lora-VariableFont_wght.ttf) format('truetype');
+    font-style: normal;
+    font-display: swap;
+  }
 
-    @font-face {
-        font-family: 'Lora';
-        src: url(./fonts/Lora/Lora-Italic-VariableFont_wght.ttf) format('truetype');
-        font-style: italic;
-        font-display: swap;
-    }
+  @font-face {
+    font-family: 'Lora';
+    src: url(./fonts/Lora/Lora-Italic-VariableFont_wght.ttf) format('truetype');
+    font-style: italic;
+    font-display: swap;
+  }
 
-    @font-face {
-        font-family: 'Sparky Stones';
-        src: url(./fonts/SparkyStones/SparkyStonesRegular-BW6ld.ttf) format('truetype');
-        font-style: normal;
-        font-display: swap;
-    }
+  @font-face {
+    font-family: 'Sparky Stones';
+    src: url(./fonts/SparkyStones/SparkyStonesRegular-BW6ld.ttf) format('truetype');
+    font-style: normal;
+    font-display: swap;
+  }
 }
 
 * {
@@ -99,3 +99,11 @@
     text-shadow: 0px 4px 8px #f7e49f68;
     
 }
+.ant-upload-wrapper{
+    width: 100%;
+}
+
+.ant-upload {
+    width: 100%;
+}
+
