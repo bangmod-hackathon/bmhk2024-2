@@ -5,11 +5,12 @@ import Qualifications from '../components/Qualifications'
 import Rewards from '../components/Rewards'
 import Scope from '../components/Scope'
 import Footer from '../components/Footer'
+import Navbar from '../components/Navbar/Navbar'
 
 const LandingPage: React.FC = () => {
   return (
     <React.Fragment>
-      {/* <Navbar /> */}
+      <Navbar />
       <Hero />
       <Qualifications />
       <Docs />
