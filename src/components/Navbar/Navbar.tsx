@@ -3,11 +3,14 @@ import { useState } from 'react'
 import { CgProfile } from 'react-icons/cg'
 import { HiOutlineMenu, HiX } from 'react-icons/hi'
 import ButtonPrimary from '../Buttons/ButtonPrimary'
+import { Link, useLocation } from 'react-router-dom'
 
 const Navbar = () => {
   const [Auth, setAuth] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [onSelect, setOnSelect] = useState(-1)
+
+  const location = useLocation()
 
   const menuList = ['รายละเอียด', 'คุณสมบัติ', 'รางวัล', 'ไทม์ไลน์', 'ขอบเขตเนื้อหา', 'ติดต่อสอบถาม']
 
@@ -65,16 +68,16 @@ const Navbar = () => {
   const navLandingPage = () => {
     return (
       <>
-        <div className="fixed w-full p-9">
+        <div className="fixed w-full p-9 z-[100]">
           <motion.div
             variants={menuVariants}
             animate={menuOpen ? 'closed' : 'open'}
             className={`flex w-full items-center justify-between rounded-[10px] bg-bg-200/40 px-6 py-2 ${menuOpen ? 'hidden' : ''}`}
           >
-            <div className="flex items-center">
-              <button>
+            <div>
+              <Link to="/">
                 <img src="Logo.svg" alt="Bangmod Hackathon 2024 Logo" className="h-12" />
-              </button>
+              </Link>
             </div>
 
             <div className="hidden flex-1 justify-center lg:flex">
@@ -104,7 +107,9 @@ const Navbar = () => {
                 {Auth ? (
                   <ButtonPrimary onClick={handleAuth}>ออกจากระบบ</ButtonPrimary>
                 ) : (
-                  <ButtonPrimary onClick={handleAuth}>ลงทะเบียน</ButtonPrimary>
+                  <Link to="/login">
+                    <ButtonPrimary onClick={handleAuth}>ลงทะเบียน</ButtonPrimary>
+                  </Link>
                 )}
               </div>
             </div>
@@ -123,7 +128,7 @@ const Navbar = () => {
             variants={menuVariants}
             className="relative flex flex-col items-center overflow-hidden rounded-[10px] bg-[#18232B] p-6 font-body lg:hidden"
           >
-            <button
+            <div
               className="flex w-full items-end justify-end text-2xl text-white"
               onClick={() => {
                 toggleMenu()
@@ -131,9 +136,11 @@ const Navbar = () => {
               }}
             >
               <HiX />
-            </button>
+            </div>
 
-            <img src="Logo.svg" alt="Bangmod Hackathon 2024 Logo" className="" />
+            <Link to="/">
+              <img src="Logo.svg" alt="Bangmod Hackathon 2024 Logo" className="h-12" />
+            </Link>
 
             {menuList.map((item, index) => (
               <motion.button
@@ -149,12 +156,11 @@ const Navbar = () => {
               </motion.button>
             ))}
             <div className="py-2">
-              <ButtonPrimary
-                className="bg-primary_yellow-100 text-primary-200 hover:bg-primary_yellow-300 hover:text-primary-300"
-                onClick={handleAuth}
-              >
-                <p className="font-normal text-black">{Auth ? 'ออกจากระบบ' : 'ลงทะเบียน'}</p>
-              </ButtonPrimary>
+              <Link to="/login">
+                <ButtonPrimary>
+                  <p className=" text-lg">ลงทะเบียน</p>
+                </ButtonPrimary>
+              </Link>
             </div>
           </motion.div>
         </div>
@@ -184,7 +190,7 @@ const Navbar = () => {
                   <div className=" flex h-full items-center">
                     <CgProfile className="text-xl text-white" />
                   </div>
-                  <p className=" text-lg text-white">chaiyapatInwza007@kmutt.ac.th</p>
+                  <p className=" text-lg text-white">{'chaiyapatInwza007@kmutt.ac.th'}</p> {/* Add email */}
                 </div>
                 <ButtonPrimary>ออกจากระบบ</ButtonPrimary>
               </div>
@@ -195,7 +201,47 @@ const Navbar = () => {
     )
   }
 
-  return <>{location.pathname === '/register' ? navRegisterPage() : navLandingPage()}</>
+  const navLoginPage = () => {
+    return (
+      <>
+        <div className="fixed w-full p-9 z-[100]">
+          <motion.div
+            variants={menuVariants}
+            animate={menuOpen ? 'closed' : 'open'}
+            className={`flex w-full items-center justify-between rounded-[10px] bg-bg-200/40 px-6 py-2 ${menuOpen ? 'hidden' : ''}`}
+          >
+            <div className="flex">
+              <Link to="/">
+                <img src="Logo.svg" alt="Bangmod Hackathon 2024 Logo" className="h-12" />
+              </Link>
+            </div>
+
+            <div className="hidden flex-1 justify-center lg:flex"></div>
+            <div className="flex py-2">
+              <ButtonPrimary>
+                <Link to="/">กลับหน้าหลัก</Link>
+              </ButtonPrimary>
+            </div>
+          </motion.div>
+        </div>
+      </>
+    )
+  }
+
+  const navbarOnLocationList = [
+    { '/': navLandingPage() },
+    { '/login': navLoginPage() },
+    { '/consent': navLoginPage() },
+    { '/register': navRegisterPage() }
+  ]
+
+  return (
+    <>
+      {navbarOnLocationList.map((item, index) => (
+        <div key={index}>{Object.keys(item)[0] === location.pathname && Object.values(item)[0]}</div>
+      ))}
+    </>
+  )
 }
 
 export default Navbar
