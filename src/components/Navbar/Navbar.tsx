@@ -70,19 +70,6 @@ const Navbar = () => {
     }
   }
 
-  const menuItemVariants = {
-    open: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: { delay: i * 0.1, duration: 0.3 }
-    }),
-    closed: {
-      opacity: 0,
-      y: -20,
-      transition: { duration: 0.3 }
-    }
-  }
-
   const menuIconVariants = {
     open: {
       rotate: 90,
@@ -113,11 +100,6 @@ const Navbar = () => {
 
             <div className="hidden flex-1 justify-center lg:flex">
               <div className="flex gap-x-8 px-3 font-body text-white">
-                {/* {menuList.map((item, index) => (
-                  <button key={index} className=" group flex flex-col " onClick={() => handleOnSelect(index)}>
-                    <p className={`nav duration-300`}>{item.label}</p>
-                  </button>
-                ))} */}
                 {menuList.map((item, index) => (
                   <Scroll.Link
                     key={index}
@@ -188,17 +170,18 @@ const Navbar = () => {
             </Link>
 
             {menuList.map((item, index) => (
-              <motion.button
+              <Scroll.Link
                 key={index}
-                className={`nav py-2 text-lg ${onSelect === index ? 'text-primary_yellow-200' : 'text-white'}`}
-                variants={menuItemVariants}
-                initial="closed"
-                animate={menuOpen ? 'open' : 'closed'}
-                custom={index}
+                to={item.link}
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+                className={`nav duration-300 py-2 text-lg ${onSelect === index ? 'text-primary_yellow-200' : 'text-white'}`}
                 onClick={() => handleOnSelect(index)}
               >
                 {item.label}
-              </motion.button>
+              </Scroll.Link>
             ))}
             <div className="py-2">
               <Link to="/login">
