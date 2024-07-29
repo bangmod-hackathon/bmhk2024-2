@@ -1,7 +1,7 @@
 import { Typography } from 'antd'
 import Input from './Input/Input'
 
-export default function TeamContactsForm() {
+export default function TeacherContactsForm() {
   const { Text } = Typography
 
   return (
