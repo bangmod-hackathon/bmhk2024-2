@@ -4,6 +4,12 @@ import { CgProfile } from 'react-icons/cg'
 import { HiOutlineMenu, HiX } from 'react-icons/hi'
 import ButtonPrimary from '../Buttons/ButtonPrimary'
 import { Link, useLocation } from 'react-router-dom'
+import Scroll from 'react-scroll'
+
+interface ImenuList {
+  label: string
+  link: string
+}
 
 const Navbar = () => {
   const [Auth, setAuth] = useState(false)
@@ -12,7 +18,32 @@ const Navbar = () => {
 
   const location = useLocation()
 
-  const menuList = ['รายละเอียด', 'คุณสมบัติ', 'รางวัล', 'ไทม์ไลน์', 'ขอบเขตเนื้อหา', 'ติดต่อสอบถาม']
+  const menuList: ImenuList[] = [
+    {
+      label: 'รายละเอียด',
+      link: 'hero'
+    },
+    {
+      label: 'คุณสมบัติ',
+      link: 'qualifications'
+    },
+    {
+      label: 'รางวัล',
+      link: 'rewards'
+    },
+    {
+      label: 'ไทม์ไลน์',
+      link: 'timeline'
+    },
+    {
+      label: 'ขอบเขตเนื้อหา',
+      link: 'scope'
+    },
+    {
+      label: 'ติดต่อสอบถาม',
+      link: 'contact'
+    }
+  ]
 
   const handleAuth = () => {
     setAuth(!Auth)
@@ -82,10 +113,24 @@ const Navbar = () => {
 
             <div className="hidden flex-1 justify-center lg:flex">
               <div className="flex gap-x-8 px-3 font-body text-white">
-                {menuList.map((item, index) => (
+                {/* {menuList.map((item, index) => (
                   <button key={index} className=" group flex flex-col " onClick={() => handleOnSelect(index)}>
-                    <p className={`nav duration-300`}>{item}</p>
+                    <p className={`nav duration-300`}>{item.label}</p>
                   </button>
+                ))} */}
+                {menuList.map((item, index) => (
+                  <Scroll.Link
+                    key={index}
+                    to={item.link}
+                    spy={true}
+                    smooth={true}
+                    offset={-70}
+                    duration={500}
+                    className={`nav duration-300 ${onSelect === index ? 'text-primary_yellow-200' : 'text-white'}`}
+                    onClick={() => handleOnSelect(index)}
+                  >
+                    {item.label}
+                  </Scroll.Link>
                 ))}
               </div>
             </div>
@@ -152,7 +197,7 @@ const Navbar = () => {
                 custom={index}
                 onClick={() => handleOnSelect(index)}
               >
-                {item}
+                {item.label}
               </motion.button>
             ))}
             <div className="py-2">
