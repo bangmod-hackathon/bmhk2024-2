@@ -1,4 +1,6 @@
 import React from 'react'
+import { FaFacebook } from 'react-icons/fa'
+import { IoLogoInstagram } from 'react-icons/io5'
 
 const Footer: React.FC = () => {
   return (
@@ -35,16 +37,17 @@ const Footer: React.FC = () => {
           <div className="flex justify-between items-center py-4">
             {/* ไอคอนทางซ้าย */}
             <div className="flex space-x-2">
-              <img
-                src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/facebook-app-round-white-icon.png"
-                alt="Facebook"
-                className="w-8 h-8"
-              />
-              <img
-                src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/facebook-app-round-white-icon.png"
-                alt="Instagram"
-                className="w-8 h-8"
-              />
+              <a href="https://www.facebook.com/BangmodHackathon/" target="_blank" rel="noreferrer">
+                <FaFacebook className="w-12 h-12" />
+              </a>
+              <a
+                href="https://www.instagram.com/cpe_studentunion/"
+                target="_blank"
+                rel="noreferrer"
+                className="bg-white rounded-full p-2"
+              >
+                <IoLogoInstagram className="w-8 h-8 text-black" />
+              </a>
             </div>
             {/* ไอคอนทางขวา */}
             <div className="flex space-x-2">
