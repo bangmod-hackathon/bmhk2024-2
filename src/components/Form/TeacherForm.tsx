@@ -1,9 +1,11 @@
-import { Input as AntDInput, Typography } from 'antd'
-import Input from './Input'
+import { Typography } from 'antd'
+import Input from './Input/Input'
+import TextArea from './Input/TextArea'
+import Select from './Input/Select'
+import Option from './Input/Option'
 
-export default function TeamForm() {
+export default function TeacherForm() {
   const { Text } = Typography
-  const { TextArea } = AntDInput
 
   return (
     <div>
@@ -13,7 +15,10 @@ export default function TeamForm() {
       <div className="rounded-b-md bg-[#0C384E] bg-opacity-50">
         <div className="flex flex-col flex-wrap md:flex-row">
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
-            <Input title="คำนำหน้า" required={true} placeholder="นาย" />
+            <Select title='คำนำหน้า' required={true}>
+              <Option title='นาย' value='นาย' />
+              <Option title='นางสาว' value='นางสาว' />
+            </Select>
           </div>
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
             <Input title="ชื่อจริง(ภาษาไทย)" required={true} placeholder="กรุณากรอกชื่อจริง" />
@@ -27,7 +32,10 @@ export default function TeamForm() {
         </div>
         <div className="flex flex-col flex-wrap md:flex-row">
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
-            <Input title="Prefix" required={true} placeholder="Mr." />
+            <Select title='Prefix' required={true}>
+              <Option title='Mr.' value='Mr.' />
+              <Option title='Ms.' value='Ms.' />
+            </Select>
           </div>
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
             <Input title="First Name" required={true} placeholder="Name" />
@@ -56,12 +64,7 @@ export default function TeamForm() {
         </div>
         <div className="flex flex-col flex-wrap md:flex-row">
           <div className="w-full p-4">
-            <div className="flex flex-col">
-              <label className="font-body text-text_color-100">
-                โรคประจำตัว และวิธีประฐมพยาบาลเบื้องต้น <span className="text-primary_yellow-100">*</span>
-              </label>
-              <TextArea className="rounded-[5px] bg-white px-3 py-2 text-primary_yellow-100 focus:text-primary-100 focus:shadow-[0_4px_6px_0px_rgba(138,213,244,0.25)] focus:outline-none focus:ring-2 focus:ring-[#8AD5F4]" />
-            </div>
+            <TextArea title='โรคประจำตัว และวิธีประฐมพยาบาลเบื้องต้น' required={true} placeholder='รายละเอียด...' />
           </div>
         </div>
       </div>

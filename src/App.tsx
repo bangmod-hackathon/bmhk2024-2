@@ -1,7 +1,7 @@
-import ParticipantContacts from './components/Form/ParticipantContacts'
+import ParticipantContactsForm from './components/Form/ParticipantContactsForm'
 import ParticipantForm from './components/Form/ParticipantForm'
 import TeacherForm from './components/Form/TeacherForm'
-import TeamContacts from './components/Form/TeamContacts'
+import TeamContactsForm from './components/Form/TeamContactsForm'
 import TeamForm from './components/Form/TeamForm'
 import ThemeProvider from './lib/ThemeProvider'
 
@@ -18,13 +18,13 @@ function App() {
               <TeacherForm />
             </div>
             <div className="mt-10">
-              <TeamContacts />
+              <TeamContactsForm />
             </div>
             <div className="mt-10">
               <ParticipantForm />
             </div>
             <div className="mt-10">
-              <ParticipantContacts />
+              <ParticipantContactsForm />
             </div>
           </div>
         </div>

@@ -1,9 +1,11 @@
-import { Input as AntDInput, Typography } from 'antd'
-import Input from './Input'
+import { Typography } from 'antd'
+import Input from './Input/Input'
+import Select from './Input/Select'
+import Option from './Input/Option'
+import TextArea from './Input/TextArea'
 
 export default function ParticipantForm() {
   const { Text } = Typography
-  const { TextArea } = AntDInput
 
   return (
     <div>
@@ -13,7 +15,10 @@ export default function ParticipantForm() {
       <div className="rounded-b-md bg-[#0C384E] bg-opacity-50">
         <div className="flex flex-col flex-wrap md:flex-row">
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
-            <Input title="คำนำหน้า" required={true} placeholder="นาย" />
+            <Select title='คำนำหน้า' required={true}>
+              <Option title='นาย' value='นาย' />
+              <Option title='นางสาว' value='นางสาว' />
+            </Select>
           </div>
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
             <Input title="ชื่อจริง(ภาษาไทย)" required={true} placeholder="กรุณากรอกชื่อจริง" />
@@ -27,7 +32,10 @@ export default function ParticipantForm() {
         </div>
         <div className="flex flex-col flex-wrap md:flex-row">
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
-            <Input title="Prefix" required={true} placeholder="Mr." />
+            <Select title='Prefix' required={true}>
+              <Option title='Mr.' value='Mr.' />
+              <Option title='Ms.' value='Ms.' />
+            </Select>
           </div>
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
             <Input title="First Name" required={true} placeholder="Name" />
@@ -41,35 +49,33 @@ export default function ParticipantForm() {
         </div>
         <div className="flex flex-col flex-wrap md:flex-row">
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
-            <Input title="ชื่อเล่น" required={true} placeholder="Food Allergy" />
+            <Input title="ชื่อเล่น" required={true} placeholder="ชื่อเล่น" />
           </div>
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
-            <Input
-              title="ระดับชั้น (เช่น มังสวิรัต ฮาลาล)"
-              required={true}
-              placeholder="Food preference Ex. Vegan Halal"
-            />
+            <Select title='ระดับชั้น' required={true}>
+              <Option title='ประกาศนียบัตรวิชาชีพ ปีที่ 1' value='ประกาศนียบัตรวิชาชีพ ปีที่ 1' />
+              <Option title='ประกาศนียบัตรวิชาชีพ ปีที่ 2' value='ประกาศนียบัตรวิชาชีพ ปีที่ 2' />
+              <Option title='ประกาศนียบัตรวิชาชีพ ปีที่ 3' value='ประกาศนียบัตรวิชาชีพ ปีที่ 3' />
+              <Option title='มัธยมศึกษาปีที่ 4' value='มัธยมศึกษาปีที่ 4' />
+              <Option title='มัธยมศึกษาปีที่ 5' value='มัธยมศึกษาปีที่ 5' />
+              <Option title='มัธยมศึกษาปีที่ 6' value='มัธยมศึกษาปีที่ 6' />
+            </Select>
           </div>
           <div className="w-full p-4 lg:w-1/4">
-            <Input title="ประเภทอาหาร(เช่น มังสวิรัต ฮาลาล)" required={true} placeholder="Drug Allergy" />
+            <Input title="ประเภทอาหาร(เช่น มังสวิรัต ฮาลาล)" required={true} placeholder="มังสวิรัต" />
           </div>
           <div className="w-full p-4 lg:w-1/4">
-            <Input title="อาหารที่แพ้" required={true} placeholder="Drug Allergy" />
+            <Input title="อาหารที่แพ้" required={true} placeholder="อาหารที่แพ้" />
           </div>
         </div>
         <div className="flex flex-col flex-wrap md:flex-row">
           <div className="w-full p-4">
-            <Input title="ยาที่แพ้" required={true} placeholder="Drug Allergy" />
+            <Input title="ยาที่แพ้" required={true} placeholder="ยาที่แพ้" />
           </div>
         </div>
         <div className="flex flex-col flex-wrap md:flex-row">
           <div className="w-full p-4">
-            <div className="flex flex-col">
-              <label className="font-body text-text_color-100">
-                โรคประจำตัว และวิธีประฐมพยาบาลเบื้องต้น <span className="text-primary_yellow-100">*</span>
-              </label>
-              <TextArea className="rounded-[5px] bg-white px-3 py-2 text-primary_yellow-100 focus:text-primary-100 focus:shadow-[0_4px_6px_0px_rgba(138,213,244,0.25)] focus:outline-none focus:ring-2 focus:ring-[#8AD5F4]" />
-            </div>
+            <TextArea title='โรคประจำตัว และวิธีประฐมพยาบาลเบื้องต้น' required={true} placeholder='รายละเอียด...' />
           </div>
         </div>
       </div>

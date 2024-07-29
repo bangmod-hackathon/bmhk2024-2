@@ -1,7 +1,7 @@
 import { Typography } from 'antd'
-import Input from './Input'
+import Input from './Input/Input'
 
-export default function ParticipantContacts() {
+export default function ParticipantContactsForm() {
   const { Text } = Typography
 
   return (
@@ -12,21 +12,21 @@ export default function ParticipantContacts() {
       <div className="rounded-b-md bg-[#0C384E] bg-opacity-50">
         <div className="flex flex-col flex-wrap md:flex-row">
           <div className="w-full p-4 lg:w-1/3">
-            <Input title="Email" required={true} placeholder="นาย" />
+            <Input title="Email" required={true} placeholder="example@example.com" />
           </div>
           <div className="w-full p-4 md:w-1/2 lg:w-1/3">
-            <Input title="เบอร์โทรศัพท์" required={true} placeholder="กรุณากรอกชื่อจริง" />
+            <Input title="เบอร์โทรศัพท์" required={true} placeholder="0812345678" />
           </div>
           <div className="w-full p-4 md:w-1/2 lg:w-1/3">
-            <Input title="ID LINE" required={true} placeholder="กรุณากรอกชื่อกลาง" />
+            <Input title="ID LINE" required={true} placeholder="id line" />
           </div>
         </div>
         <div className="flex flex-col flex-wrap md:flex-row">
           <div className="w-full p-4 md:w-1/2">
-            <Input title="เบอร์โทรติดต่อฉุกเฉิน" required={true} placeholder="Mr." />
+            <Input title="เบอร์โทรติดต่อฉุกเฉิน" required={true} placeholder="0812345678" />
           </div>
           <div className="w-full p-4 md:w-1/2">
-            <Input title="ผู้ติดต่อฉุกเฉินเกี่ยวข้องเป็น" required={true} placeholder="Name" />
+            <Input title="ผู้ติดต่อฉุกเฉินเกี่ยวข้องเป็น" required={true} placeholder="Ex. บิดา มารดา" />
           </div>
         </div>
       </div>
