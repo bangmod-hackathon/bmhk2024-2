@@ -30,7 +30,9 @@ const LandingPage: React.FC = () => {
       </Element>
 
       {/* <Sponsor /> */}
-      <Footer />
+      <Element id="footer" name="footer">
+        <Footer />
+      </Element>
     </React.Fragment>
   )
 }

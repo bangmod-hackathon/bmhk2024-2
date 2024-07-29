@@ -41,7 +41,7 @@ const Navbar = () => {
     },
     {
       label: 'ติดต่อสอบถาม',
-      link: 'contact'
+      link: 'footer'
     }
   ]
 
