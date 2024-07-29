@@ -6,20 +6,23 @@ import Rewards from '../components/Rewards'
 import Scope from '../components/Scope'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar/Navbar'
+import Timeline from '../components/Timeline/Timeline'
 
 const LandingPage: React.FC = () => {
   return (
-    <React.Fragment>
-      <Navbar />
-      <Hero />
-      <Qualifications />
-      <Docs />
-      <Rewards />
-      {/* <Timeline /> */}
-      <Scope />
-      {/* <Sponsor /> */}
-      <Footer />
-    </React.Fragment>
+    <div className=" w-full h-full bg-[url(LandingBackgroundShort.jpg)] bg-top bg-no-repeat bg-cover scroll-smooth">
+      <React.Fragment>
+        <Navbar />
+        <Hero />
+        <Qualifications />
+        <Docs />
+        <Rewards />
+        <Timeline />
+        <Scope />
+        {/* <Sponsor /> */}
+        <Footer />
+      </React.Fragment>
+    </div>
   )
 }
 
