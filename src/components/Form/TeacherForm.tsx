@@ -2,7 +2,6 @@ import { Typography } from 'antd'
 import Input from './Input/Input'
 import TextArea from './Input/TextArea'
 import Select from './Input/Select'
-import Option from './Input/Option'
 
 export default function TeacherForm() {
   const { Text } = Typography
@@ -15,10 +14,14 @@ export default function TeacherForm() {
       <div className="rounded-b-md bg-[#0C384E] bg-opacity-50">
         <div className="flex flex-col flex-wrap md:flex-row">
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
-            <Select title="คำนำหน้า" required={true}>
-              <Option title="นาย" value="นาย" />
-              <Option title="นางสาว" value="นางสาว" />
-            </Select>
+            <Select
+              options={[
+                { title: 'นาย', value: 'นาย' },
+                { title: 'นางสาว', value: 'นางสาว' }
+              ]}
+              title="คำนำหน้า"
+              required={true}
+            />
           </div>
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
             <Input title="ชื่อจริง(ภาษาไทย)" required={true} placeholder="กรุณากรอกชื่อจริง" />
@@ -32,10 +35,14 @@ export default function TeacherForm() {
         </div>
         <div className="flex flex-col flex-wrap md:flex-row">
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
-            <Select title="Prefix" required={true}>
-              <Option title="Mr." value="Mr." />
-              <Option title="Ms." value="Ms." />
-            </Select>
+            <Select
+              options={[
+                { title: 'Mr.', value: 'Mr.' },
+                { title: 'Ms.', value: 'Ms.' }
+              ]}
+              title="คำนำหน้า"
+              required={true}
+            />
           </div>
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
             <Input title="First Name" required={true} placeholder="Name" />

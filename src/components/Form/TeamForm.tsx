@@ -1,7 +1,6 @@
 import { Typography } from 'antd'
 import Input from './Input/Input'
 import Select from './Input/Select'
-import Option from './Input/Option'
 
 export default function TeamForm() {
   const { Text } = Typography
@@ -25,11 +24,15 @@ export default function TeamForm() {
             <Input title="คำคมประจำทีม" required={true} placeholder="กรอกคำคมของทีม" />
           </div>
           <div className="w-full p-4">
-            <Select title="จำนวนสมาชิก" required={true}>
-              <Option title="1" value={1} />
-              <Option title="2" value={1} />
-              <Option title="3" value={1} />
-            </Select>
+            <Select
+              options={[
+                { title: '1', value: 1 },
+                { title: '2', value: 2 },
+                { title: '3', value: 3 }
+              ]}
+              title="จำนวนสมาชิก"
+              required={true}
+            />
           </div>
         </div>
       </div>

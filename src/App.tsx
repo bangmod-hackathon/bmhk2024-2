@@ -1,19 +1,35 @@
-import { lazy, Suspense } from 'react'
-import { Route, Routes } from 'react-router-dom'
-
-const ConsentPage = lazy(() => import('./pages/ConsentPage'))
-const LandingPage = lazy(() => import('./pages/LandingPage'))
-const LoginPage = lazy(() => import('./pages/LoginPage'))
+import ParticipantContacts from './components/Form/ParticipantContactsForm'
+import ParticipantForm from './components/Form/ParticipantForm'
+import TeacherForm from './components/Form/TeacherForm'
+import TeamContacts from './components/Form/TeacherContactsForm'
+import TeamForm from './components/Form/TeamForm'
+import ThemeProvider from './lib/ThemeProvider'
 
 function App() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/consent" element={<ConsentPage />} />
-      </Routes>
-    </Suspense>
+    <ThemeProvider>
+      <div className="flex bg-[#0E2A3F]">
+        <div className="m-auto w-[1212px] border-2 border-red-500 px-3">
+          <div>
+            <div>
+              <TeamForm />
+            </div>
+            <div className="mt-10">
+              <TeacherForm />
+            </div>
+            <div className="mt-10">
+              <TeamContacts />
+            </div>
+            <div className="mt-10">
+              <ParticipantForm />
+            </div>
+            <div className="mt-10">
+              <ParticipantContacts />
+            </div>
+          </div>
+        </div>
+      </div>
+    </ThemeProvider>
   )
 }
 
