@@ -5,7 +5,9 @@ export default {
     extend: {
       fontFamily: {
         heading: ['"Sparky Stones", sans-serif', 'Chonburi, sans-serif'],
-        body: ['Lora, sans-serif', '"IBM Plex Sans", sans-serif']
+        body: ['Lora, sans-serif', '"IBM Plex Sans", sans-serif'],
+        dm_oceanic: ['DM Oceanic', 'sans-serif'],
+        ibm: ['"IBM Plex Sans"', 'sans-serif']
       },
       colors: {
         transparent: 'transparent',
@@ -36,8 +38,17 @@ export default {
           200: '#274464',
           300: '#6089B5',
           400: '#FFF9F3'
-        }
+        },
+        danger: '#FF5B77'
       }
+    },
+    // Add list style to edit modal content
+    listStyleType: {
+      none: 'none',
+      disc: 'disc',
+      decimal: 'decimal',
+      alpha: 'lower-alpha',
+      roman: 'upper-roman'
     }
   },
   plugins: [],

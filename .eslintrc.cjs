@@ -15,8 +15,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
-    'plugin:react-hooks/recommended',
-    'plugin:tailwindcss/recommended'
+    'plugin:react-hooks/recommended'
   ],
   overrides: [],
   parser: '@typescript-eslint/parser',
@@ -33,7 +32,7 @@ module.exports = {
     'react/no-unknown-property': ['off', { ignore: ['css'] }],
     'react-refresh/only-export-components': 'warn',
     'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
+    'react-hooks/exhaustive-deps': 'off',
     'react/jsx-uses-react': 'error',
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/no-unused-vars': 'warn',
