@@ -26,9 +26,9 @@ export default function TeamForm() {
           </div>
           <div className="w-full p-4">
             <Select title="จำนวนสมาชิก" required={true}>
-              <Option title='1' value={1} />
-              <Option title='2' value={1} />
-              <Option title='3' value={1} />
+              <Option title="1" value={1} />
+              <Option title="2" value={1} />
+              <Option title="3" value={1} />
             </Select>
           </div>
         </div>
