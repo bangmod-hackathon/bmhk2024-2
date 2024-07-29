@@ -15,9 +15,9 @@ export default function TeacherForm() {
       <div className="rounded-b-md bg-[#0C384E] bg-opacity-50">
         <div className="flex flex-col flex-wrap md:flex-row">
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
-            <Select title='คำนำหน้า' required={true}>
-              <Option title='นาย' value='นาย' />
-              <Option title='นางสาว' value='นางสาว' />
+            <Select title="คำนำหน้า" required={true}>
+              <Option title="นาย" value="นาย" />
+              <Option title="นางสาว" value="นางสาว" />
             </Select>
           </div>
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
@@ -32,9 +32,9 @@ export default function TeacherForm() {
         </div>
         <div className="flex flex-col flex-wrap md:flex-row">
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
-            <Select title='Prefix' required={true}>
-              <Option title='Mr.' value='Mr.' />
-              <Option title='Ms.' value='Ms.' />
+            <Select title="Prefix" required={true}>
+              <Option title="Mr." value="Mr." />
+              <Option title="Ms." value="Ms." />
             </Select>
           </div>
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
@@ -64,7 +64,7 @@ export default function TeacherForm() {
         </div>
         <div className="flex flex-col flex-wrap md:flex-row">
           <div className="w-full p-4">
-            <TextArea title='โรคประจำตัว และวิธีประฐมพยาบาลเบื้องต้น' required={true} placeholder='รายละเอียด...' />
+            <TextArea title="โรคประจำตัว และวิธีประฐมพยาบาลเบื้องต้น" required={true} placeholder="รายละเอียด..." />
           </div>
         </div>
       </div>
