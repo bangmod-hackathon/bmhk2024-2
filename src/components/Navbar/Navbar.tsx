@@ -108,7 +108,7 @@ const Navbar = () => {
                     smooth={true}
                     offset={-70}
                     duration={500}
-                    className={`nav duration-300 hover:text-primary_yellow-200 ${onSelect === index ? 'text-primary_yellow-200' : 'text-white'}`}
+                    className={`nav duration-300 hover:text-primary_yellow-200 ${onSelect === index ? 'text-primary_yellow-200' : 'text-white'} cursor-pointer`}
                     onClick={() => handleOnSelect(index)}
                   >
                     {item.label}
@@ -177,7 +177,7 @@ const Navbar = () => {
                 smooth={true}
                 offset={-70}
                 duration={500}
-                className={`nav duration-300 hover:text-primary_yellow-200 py-2 text-lg ${onSelect === index ? 'text-primary_yellow-200' : 'text-white'}`}
+                className={`nav duration-300 hover:text-primary_yellow-200 py-2 text-lg ${onSelect === index ? 'text-primary_yellow-200' : 'text-white'} cursor-pointer`}
                 onClick={() => handleOnSelect(index)}
               >
                 {item.label}
