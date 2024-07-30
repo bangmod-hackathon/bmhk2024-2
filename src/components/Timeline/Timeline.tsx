@@ -26,8 +26,8 @@ const Timeline: React.FC = () => {
   const windowWidth = useWindowWidth()
 
   const getCurrentIndex = () => {
-    const index = timelineData.findIndex((data, index) => {
-      const nextDate = timelineData[index + 1]?.date
+    const index = timelineData.findIndex((data, idx) => {
+      const nextDate = timelineData[idx + 1]?.date
       return currentDate >= data.date && (nextDate ? currentDate < nextDate : true)
     })
 
