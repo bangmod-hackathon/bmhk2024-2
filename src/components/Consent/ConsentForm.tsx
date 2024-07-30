@@ -4,7 +4,7 @@ import LoremIpsum from 'react-lorem-ipsum'
 const ConsentForm = () => {
   return (
     <>
-      <div className="sm:bg-[url(/LoginPage/LoginPageBg.svg)] w-full h-screen bg-cover bg-[url(/LoginPage/LoginPageMobileBg.svg)]">
+      <div className="xl:bg-[url(/LoginPage/LoginPageBg.webp)] md:bg-[url(/LoginPage/LoginPageIpadBg.webp)] w-full h-screen bg-no-repeat bg-cover bg-center bg-[url(/LoginPage/LoginPageMobileBg.webp)]">
         <div className="flex flex-col h-full w-auto items-center justify-center">
           <div className=" bg-[#9ddef9]/10 sm:w-2/3 md:w-5/6 lg:w-1/2 w-4/5 h-3/4 flex flex-col items-center justify-center rounded-3xl p-8 gap-y-6 mt-28">
             <p className=" text-white font-heading md:text-4xl text-3xl text-balance text-center">

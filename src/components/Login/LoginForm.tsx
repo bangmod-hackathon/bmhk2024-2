@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 const LoginForm: React.FC = () => {
   return (
-    <div className="sm:bg-[url(/LoginPage/LoginPageBg.svg)] w-full h-screen bg-no-repeat bg-cover bg-center bg-[url(/LoginPage/LoginPageMobileBg.svg)]">
+    <div className="xl:bg-[url(/LoginPage/LoginPageBg.webp)] md:bg-[url(/LoginPage/LoginPageIpadBg.webp)] w-full h-screen bg-no-repeat bg-cover bg-center bg-[url(/LoginPage/LoginPageMobileBg.webp)]">
       <div className="flex flex-col h-full w-auto items-center justify-center gap-y-6">
         <div className=" size-auto">
           <img src="Landing/Logo.svg" alt="" className=" h-72" />
