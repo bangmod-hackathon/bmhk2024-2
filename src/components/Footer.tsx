@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
           </div>
           {/* เส้นขีดขั้น */}
           <div className="border-t border-white my-3"></div>
-          <div className="flex justify-between items-center py-4">
+          <div className="md:flex md:justify-between md:items-center md:space-y-0 space-y-4 py-4">
             {/* ไอคอนทางซ้าย */}
             <div className="flex space-x-2">
               <a href="https://www.facebook.com/BangmodHackathon/" target="_blank" rel="noreferrer">
@@ -50,32 +50,12 @@ const Footer: React.FC = () => {
               </a>
             </div>
             {/* ไอคอนทางขวา */}
-            <div className="flex space-x-2">
-              <img
-                src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/facebook-app-round-white-icon.png"
-                alt="Advice"
-                className="w-12 h-12"
-              />
-              <img
-                src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/facebook-app-round-white-icon.png"
-                alt="HP"
-                className="w-12 h-12"
-              />
-              <img
-                src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/facebook-app-round-white-icon.png"
-                alt="Line"
-                className="w-12 h-12"
-              />
-              <img
-                src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/facebook-app-round-white-icon.png"
-                alt="NASA"
-                className="w-12 h-12"
-              />
-              <img
-                src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/facebook-app-round-white-icon.png"
-                alt="Honda"
-                className="w-12 h-12"
-              />
+            <div className="flex flex-wrap space-x-2">
+              <img src="footer/advice.webp" alt="Advice" className="w-12 h-12" />
+              <img src="footer/hp.webp" alt="HP" className="w-12 h-12" />
+              <img src="footer/line.webp" alt="Line" className="w-12 h-12" />
+              <img src="footer/nasa.webp" alt="NASA" className="w-12 h-12" />
+              <img src="footer/honda.webp" alt="Honda" className="w-12 h-12" />
             </div>
           </div>
         </div>
