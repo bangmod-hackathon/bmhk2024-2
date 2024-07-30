@@ -56,7 +56,7 @@ export const timelineData = [
   {
     title: 'แข่งขันรอบชิงชนะเลิศ',
     title2: 'และประกาศผล (Onsite)',
-    date: new Date('2024-10-06 23:59:59'),
+    date: new Date('2024-10-06 17:00:00'),
     string_date: '6 OCTOBER 2024',
     gem_pic: '/gems/gem5 red.svg',
     gem_pic_secondary: '/gems/gem5 blue.svg',

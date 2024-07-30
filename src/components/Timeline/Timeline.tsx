@@ -28,10 +28,10 @@ const Timeline: React.FC = () => {
   const getCurrentIndex = () => {
     const index = timelineData.findIndex((data, index) => {
       const nextDate = timelineData[index + 1]?.date
-      return currentDate > data.date && (nextDate ? currentDate <= nextDate : true)
+      return currentDate >= data.date && (nextDate ? currentDate < nextDate : true)
     })
 
-    return index >= timelineData.length - 1 ? timelineData.length - 1 : index + 1
+    return index >= timelineData.length - 1 ? timelineData.length - 1 : index
   }
 
   useEffect(() => {
