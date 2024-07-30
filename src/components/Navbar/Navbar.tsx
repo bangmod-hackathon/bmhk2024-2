@@ -99,7 +99,7 @@ const Navbar = () => {
             </div>
 
             <div className="hidden flex-1 justify-center lg:flex">
-              <div className="flex gap-x-8 px-3 font-body text-white">
+              <div className="flex gap-x-12 px-3 font-body text-white">
                 {menuList.map((item, index) => (
                   <Scroll.Link
                     key={index}
@@ -108,7 +108,7 @@ const Navbar = () => {
                     smooth={true}
                     offset={-70}
                     duration={500}
-                    className={`nav duration-300 hover:text-primary_yellow-200 ${onSelect === index ? 'text-primary_yellow-200' : 'text-white'} cursor-pointer`}
+                    className={`nav duration-300 hover:text-primary_yellow-200 content-center ${onSelect === index ? 'text-primary_yellow-200 text-xl font-medium' : 'text-white'} cursor-pointer`}
                     onClick={() => handleOnSelect(index)}
                   >
                     {item.label}
@@ -177,7 +177,7 @@ const Navbar = () => {
                 smooth={true}
                 offset={-70}
                 duration={500}
-                className={`nav duration-300 hover:text-primary_yellow-200 py-2 text-lg ${onSelect === index ? 'text-primary_yellow-200' : 'text-white'} cursor-pointer`}
+                className={`nav duration-300 hover:text-primary_yellow-200 py-2 text-lg content-center ${onSelect === index ? 'text-primary_yellow-200 text-xl font-medium' : 'text-white'} cursor-pointer`}
                 onClick={() => handleOnSelect(index)}
               >
                 {item.label}
