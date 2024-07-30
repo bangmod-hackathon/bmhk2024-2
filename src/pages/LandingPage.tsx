@@ -26,7 +26,9 @@ const LandingPage: React.FC = () => {
         <Element id="rewards" name="rewards">
           <Rewards />
         </Element>
-        <Timeline /> {/* New component */}
+        <Element id="timeline" name="timeline">
+          <Timeline />
+        </Element>
         <Element id="scope" name="scope">
           <Scope />
         </Element>
