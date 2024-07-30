@@ -28,7 +28,7 @@ export const timelineData = [
     gem_pic: '/gems/gem3 red.svg',
     gem_pic_secondary: '/gems/gem3 blue.svg',
     className: 'top-10 lg:size-28 size-24',
-    progress: 31.5,
+    progress: 30,
     mobile_progress: 42.5
   },
   {
@@ -39,7 +39,7 @@ export const timelineData = [
     gem_pic: '/gems/gem4 red.svg',
     gem_pic_secondary: '/gems/gem4 blue.svg',
     className: 'top-9 lg:size-28 size-24',
-    progress: 48.5,
+    progress: 47,
     mobile_progress: 62
   },
   {
@@ -50,7 +50,7 @@ export const timelineData = [
     gem_pic: '/gems/gem6 red.svg',
     gem_pic_secondary: '/gems/gem6 blue.svg',
     className: 'top-10 lg:size-28 size-24',
-    progress: 66,
+    progress: 65.5,
     mobile_progress: 81
   },
   {

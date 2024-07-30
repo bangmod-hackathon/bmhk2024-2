@@ -31,13 +31,7 @@ const Timeline: React.FC = () => {
       return currentDate > data.date && (nextDate ? currentDate <= nextDate : true)
     })
 
-    if (index === -1) {
-      return 0
-    } else if (index === timelineData.length - 1) {
-      return index
-    } else {
-      return index + 1
-    }
+    return index >= timelineData.length - 1 ? timelineData.length - 1 : index + 1
   }
 
   useEffect(() => {
@@ -109,7 +103,7 @@ const Timeline: React.FC = () => {
             </div>
 
             <div ref={desktopRef} className="relative flex flex-col justify-center pl-[4.5rem] pr-24">
-              <div className="w-[97.8%] bg-slate-400 h-2 border-none rounded-full" />
+              <div className="w-[97.5%] bg-slate-400 h-2 border-none rounded-full" />
               {timelineData.map((data, index) => {
                 const isCurrent = currentIndex === index
                 return (
@@ -138,12 +132,13 @@ const Timeline: React.FC = () => {
               return (
                 <div key={index} className="w-full h-full flex">
                   {index % 2 === 0 && (
-                    <div className="w-full relative flex justify-end" ref={mobileRef}>
+                    <div className="w-full relative flex justify-end">
                       {isCurrent && isInViewMobile ? (
                         <motion.div
                           initial={{ scale: 1 }}
                           animate={{ scale: [1.2, 1] }}
                           transition={{ stiffness: 300, damping: 10, type: 'spring' }}
+                          className=""
                         >
                           <TimelineCard
                             title={data.title}
@@ -167,7 +162,10 @@ const Timeline: React.FC = () => {
                         </motion.div>
                       )}
                       {isCurrent && ( // Star animation mobile
-                        <motion.div key={index} className="flex top-[60%] translate-x-12  absolute transform z-50">
+                        <motion.div
+                          key={index}
+                          className="flex top-[60%] translate-x-10 sm:translate-x-12  absolute transform z-50"
+                        >
                           <motion.img
                             animate={{ scale: [1, 1.2, 1] }}
                             transition={{ duration: 1, repeat: Infinity, repeatType: 'loop' }}
@@ -184,8 +182,8 @@ const Timeline: React.FC = () => {
             })}
           </div>
 
-          <div className="relative flex flex-col h-full items-center px-4 justify-end" ref={mobileRef}>
-            <div className="w-[8px] h-[44rem] bg-slate-400 rounded-full flex justify-center mt-[5rem]">
+          <div className="relative flex flex-col h-full items-center px-2 sm:px-4 justify-end" ref={mobileRef}>
+            <div className="w-[8px] h-[45rem] bg-slate-400 rounded-full flex justify-center mt-[5rem]">
               {timelineData.map((data, index) => {
                 const isCurrent = currentIndex === index
                 return (
@@ -211,7 +209,7 @@ const Timeline: React.FC = () => {
               return (
                 <div key={index} className="w-full h-full flex">
                   {index % 2 !== 0 && (
-                    <div className="w-full h-max relative flex justify-start" ref={mobileRef}>
+                    <div className="w-full h-max relative flex justify-start">
                       {isCurrent && isInViewMobile ? (
                         <motion.div
                           initial={{ scale: 1 }}
@@ -240,7 +238,10 @@ const Timeline: React.FC = () => {
                         </motion.div>
                       )}
                       {isCurrent && ( // Star animation mobile
-                        <motion.div key={index} className="flex top-[60%] -translate-x-12  absolute transform z-50">
+                        <motion.div
+                          key={index}
+                          className="flex top-[60%] -translate-x-10 sm:-translate-x-12  absolute transform z-50"
+                        >
                           <motion.img
                             animate={{ scale: [1, 1.2, 1] }}
                             transition={{ duration: 1, repeat: Infinity, repeatType: 'loop' }}
