@@ -4,6 +4,12 @@ import { CgProfile } from 'react-icons/cg'
 import { HiOutlineMenu, HiX } from 'react-icons/hi'
 import ButtonPrimary from '../Buttons/ButtonPrimary'
 import { Link, useLocation } from 'react-router-dom'
+import Scroll from 'react-scroll'
+
+interface ImenuList {
+  label: string
+  link: string
+}
 
 const Navbar = () => {
   const [Auth, setAuth] = useState(false)
@@ -12,7 +18,32 @@ const Navbar = () => {
 
   const location = useLocation()
 
-  const menuList = ['รายละเอียด', 'คุณสมบัติ', 'รางวัล', 'ไทม์ไลน์', 'ขอบเขตเนื้อหา', 'ติดต่อสอบถาม']
+  const menuList: ImenuList[] = [
+    {
+      label: 'รายละเอียด',
+      link: 'hero'
+    },
+    {
+      label: 'คุณสมบัติ',
+      link: 'qualifications'
+    },
+    {
+      label: 'รางวัล',
+      link: 'rewards'
+    },
+    {
+      label: 'ไทม์ไลน์',
+      link: 'timeline'
+    },
+    {
+      label: 'ขอบเขตเนื้อหา',
+      link: 'scope'
+    },
+    {
+      label: 'ติดต่อสอบถาม',
+      link: 'footer'
+    }
+  ]
 
   const handleAuth = () => {
     setAuth(!Auth)
@@ -36,19 +67,6 @@ const Navbar = () => {
       opacity: 0,
       height: 0,
       transition: { duration: 0.5 }
-    }
-  }
-
-  const menuItemVariants = {
-    open: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: { delay: i * 0.1, duration: 0.3 }
-    }),
-    closed: {
-      opacity: 0,
-      y: -20,
-      transition: { duration: 0.3 }
     }
   }
 
@@ -81,11 +99,20 @@ const Navbar = () => {
             </div>
 
             <div className="hidden flex-1 justify-center lg:flex">
-              <div className="flex gap-x-8 px-3 font-body text-white">
+              <div className="flex gap-x-12 px-3 font-body text-white">
                 {menuList.map((item, index) => (
-                  <button key={index} className=" group flex flex-col " onClick={() => handleOnSelect(index)}>
-                    <p className={`nav duration-300`}>{item}</p>
-                  </button>
+                  <Scroll.Link
+                    key={index}
+                    to={item.link}
+                    spy={true}
+                    smooth={true}
+                    offset={-70}
+                    duration={500}
+                    className={`nav duration-300 hover:text-primary_yellow-200 content-center ${onSelect === index ? 'text-primary_yellow-200 text-xl font-medium' : 'text-white'} cursor-pointer`}
+                    onClick={() => handleOnSelect(index)}
+                  >
+                    {item.label}
+                  </Scroll.Link>
                 ))}
               </div>
             </div>
@@ -143,17 +170,18 @@ const Navbar = () => {
             </Link>
 
             {menuList.map((item, index) => (
-              <motion.button
+              <Scroll.Link
                 key={index}
-                className={`nav py-2 text-lg ${onSelect === index ? 'text-primary_yellow-200' : 'text-white'}`}
-                variants={menuItemVariants}
-                initial="closed"
-                animate={menuOpen ? 'open' : 'closed'}
-                custom={index}
+                to={item.link}
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+                className={`nav duration-300 hover:text-primary_yellow-200 py-2 text-lg content-center ${onSelect === index ? 'text-primary_yellow-200 text-xl font-medium' : 'text-white'} cursor-pointer`}
                 onClick={() => handleOnSelect(index)}
               >
-                {item}
-              </motion.button>
+                {item.label}
+              </Scroll.Link>
             ))}
             <div className="py-2">
               <Link to="/login">
