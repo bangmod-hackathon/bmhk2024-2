@@ -6,7 +6,7 @@ import Teacher from '/images/teacher.png'
 const Qualifications: React.FC = () => {
   return (
     <React.Fragment>
-      <div className="flex h-screen w-full bg-[#0E2A3F] lg:py-[12rem] py-[8rem]">
+      <div className="flex h-screen w-full lg:py-[12rem] py-[8rem]">
         <div className="m-auto flex w-full flex-col items-center justify-center gap-4">
           <div className="mb-9 text-center font-heading text-3xl text-white md:text-4xl lg:text-5xl ">
             คุณสมบัติผู้สมัคร

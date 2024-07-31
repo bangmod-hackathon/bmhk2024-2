@@ -31,7 +31,7 @@ const Rewards: React.FC = () => {
   ]
   return (
     <React.Fragment>
-      <div className="flex min-h-screen flex-col items-center bg-[#0E2A3F] lg:py-[12rem] py-[8rem]">
+      <div className="flex min-h-screen flex-col items-center lg:py-[12rem] py-[8rem]">
         <h1 className="mb-8 text-center font-heading text-4xl text-[#FDEDDC]">รางวัลการแข่งขัน</h1>
         <div className="grid grid-cols-1 flex-wrap justify-center gap-8 md:grid-cols-3 md:gap-4">
           <div className="flex flex-col items-center md:order-2">

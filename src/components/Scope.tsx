@@ -9,7 +9,7 @@ import MathContent from './Scope_Content/MathContent'
 const Scope: React.FC = (): JSX.Element => {
   return (
     <React.Fragment>
-      <div className="flex h-full min-h-screen flex-col items-center gap-16 bg-[#0E2A3F] px-8 py-16 md:px-24 md:py-28">
+      <div className="flex h-full min-h-screen flex-col items-center gap-16 px-8 py-16 md:px-24 md:py-28">
         <h1 className="mb-8 text-center font-heading text-4xl text-white md:text-5xl">ขอบเขตเนื้อหา</h1>
         <div className="flex w-full flex-wrap justify-center gap-8">
           <CategoryCard title="หมวดคณิตศาสตร์" imgSrc="/diamon_img/gem4-blue.png" content={<MathContent />} />
