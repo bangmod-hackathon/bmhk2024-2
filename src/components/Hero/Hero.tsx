@@ -104,7 +104,7 @@ const Hero: React.FC = () => {
 
   return (
     <React.Fragment>
-      <div className="grid w-full grid-cols-[0.5fr_1fr_0.5fr] bg-[#0E2A3F] lg:py-[12rem] py-[8rem]">
+      <div className="grid w-full grid-cols-[0.5fr_1fr_0.5fr] lg:py-[12rem] py-[8rem]">
         <div id="random-container-1" className="relative">
           {positions.container1.map((pos, index) => (
             <img

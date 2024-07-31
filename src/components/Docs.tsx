@@ -3,7 +3,7 @@ import React from 'react'
 const Docs: React.FC = () => {
   return (
     <React.Fragment>
-      <div className="m-auto flex w-full flex-col items-center justify-center bg-[#0E2A3F] lg:py-[12rem] py-[8rem]">
+      <div className="m-auto flex w-full flex-col items-center justify-center lg:py-[12rem] py-[8rem]">
         <div className="mb-24 text-center font-heading text-3xl text-white md:mb-32 md:text-4xl lg:mb-36 lg:text-5xl">
           เอกสารในการสมัคร
         </div>
