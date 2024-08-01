@@ -2,6 +2,7 @@ import { lazy, Suspense, useCallback, useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { AuthContext, IAuthContext, initialContextValue } from './contexts/authContext'
 import { axiosInstance } from './utils/axios'
+import Loading from './components/Loading'
 
 const ConsentPage = lazy(() => import('./pages/ConsentPage'))
 const LandingPage = lazy(() => import('./pages/LandingPage'))
@@ -31,12 +32,12 @@ function App() {
   }, [handleLogin])
 
   if (loading) {
-    return <div>Loading...</div>
+    return <Loading />
   }
 
   return (
     <AuthContext.Provider value={{ authContext, setAuthContext }}>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loading />}>
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
