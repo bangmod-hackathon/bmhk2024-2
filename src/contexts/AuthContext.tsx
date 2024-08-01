@@ -111,7 +111,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       await axiosInstance.post('/api/users/logout')
       navigate('/')
     } catch (err) {
-      console.log(err)
+      // console.log(err)
       navigate('/')
     }
     setIsAuthenticated(false)
@@ -153,6 +153,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
 }
 
-export const useAuth = () => {
+export const UseAuth = () => {
   return useContext(AuthContext)
 }
