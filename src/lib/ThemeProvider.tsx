@@ -1,4 +1,4 @@
-import { ConfigProvider, ThemeConfig, theme } from 'antd'
+import { ConfigProvider, ThemeConfig } from 'antd'
 
 const customTheme: ThemeConfig = {
   token: {
