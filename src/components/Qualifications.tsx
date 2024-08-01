@@ -1,11 +1,12 @@
+import React from 'react'
 import FirstStudent from '/images/student2.png'
 import SecondStudent from '/images/student4.png'
 import Teacher from '/images/teacher.png'
 
-function Qualifications() {
+const Qualifications: React.FC = () => {
   return (
-    <>
-      <div className="flex h-screen w-full">
+    <React.Fragment>
+      <div className="flex h-screen w-full lg:py-[12rem] py-[8rem]">
         <div className="m-auto flex w-full flex-col items-center justify-center gap-4">
           <div className="mb-9 text-center font-heading text-3xl text-white md:text-4xl lg:text-5xl ">
             คุณสมบัติผู้สมัคร
@@ -36,7 +37,7 @@ function Qualifications() {
           </div>
         </div>
       </div>
-    </>
+    </React.Fragment>
   )
 }
 
