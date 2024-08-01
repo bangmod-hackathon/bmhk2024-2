@@ -13,11 +13,7 @@ interface Props extends SelectProps {
 
 const Select: React.FC<Props> = ({ options, size = 'large', ...props }) => {
   return (
-    <AntdSelect
-      {...props}
-      size={size}
-      className="w-full h-full rounded-[10px] text-primary-100 focus:shadow-[0_4px_6px_0px_rgba(138,213,244,0.25)] focus:outline-none transition-all"
-    >
+    <AntdSelect {...props} size={size}>
       {options.map((option, i) => (
         <AntdSelect.Option
           key={i}

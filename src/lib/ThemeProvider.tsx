@@ -11,10 +11,10 @@ const customTheme: ThemeConfig = {
   },
   components: {
     Form: {
-      labelRequiredMarkColor: '#EBD176'
+      labelRequiredMarkColor: '#EBD176',
+      labelColor: '#FFF9F3'
     }
-  },
-  algorithm: theme.darkAlgorithm
+  }
 }
 
 const ThemeProvider = ({ children }: { children: React.ReactNode }) => {

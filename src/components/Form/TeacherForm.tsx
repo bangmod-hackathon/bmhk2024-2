@@ -27,7 +27,7 @@ export default function TeacherForm() {
   return (
     <Form form={form} layout="vertical" requiredMark={customizeRequiredMark} scrollToFirstError>
       <div className="rounded-t-md bg-primary-200 p-3">
-        <Text>ข้อมูลอาจารย์</Text>
+        <Text className="font-normal text-white text-lg">ข้อมูลอาจารย์</Text>
       </div>
       <div className="rounded-b-md bg-[#0C384E] bg-opacity-50">
         <div className="flex flex-col flex-wrap md:flex-row">
@@ -38,12 +38,12 @@ export default function TeacherForm() {
                   { title: 'นาย', value: 'นาย' },
                   { title: 'นางสาว', value: 'นางสาว' }
                 ]}
-                title="คำนำหน้า"
+                placeholder="คำนำหน้า"
               />
             </Form.Item>
           </div>
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
-            <Form.Item<FieldType> label="คำนำหน้า" name="firstNameTH" rules={[{ required: true }]}>
+            <Form.Item<FieldType> label="ชื่อจริง(ภาษาไทย)" name="firstNameTH" rules={[{ required: true }]}>
               <Input title="ชื่อจริง(ภาษาไทย)" required={true} placeholder="กรุณากรอกชื่อจริง" />
             </Form.Item>
           </div>
@@ -66,7 +66,7 @@ export default function TeacherForm() {
                   { title: 'Mr.', value: 'Mr.' },
                   { title: 'Ms.', value: 'Ms.' }
                 ]}
-                title="คำนำหน้า"
+                placeholder="Prefix"
               />
             </Form.Item>
           </div>

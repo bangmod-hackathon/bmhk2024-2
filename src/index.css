@@ -136,3 +136,7 @@
 .ant-select-arrow{
   color: #274464 !important;
 }
+
+.ant-select-selection-placeholder {
+  color: #999999 !important; 
+}
