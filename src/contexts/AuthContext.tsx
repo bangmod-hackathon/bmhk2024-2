@@ -1,13 +1,15 @@
-import { createContext } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { IUser } from '../interfaces/user.interface'
+import { useNavigate } from 'react-router'
+import { axiosInstance } from '../utils/axios'
+import Loading from '../components/Loading'
 
 export interface IAuthContext extends IUser {
   isAuthenticated: boolean
 }
 
-export const initialContextValue: IAuthContext = {
+const initialContextValue: IAuthContext = {
   email: '',
-
   // ** Form #ทีม-อาจารย์ที่ปรึกษา
   // ** ข้อมูลทีม
   teamName: '',
@@ -31,7 +33,6 @@ export const initialContextValue: IAuthContext = {
   advisorContactLine: '',
   advisorDocumentIDCard: '',
   advisorDocumentEmploymentStatus: '',
-
   // ** Form #สมาชิกคนที่ 1
   // ** รายละเอียดสมาชิกคนที่ 1
   member1PrefixTH: '',
@@ -89,8 +90,69 @@ export const initialContextValue: IAuthContext = {
 }
 
 interface IAuthContextType {
-  authContext: IAuthContext
-  setAuthContext: (value: IAuthContext) => void
+  user: IUser
+  isAuthenticated: boolean
+}
+
+type AuthProviderProps = {
+  children: React.JSX.Element | React.JSX.Element[]
 }
 
 export const AuthContext = createContext<IAuthContextType | null>(null)
+
+export const AuthProvider = ({ children }: AuthProviderProps) => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [loading, setLoading] = useState(true)
+  const [user, setUser] = useState<IUser>(initialContextValue)
+  const navigate = useNavigate()
+
+  const logout = async () => {
+    try {
+      await axiosInstance.post('/api/users/logout')
+      navigate('/')
+    } catch (err) {
+      console.log(err)
+      navigate('/')
+    }
+    setIsAuthenticated(false)
+  }
+
+  const handleLogin = useCallback(async () => {
+    try {
+      const res = await axiosInstance.get('/api/users/me', {
+        headers: { ssid: localStorage.getItem('ssid') }
+      })
+      if (res.status === 200) {
+        setUser({
+          ...res.data,
+          isAuthenticated: true
+        })
+      }
+      setLoading(false)
+    } catch (err) {
+      // console.log(err);
+      setIsAuthenticated(false)
+      setLoading(false)
+    }
+  }, [])
+
+  useEffect(() => {
+    handleLogin()
+  }, [handleLogin])
+
+  const contextValue = useMemo(() => {
+    return {
+      user,
+      isAuthenticated,
+      logout
+    }
+  }, [isAuthenticated])
+
+  if (loading) return <Loading />
+
+  return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
+}
+
+export const useAuth = () => {
+  return useContext(AuthContext)
+}
