@@ -114,3 +114,25 @@
     width: 100%;
 }
 
+.ant-select-selector {
+  background-color: white !important;
+  border: 2 !important;
+  border-color: white !important;
+  color: #0e1823 !important
+}
+
+.ant-select-selector-item {
+  background-color: white !important;
+  border: 2 !important;
+  border-color: white !important;
+  color: #0e1823 !important
+}
+
+.ant-select-focused .ant-select-selection-item,
+.ant-select-open .ant-select-selection-item {
+  color: #0e1823 !important;
+}
+
+.ant-select-arrow{
+  color: #274464 !important;
+}
