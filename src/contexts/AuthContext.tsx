@@ -119,9 +119,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const handleLogin = useCallback(async () => {
     try {
-      const res = await axiosInstance.get('/api/users/me', {
-        headers: { ssid: localStorage.getItem('ssid') }
-      })
+      const res = await axiosInstance.get('/api/users/me')
       if (res.status === 200) {
         setUser({
           ...res.data,
