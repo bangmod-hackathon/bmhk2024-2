@@ -3,11 +3,11 @@ import Input from './Input/Input'
 import { Form } from 'antd'
 
 type FieldType = {
-  email: string;
-  tel: string;
-  idline: string;
-  emergencyTel: string;
-  emergencyStatus: string;
+  email: string
+  tel: string
+  idline: string
+  emergencyTel: string
+  emergencyStatus: string
 }
 
 export default function ParticipantContactsForm() {
@@ -21,8 +21,7 @@ export default function ParticipantContactsForm() {
       <div className="rounded-b-md bg-[#0C384E] bg-opacity-50">
         <div className="flex flex-col flex-wrap md:flex-row">
           <div className="w-full p-4 lg:w-1/3">
-            <Form.Item 
-              <FieldType>
+            <Form.Item<FieldType>
               label="email"
               name="email"
               rules={[{ required: true, message: 'Please input your username!' }]}
@@ -31,40 +30,24 @@ export default function ParticipantContactsForm() {
             </Form.Item>
           </div>
           <div className="w-full p-4 md:w-1/2 lg:w-1/3">
-            <Form.Item 
-              <FieldType>
-              label="เบอร์โทรศัพท์"
-              name="tel"
-              rules={[{ required: true }]}
-            >
+            <Form.Item<FieldType> label="เบอร์โทรศัพท์" name="tel" rules={[{ required: true }]}>
               <Input title="เบอร์โทรศัพท์" required={true} placeholder="0812345678" />
             </Form.Item>
           </div>
           <div className="w-full p-4 md:w-1/2 lg:w-1/3">
-            <Form.Item 
-              <FieldType>
-              label="ID LINE"
-              name="idline"
-              rules={[{ required: true }]}
-            >
+            <Form.Item<FieldType> label="ID LINE" name="idline" rules={[{ required: true }]}>
               <Input title="ID LINE" required={true} placeholder="id line" />
             </Form.Item>
           </div>
         </div>
         <div className="flex flex-col flex-wrap md:flex-row">
           <div className="w-full p-4 md:w-1/2">
-            <Form.Item 
-              <FieldType>
-              label="เบอร์โทรติดต่อฉุกเฉิน"
-              name="emergencyTel"
-              rules={[{ required: true }]}
-            >
+            <Form.Item<FieldType> label="เบอร์โทรติดต่อฉุกเฉิน" name="emergencyTel" rules={[{ required: true }]}>
               <Input title="เบอร์โทรติดต่อฉุกเฉิน" required={true} placeholder="0812345678" />
             </Form.Item>
           </div>
           <div className="w-full p-4 md:w-1/2">
-            <Form.Item 
-              <FieldType>
+            <Form.Item<FieldType>
               label="ผู้ติดต่อฉุกเฉินเกี่ยวข้องเป็น"
               name="emergencyStatus"
               rules={[{ required: true }]}

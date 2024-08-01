@@ -5,20 +5,20 @@ import TextArea from './Input/TextArea'
 import { Form } from 'antd'
 
 type FieldType = {
-  prefixTH: string;
-  prefixEN: string;
-  firstNameTH: string;
-  middleNameTH: string;
-  lastNameTH: string;
-  firstNameEN: string;
-  middleNameEN: string;
-  lastNameEN: string;
-  nickname: string;
-  education: string;
-  foodPreference: string;
-  foodAllergy: string;
-  drugAllergy: string;
-  medicalCondition: string;
+  prefixTH: string
+  prefixEN: string
+  firstNameTH: string
+  middleNameTH: string
+  lastNameTH: string
+  firstNameEN: string
+  middleNameEN: string
+  lastNameEN: string
+  nickname: string
+  education: string
+  foodPreference: string
+  foodAllergy: string
+  drugAllergy: string
+  medicalCondition: string
 }
 
 export default function ParticipantForm() {
@@ -32,12 +32,7 @@ export default function ParticipantForm() {
       <div className="rounded-b-md bg-[#0C384E] bg-opacity-50">
         <div className="flex flex-col flex-wrap md:flex-row">
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
-            <Form.Item 
-              <FieldType>
-              label="คำนำหน้า"
-              name="prefixTH"
-              rules={[{ required: true }]}
-            >
+            <Form.Item<FieldType> label="คำนำหน้า" name="prefixTH" rules={[{ required: true }]}>
               <Select
                 options={[
                   { title: 'นาย', value: 'นาย' },
@@ -48,44 +43,24 @@ export default function ParticipantForm() {
             </Form.Item>
           </div>
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
-            <Form.Item 
-              <FieldType>
-              label="ชื่อจริง(ภาษาไทย)"
-              name="firstNameTH"
-              rules={[{ required: true }]}
-            >
+            <Form.Item<FieldType> label="ชื่อจริง(ภาษาไทย)" name="firstNameTH" rules={[{ required: true }]}>
               <Input title="ชื่อจริง(ภาษาไทย)" required={true} placeholder="กรุณากรอกชื่อจริง" />
             </Form.Item>
           </div>
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
-            <Form.Item 
-              <FieldType>
-              label="ชื่อกลาง(ภาษาไทย)"
-              name="middleNameTH"
-              rules={[{ required: true }]}
-            >
+            <Form.Item<FieldType> label="ชื่อกลาง(ภาษาไทย)" name="middleNameTH" rules={[{ required: true }]}>
               <Input title="ชื่อกลาง(ภาษาไทย)" required={true} placeholder="กรุณากรอกชื่อกลาง" />
             </Form.Item>
           </div>
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
-            <Form.Item  
-              <FieldType>
-              label="นามสกุล(ภาษาไทย)"
-              name="lastNameTH"
-              rules={[{ required: true }]}
-            >
+            <Form.Item<FieldType> label="นามสกุล(ภาษาไทย)" name="lastNameTH" rules={[{ required: true }]}>
               <Input title="นามสกุล(ภาษาไทย)" required={true} placeholder="กรุณากรอกนามสกุล" />
             </Form.Item>
           </div>
         </div>
         <div className="flex flex-col flex-wrap md:flex-row">
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
-            <Form.Item 
-              <FieldType>
-              label="Prefix"
-              name="prefixEN"
-              rules={[{ required: true }]}
-            >
+            <Form.Item<FieldType> label="Prefix" name="prefixEN" rules={[{ required: true }]}>
               <Select
                 options={[
                   { title: 'Mr.', value: 'Mr.' },
@@ -96,54 +71,29 @@ export default function ParticipantForm() {
             </Form.Item>
           </div>
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
-            <Form.Item 
-              <FieldType>
-              label="First Name"
-              name="firstNameEN"
-              rules={[{ required: true }]}
-            >
+            <Form.Item<FieldType> label="First Name" name="firstNameEN" rules={[{ required: true }]}>
               <Input title="First name" required={true} placeholder="Name" />
             </Form.Item>
           </div>
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
-            <Form.Item 
-              <FieldType>
-              label="Middle Name"
-              name="middleNameEN"
-              rules={[{ required: true }]}
-            >
+            <Form.Item<FieldType> label="Middle Name" name="middleNameEN" rules={[{ required: true }]}>
               <Input title="Middle name" required={true} placeholder="Middle Name" />
             </Form.Item>
-          </div> 
+          </div>
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
-            <Form.Item 
-              <FieldType>
-              label="Last Name"
-              name="lastNameEN"
-              rules={[{ required: true }]}
-            >
+            <Form.Item<FieldType> label="Last Name" name="lastNameEN" rules={[{ required: true }]}>
               <Input title="Last Name" required={true} placeholder="Last Name" />
             </Form.Item>
-          </div>    
+          </div>
         </div>
         <div className="flex flex-col flex-wrap md:flex-row">
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
-            <Form.Item 
-              <FieldType>
-              label="ชื่อเล่น"
-              name="nickname"
-              rules={[{ required: true }]}
-            >
+            <Form.Item<FieldType> label="ชื่อเล่น" name="nickname" rules={[{ required: true }]}>
               <Input title="ชื่อเล่น" required={true} placeholder="ชื่อเล่น" />
             </Form.Item>
           </div>
           <div className="w-full p-4 md:w-1/2 lg:w-1/4">
-            <Form.Item 
-              <FieldType>
-              label="ระดับการชั้น"
-              name="education"
-              rules={[{ required: true }]}
-            >
+            <Form.Item<FieldType> label="ระดับการชั้น" name="education" rules={[{ required: true }]}>
               <Select
                 options={[
                   { title: 'ประกาศนียบัตรวิชาชีพ ปีที่ 1', value: 'ประกาศนียบัตรวิชาชีพ ปีที่ 1' },
@@ -158,8 +108,7 @@ export default function ParticipantForm() {
             </Form.Item>
           </div>
           <div className="w-full p-4 lg:w-1/4">
-            <Form.Item 
-              <FieldType>
+            <Form.Item<FieldType>
               label="ประเภทอาหาร(เช่น มังสวิรัต ฮาลาล)"
               name="foodPreference"
               rules={[{ required: true }]}
@@ -168,32 +117,21 @@ export default function ParticipantForm() {
             </Form.Item>
           </div>
           <div className="w-full p-4 lg:w-1/4">
-            <Form.Item 
-              <FieldType>
-              label="อาหารที่แพ้"
-              name="foodAllergy"
-              rules={[{ required: true }]}
-            >
+            <Form.Item<FieldType> label="อาหารที่แพ้" name="foodAllergy" rules={[{ required: true }]}>
               <Input title="อาหารที่แพ้" required={true} placeholder="อาหารที่แพ้" />
             </Form.Item>
           </div>
         </div>
         <div className="flex flex-col flex-wrap md:flex-row">
           <div className="w-full p-4">
-            <Form.Item 
-              <FieldType>
-              label="ยาที่แพ้"
-              name="drugAllergy"
-              rules={[{ required: true }]}
-            >
+            <Form.Item<FieldType> label="ยาที่แพ้" name="drugAllergy" rules={[{ required: true }]}>
               <Input title="ยาที่แพ้" required={true} placeholder="ยาที่แพ้" />
             </Form.Item>
           </div>
         </div>
         <div className="flex flex-col flex-wrap md:flex-row">
           <div className="w-full p-4">
-            <Form.Item 
-              <FieldType>
+            <Form.Item<FieldType>
               label="โรคประจำตัว และวิธีประฐมพยาบาลเบื้องต้น"
               name="medicalCondition"
               rules={[{ required: true }]}
