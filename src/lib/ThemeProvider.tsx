@@ -4,10 +4,15 @@ const customTheme: ThemeConfig = {
   token: {
     colorPrimary: '#274464',
     colorBgBase: '#0e1823',
-    colorError: '#f48a8a',
+    colorError: '#FF5B77',
     colorInfo: '#63a4ff',
     fontSize: 16,
     fontFamily: 'Lora, IBM Plex Sans'
+  },
+  components: {
+    Form: {
+      labelRequiredMarkColor: '#EBD176'
+    }
   },
   algorithm: theme.darkAlgorithm
 }
