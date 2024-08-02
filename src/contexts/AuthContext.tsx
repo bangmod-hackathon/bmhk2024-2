@@ -108,7 +108,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const logout = async () => {
     try {
-      await axiosInstance.post('/api/users/logout')
+      await axiosInstance.post('/api/auth/logout')
       navigate('/')
     } catch (err) {
       // console.log(err)
@@ -119,7 +119,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const handleLogin = useCallback(async () => {
     try {
-      const res = await axiosInstance.get('/api/users/me')
+      const res = await axiosInstance.get('/api/auth/me')
       if (res.status === 200) {
         setUser({
           ...res.data,
