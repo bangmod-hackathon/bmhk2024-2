@@ -88,7 +88,7 @@ const Upload: React.FC<UploadPropsForm> = ({ imageUpload = false, required = fal
   )
 
   return (
-    <div className="my-5 grid grid-cols-1 items-center gap-4 lg:grid-cols-2">
+    <div className="grid grid-cols-1 items-center gap-4 lg:grid-cols-2">
       <label className="font-body text-lg text-text_color-100">
         {props.title} {required && <span className="text-primary_yellow-100">*</span>}
       </label>
