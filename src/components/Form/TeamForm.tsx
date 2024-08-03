@@ -80,7 +80,7 @@ export default function TeamForm(props: Props) {
                 ]}
                 placeholder="จำนวนสมาชิก"
                 onChange={(value) => {
-                  props.setMembers(value)
+                  props.setMembers(Number(value))
                 }}
               />
             </Form.Item>
