@@ -5,16 +5,16 @@ import './Stage.css'
 const getIconClasses = (bgColor: string) => `flex h-9 w-9 items-center justify-center rounded-full ${bgColor} text-xl `
 
 const statusColors: Record<'finish' | 'process' | 'wait', string> = {
-  finish: 'bg-[#EBD176] bg-opacity-0 border-[#EBD176] border-2 text-[#EBD176] ',
+  wait: 'bg-[#EBD176] bg-opacity-0 border-[#EBD176] border-2 text-[#EBD176] ',
   process: 'bg-[#EBD176] text-[#274464] drop-shadow-2xl drop-shadow-[0_35px_35px_rgba(235,209,118,0.25)]',
-  wait: 'bg-[#9EDFFA] text-[#274464]'
+  finish: 'bg-[#9EDFFA] text-[#274464]'
 }
 
-type Status = 'finish' | 'process' | 'wait'
+export type StageStatus = 'finish' | 'process' | 'wait'
 
 interface StageProps {
   numberOfMembers: number
-  statuses: Status[]
+  statuses: StageStatus[]
 }
 
 const Stage: React.FC<StageProps> = ({ numberOfMembers, statuses }) => {

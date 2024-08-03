@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react'
 import TeamTeacherStepForm from '../components/Form/TeamTeacherStepForm'
-import Stage from '../components/Steps/Stage'
+import Stage, { StageStatus } from '../components/Steps/Stage'
 import PageChanger from '../components/Form/PageChanger'
 import ParticipantStepForm from '../components/Form/ParticipantStepForm'
 
 const RegisterFormStep: React.FC = () => {
   const [page, setPage] = useState<number>(1)
-  const [members, setMembers] = useState<number>(3)
+  const [members, setMembers] = useState<number>(2)
+  const [stageStatus, setStageStatus] = useState<StageStatus[]>([])
   const topRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -17,6 +18,23 @@ const RegisterFormStep: React.FC = () => {
     }
     scrollToTop()
   }, [page])
+
+  const updateStage = () => {
+    const stage = Array.from({ length: members + 1 }, (_, index) => {
+      if (page - 1 < index) {
+        return 'finish'
+      } else if (page - 1 === index) {
+        return 'process'
+      } else {
+        return 'wait'
+      }
+    })
+    setStageStatus(stage)
+  }
+
+  useEffect(() => {
+    updateStage()
+  }, [members, page])
 
   const PageSwither = () => {
     switch (page) {
@@ -42,7 +60,7 @@ const RegisterFormStep: React.FC = () => {
         <div className="container mx-auto lg:pt-[8rem] pt-[6rem]">
           <header>
             <div className="py-4">
-              <Stage numberOfMembers={members} statuses={['finish', 'process', 'wait', 'wait']} />
+              <Stage numberOfMembers={members} statuses={stageStatus} />
             </div>
             <h1 className="text-white font-heading text-[40px] font-normal text-center py-2">REGISTRATION</h1>
           </header>
