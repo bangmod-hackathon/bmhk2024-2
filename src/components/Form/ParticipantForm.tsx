@@ -22,7 +22,11 @@ type FieldType = {
   medicalCondition: string
 }
 
-export default function ParticipantForm() {
+interface Props {
+  nth: number
+}
+
+export default function ParticipantForm(props: Props) {
   const { Text } = Typography
   const [form] = Form.useForm()
 
@@ -30,7 +34,7 @@ export default function ParticipantForm() {
     <Form form={form} layout="vertical" requiredMark={customizeRequiredMark} scrollToFirstError>
       <div>
         <div className="rounded-t-md bg-primary-200 p-3">
-          <Text className="font-normal text-white text-lg">รายละเอียดสมาชิกคนที่ 1</Text>
+          <Text className="font-normal text-white text-lg">รายละเอียดสมาชิกคนที่ {props.nth}</Text>
         </div>
         <div className="rounded-b-md bg-[#0C384E] bg-opacity-50">
           <div className="flex flex-col flex-wrap md:flex-row">
