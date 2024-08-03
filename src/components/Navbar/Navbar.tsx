@@ -5,6 +5,7 @@ import { HiOutlineMenu, HiX } from 'react-icons/hi'
 import ButtonPrimary from '../Buttons/ButtonPrimary'
 import { Link, useLocation } from 'react-router-dom'
 import Scroll from 'react-scroll'
+import { UseAuth } from '../../contexts/AuthContext'
 
 interface ImenuList {
   label: string
@@ -197,6 +198,8 @@ const Navbar = () => {
   }
 
   const navRegisterPage = () => {
+    const auth = UseAuth()
+
     return (
       <>
         <div className="fixed w-full p-9">
@@ -218,7 +221,7 @@ const Navbar = () => {
                   <div className=" flex h-full items-center">
                     <CgProfile className="text-xl text-white" />
                   </div>
-                  <p className=" text-lg text-white">{'chaiyapatInwza007@kmutt.ac.th'}</p> {/* Add email */}
+                  <p className=" text-lg text-white">{auth?.user.email}</p> {/* Add email */}
                 </div>
                 <ButtonPrimary>ออกจากระบบ</ButtonPrimary>
               </div>

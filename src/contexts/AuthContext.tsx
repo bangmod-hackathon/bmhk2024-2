@@ -92,6 +92,7 @@ const initialContextValue: IAuthContext = {
 interface IAuthContextType {
   user: IUser
   isAuthenticated: boolean
+  logout: () => void
 }
 
 type AuthProviderProps = {
@@ -122,13 +123,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       const res = await axiosInstance.get('/api/auth/me')
       if (res.status === 200) {
         setUser({
-          ...res.data,
-          isAuthenticated: true
+          ...res.data
         })
+        setIsAuthenticated(true)
+        setLoading(false)
       }
-      setLoading(false)
     } catch (err) {
-      // console.log(err);
       setIsAuthenticated(false)
       setLoading(false)
     }
