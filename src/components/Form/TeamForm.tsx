@@ -3,7 +3,11 @@ import Input from './Input/Input'
 import Select from './Input/Select'
 import { customizeRequiredMark } from '../../lib/antdForm'
 
-export default function TeamForm() {
+interface Props {
+  setMembers: React.Dispatch<React.SetStateAction<number>>
+}
+
+export default function TeamForm(props: Props) {
   const { Text } = Typography
   const [form] = Form.useForm()
 
@@ -75,6 +79,9 @@ export default function TeamForm() {
                   { title: '3', value: '3' }
                 ]}
                 placeholder="จำนวนสมาชิก"
+                onChange={(value) => {
+                  props.setMembers(Number(value))
+                }}
               />
             </Form.Item>
           </div>

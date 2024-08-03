@@ -4,11 +4,15 @@ import TeacherForm from './TeacherForm'
 import TeacherContactsForm from './TeacherContactsForm'
 import TeacherDocsForm from './TeacherDocsForm'
 
-const TeamTeacherStepForm: React.FC = () => {
+interface Props {
+  setMembers: React.Dispatch<React.SetStateAction<number>>
+}
+
+const TeamTeacherStepForm: React.FC<Props> = (props: Props) => {
   return (
     <React.Fragment>
       <div className="space-y-8">
-        <TeamForm />
+        <TeamForm setMembers={props.setMembers} />
         <TeacherForm />
         <TeacherContactsForm />
         <TeacherDocsForm />

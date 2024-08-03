@@ -1,7 +1,6 @@
 import React from 'react'
 import ButtonPrimary from './Buttons/ButtonPrimary'
 import CategoryCard from './CategoryCard'
-import ConfirmModal from './Modal/ComfirmModal'
 import AlgorithmContent from './Scope_Content/AlgorithmContent'
 import ComSciContent from './Scope_Content/ComSciContent'
 import MathContent from './Scope_Content/MathContent'
@@ -28,7 +27,6 @@ const Scope: React.FC = (): JSX.Element => {
             </a>
           </ButtonPrimary>
         </div>
-        <ConfirmModal />
       </div>
     </React.Fragment>
   )

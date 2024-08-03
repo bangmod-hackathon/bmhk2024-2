@@ -8,10 +8,15 @@ const ConfirmModal: React.FC = (): JSX.Element => {
 
   return (
     <>
-      <ButtonPrimary onClick={() => setIsModalOpen(true)}>Confirm Modal</ButtonPrimary>
+      <button
+        className="text-bg-200 bg-secondary_blue-100 border font-normal text-lg py-4 px-8 rounded-[8px]"
+        onClick={() => setIsModalOpen(true)}
+      >
+        ยืนยัน
+      </button>
       <AntModal
         open={isModalOpen}
-        className="flex w-[534px] flex-col px-[63px] py-[36px]"
+        centered
         classNames={{
           body: 'bg-transparent',
           header: 'bg-transparent',
