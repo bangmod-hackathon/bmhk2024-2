@@ -106,7 +106,7 @@ const Hero: React.FC = () => {
 
   return (
     <React.Fragment>
-      <div className="grid w-full grid-cols-[0.5fr_1fr_0.5fr] lg:py-[12rem] py-[8rem]">
+      <div className="grid w-full grid-cols-[0.5fr_1fr_0.5fr] lg:py-[12rem] py-[8rem] overflow-hidden">
         <div id="random-container-1" className="relative">
           {positions.container1.map((pos, index) => (
             <img
@@ -130,7 +130,7 @@ const Hero: React.FC = () => {
             <div className="m-0 flex w-full flex-col items-center gap-[22px] xl:h-[504px] xl:w-[756px] xl:px-[21.141px] xl:pb-[30px] xl:pt-[80px]">
               <div className="flex w-full items-center justify-center lg:h-[96px] lg:w-[333] xl:h-[58px] xl:w-[714]">
                 <h1 className="font-heading tracking-wide text-center text-[40px] text-white sm:text-[40px] lg:text-[40px] xl:text-[48px]">
-                  Now-5 August 2024
+                  Now - 31 August 2024
                 </h1>
               </div>
               <div className="flex w-full flex-col items-center text-center font-ibm font-normal text-text_color-100 lg:text-[16px] xl:h-full xl:w-[714] xl:text-[24px]">

@@ -265,9 +265,16 @@ const Navbar = () => {
 
   return (
     <>
-      {navbarOnLocationList.map((item, index) => (
-        <div key={index}>{Object.keys(item)[0] === location.pathname && Object.values(item)[0]}</div>
-      ))}
+      {/* 
+        Display default navbar when it isn't contain in navbarOnLocationList.
+      */}
+      {navbarOnLocationList.some((item) => Object.keys(item)[0] === location.pathname)
+        ? navbarOnLocationList.map((item, index) => {
+            const path = Object.keys(item)[0]
+            const component = Object.values(item)[0]
+            return path === location.pathname ? <div key={index}>{component}</div> : null
+          })
+        : navLandingPage()}
     </>
   )
 }

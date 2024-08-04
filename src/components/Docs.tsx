@@ -10,7 +10,7 @@ const Docs: React.FC = () => {
         <div className="m-auto flex w-3/4 items-start justify-center gap-36 max-xl:flex-col md:w-2/3 md:gap-44 lg:w-3/5 xl:gap-x-36">
           <div className="relative z-50 flex size-full flex-col items-center justify-center p-8 text-center">
             <img
-              className=" absolute -top-28 size-[12rem] md:size-[18rem] md:-top-44 z-50"
+              className=" absolute -top-28 size-[12rem] md:size-[18rem] md:-top-44 z-50 drop-shadow-[0_10px_20px_rgba(255,255,255,0.20)]"
               src="/scroll/scroll 1.svg"
               alt=""
             />
@@ -33,7 +33,7 @@ const Docs: React.FC = () => {
           </div>
           <div className="relative z-50 flex size-full flex-col items-center justify-center p-8 text-center">
             <img
-              className=" absolute -top-28 size-[12rem] md:size-[18rem] md:-top-44 z-50"
+              className=" absolute -top-28 size-[12rem] md:size-[18rem] md:-top-44 z-50 drop-shadow-[0px_10px_20px_rgba(255,255,255,0.3)]"
               src="/scroll/scroll 2.svg"
               alt=""
             />

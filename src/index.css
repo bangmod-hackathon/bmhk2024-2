@@ -95,6 +95,11 @@
   }
 }
 
+body {
+  background: #0a0f18 !important;
+  background-image: linear-gradient(180deg, rgba(10,15,24,255) 0%, rgba(24,58,81,1) 100%) !important;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;

@@ -5,6 +5,7 @@ export default {
     extend: {
       fontFamily: {
         heading: ['"Sparky Stones", sans-serif', 'Chonburi, sans-serif'],
+        heading_chonburi: 'Chonburi, sans-serif',
         body: ['Lora, sans-serif', '"IBM Plex Sans", sans-serif'],
         dm_oceanic: ['DM Oceanic', 'sans-serif'],
         ibm: ['"IBM Plex Sans"', 'sans-serif']
