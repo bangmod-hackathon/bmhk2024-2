@@ -103,7 +103,11 @@ const Upload: React.FC<UploadPropsForm> = ({ imageUpload = false, required = fal
         </AntdUpload>
         {props.file ? previewUpload : null}
         <p className="text-sm text-white">
-          {errorUploadMessage === '' ? <p>{props.description}</p> : <p className="text-danger">{errorUploadMessage}</p>}
+          {errorUploadMessage === '' ? (
+            <>{props.description}</>
+          ) : (
+            <span className="text-danger">{errorUploadMessage}</span>
+          )}
         </p>
       </div>
     </div>
