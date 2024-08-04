@@ -93,7 +93,12 @@ const Upload: React.FC<UploadPropsForm> = ({ imageUpload = false, required = fal
         {props.title} {required && <span className="text-primary_yellow-100">*</span>}
       </label>
       <div className=" col-span-1 flex flex-col justify-center gap-[10px]">
-        <AntdUpload {...props} showUploadList={false} beforeUpload={beforeUpload}>
+        <AntdUpload
+          {...props}
+          showUploadList={false}
+          beforeUpload={beforeUpload}
+          accept={imageUpload ? 'image/jpeg, image/png' : 'application/pdf'}
+        >
           {props.file ? null : uploadButton}
         </AntdUpload>
         {props.file ? previewUpload : null}
