@@ -17,7 +17,7 @@ const Select: React.FC<Props> = ({ options, size = 'large', ...props }) => {
       {options.map((option, i) => (
         <AntdSelect.Option
           key={i}
-          className="bg-white hover:bg-primary_yellow-300 text-primary-200 px-2 py-3 rounded-none"
+          className="bg-white hover:bg-primary_yellow-300 hover:rounded-lg text-primary-200 px-2 py-3 rounded-none "
           value={option.value}
         >
           {option.title}

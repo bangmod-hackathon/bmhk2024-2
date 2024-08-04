@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ButtonPrimary from '../Buttons/ButtonPrimary'
 import './fade.css'
+import { Link } from 'react-router-dom'
 
 // Function to get a random position
 const getRandomPosition = (maxWidth: number, maxHeight: number) => {
@@ -143,9 +144,11 @@ const Hero: React.FC = () => {
                   และฝึกการทำงานร่วมกันเป็นทีม
                 </p>
               </div>
-              <ButtonPrimary>
-                <div className="font-body text-[18px]">ลงทะเบียน</div>
-              </ButtonPrimary>
+              <Link to="/login">
+                <ButtonPrimary>
+                  <div className="font-body text-[18px]">ลงทะเบียน</div>
+                </ButtonPrimary>
+              </Link>
             </div>
           </div>
         </div>

@@ -14,7 +14,7 @@ export default function TeamForm(props: Props) {
   return (
     <Form form={form} layout="vertical" requiredMark={customizeRequiredMark} scrollToFirstError>
       <div className="rounded-t-md bg-primary-200 p-3">
-        <Text className="font-normal text-white text-lg">ข้อมูลทีม</Text>
+        <Text className="font-normal text-text_color-100 text-lg">ข้อมูลทีม</Text>
       </div>
       <div className="rounded-b-md bg-[#0C384E] bg-opacity-50">
         <div className="flex flex-col py-4 md:flex-row gap-y-2">
