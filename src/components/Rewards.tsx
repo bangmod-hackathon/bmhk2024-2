@@ -2,19 +2,19 @@ const AwardData = [
   {
     title: 'รางวัลชนะเลิศ',
     prize: '30,000 บาท',
-    image: '/chest/chest1.png',
+    image: '/chest/chest1.webp',
     trophy: 'พร้อมโล่เกียรติคุณ'
   },
   {
     title: 'รางวัลรองชนะเลิศอันดับที่ 1',
     prize: '15,000 บาท',
-    image: '/chest/chest2.png',
+    image: '/chest/chest2.webp',
     trophy: 'พร้อมโล่เกียรติคุณ'
   },
   {
     title: 'รางวัลรองชนะเลิศอันดับที่ 2',
     prize: '5,000 บาท',
-    image: '/chest/chest3.png',
+    image: '/chest/chest3.webp',
     trophy: 'พร้อมโล่เกียรติคุณ'
   }
 ]

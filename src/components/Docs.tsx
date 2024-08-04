@@ -11,7 +11,7 @@ const Docs: React.FC = () => {
           <div className="relative z-50 flex size-full flex-col items-center justify-center p-8 text-center">
             <img
               className=" absolute -top-28 size-[12rem] md:size-[18rem] md:-top-44 z-50 drop-shadow-[0_10px_20px_rgba(255,255,255,0.20)]"
-              src="/scroll/scroll 1.svg"
+              src="/scroll/scroll_1.webp"
               alt=""
             />
             <div className="absolute -top-16 z-20 aspect-square w-1/2 max-w-28 rounded-full bg-[#4D6F81] md:-top-24 md:max-w-40 lg:-top-28 lg:max-w-44"></div>
@@ -34,7 +34,7 @@ const Docs: React.FC = () => {
           <div className="relative z-50 flex size-full flex-col items-center justify-center p-8 text-center">
             <img
               className=" absolute -top-28 size-[12rem] md:size-[18rem] md:-top-44 z-50 drop-shadow-[0px_10px_20px_rgba(255,255,255,0.3)]"
-              src="/scroll/scroll 2.svg"
+              src="/scroll/scroll_2.webp"
               alt=""
             />
             <div className="absolute -top-16 z-20 aspect-square w-1/2 max-w-28 rounded-full bg-[#4D6F81] md:-top-24 md:max-w-40 lg:-top-28 lg:max-w-44"></div>

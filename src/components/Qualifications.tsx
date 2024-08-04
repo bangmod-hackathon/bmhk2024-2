@@ -1,7 +1,7 @@
 import React from 'react'
-import FirstStudent from '/images/student2.png'
-import SecondStudent from '/images/student4.png'
-import Teacher from '/images/teacher.png'
+import FirstStudent from '/images/student2.webp'
+import SecondStudent from '/images/student4.webp'
+import Teacher from '/images/teacher.webp'
 
 const Qualifications: React.FC = () => {
   return (
