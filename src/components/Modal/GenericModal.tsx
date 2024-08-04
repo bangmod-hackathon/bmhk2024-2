@@ -17,7 +17,7 @@ const GenericModal: React.FC<GenericModalProps> = ({ content }): JSX.Element => 
       <AntModal
         open={isModalOpen}
         centered
-        className="px-5"
+        width={768}
         classNames={{
           body: 'bg-transparent',
           header: 'bg-transparent',

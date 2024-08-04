@@ -7,15 +7,14 @@ interface ClassNames {
 }
 
 const classNames: ClassNames = {
-  MainTopic: 'font-body text-lg font-normal text-secondary_blue-100',
-  SubTopic: 'list-alpha pl-5 font-body text-lg font-normal text-text_color-100',
-  SubTopicRoman: 'list-roman pl-5 font-body text-lg font-normal text-text_color-100'
+  MainTopic: 'font-body text-default font-[500] text-secondary_blue-100',
+  SubTopic: 'list-alpha pl-5 font-body font-normal text-default font-normal text-text_color-100',
+  SubTopicRoman: 'list-roman pl-5 font-body text-default font-normal text-text_color-100'
 }
-
 const ComSciContent: React.FC = (): JSX.Element => {
   return (
     <>
-      <h1 className="mb-5 text-center text-2xl font-normal text-primary_yellow-100">หมวดพื้นฐานวิทยาการคอมพิวเตอร์</h1>
+      <h1 className="mb-5 text-center text-2xl font-[550] text-primary_yellow-100">หมวดพื้นฐานวิทยาการคอมพิวเตอร์</h1>
       <div className="custom-scroll max-h-[500px] w-auto self-stretch overflow-y-auto pl-[25px]">
         <ol className="list-decimal">
           <li className={classNames.MainTopic}>พื้นฐานด้านการเขียนโปรแกรม</li>

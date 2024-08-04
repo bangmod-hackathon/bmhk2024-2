@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ButtonPrimary from '../Buttons/ButtonPrimary'
 import './fade.css'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 // Function to get a random position
 const getRandomPosition = (maxWidth: number, maxHeight: number) => {
@@ -105,7 +106,7 @@ const Hero: React.FC = () => {
 
   return (
     <React.Fragment>
-      <div className="grid w-full grid-cols-[0.5fr_1fr_0.5fr] lg:py-[12rem] py-[8rem]">
+      <div className="grid w-full grid-cols-[0.5fr_1fr_0.5fr] lg:py-[12rem] py-[8rem] overflow-hidden">
         <div id="random-container-1" className="relative">
           {positions.container1.map((pos, index) => (
             <img
@@ -119,24 +120,26 @@ const Hero: React.FC = () => {
         </div>
         <div className="main-content flex justify-center">
           <div className="flex flex-col items-center">
-            <img
+            <motion.img
+              animate={{ y: [10, 0] }}
+              transition={{ duration: 1, repeat: Infinity, repeatType: 'reverse' }}
               src={'Landing/Logo.svg'}
               alt="Logo-bmhk2025"
               className="min-h-[280px] min-w-[349px] sm:h-[280px] sm:w-[349px] lg:h-[280px] lg:w-[349px] xl:h-[466px] xl:w-[580px]"
             />
-            <div className="m-0 flex flex-col items-center gap-[22px] xl:h-[504px] xl:w-[756px] xl:px-[21.141px] xl:pb-[30px] xl:pt-[80px]">
+            <div className="m-0 flex w-full flex-col items-center gap-[22px] xl:h-[504px] xl:w-[756px] xl:px-[21.141px] xl:pb-[30px] xl:pt-[80px]">
               <div className="flex w-full items-center justify-center lg:h-[96px] lg:w-[333] xl:h-[58px] xl:w-[714]">
-                <h1 className="font-heading text-[40px] text-white sm:text-[40px] lg:text-[40px] xl:text-[48px]">
-                  Now-5 August 2024
+                <h1 className="font-heading tracking-wide text-center text-[40px] text-white sm:text-[40px] lg:text-[40px] xl:text-[48px]">
+                  Now - 31 August 2024
                 </h1>
               </div>
-              <div className="flex w-full flex-col items-center text-center font-body font-normal text-white lg:text-[16px] xl:h-full xl:w-[714] xl:text-[24px]">
+              <div className="flex w-full flex-col items-center text-center font-ibm font-normal text-text_color-100 lg:text-[16px] xl:h-full xl:w-[714] xl:text-[24px]">
                 <div>
                   <p>โครงการแข่งขันการเขียนโปรแกรมคอมพิวเตอร์ </p>
                   <p>BangMod Hackathon</p>
                 </div>
               </div>
-              <div className="flex w-full flex-col items-center text-center font-body text-[14px] font-normal text-white xl:w-[714] xl:text-[18px]">
+              <div className="flex w-full flex-col items-center text-center font-body text-[14px] font-normal text-text_color-100 xl:w-[714] xl:text-[18px]">
                 <p className="lg:w-[400px] xl:w-[420px]">
                   เป็นโครงการที่เปิดโอกาสให้นักเรียนระดับชั้นมัธยมศึกษา ตอนต้น และ ตอนปลาย
                   รวมถึงนักศึกษาอาชีวศึกษาในระดับ ปวช. หรือเทียบเท่า ได้เข้ามาแข่งขันการเขียน โปรแกรม โดยใช้ภาษาซี
