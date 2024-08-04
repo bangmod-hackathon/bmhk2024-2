@@ -10,7 +10,7 @@ import Timeline from '../components/Timeline/Timeline'
 
 const LandingPage: React.FC = () => {
   return (
-    <div className="w-full h-full bg-[url('/LandingBackground.webp')] bg-top bg-no-repeat bg-cover scroll-smooth">
+    <div className="w-full h-full bg-[url('/LandingBackground.svg')] bg-top bg-no-repeat bg-cover scroll-smooth">
       <React.Fragment>
         <Element id="hero" name="hero">
           <Hero />
