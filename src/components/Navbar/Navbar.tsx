@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { CgProfile } from 'react-icons/cg'
 import { HiOutlineMenu, HiX } from 'react-icons/hi'
 import ButtonPrimary from '../Buttons/ButtonPrimary'
@@ -16,6 +16,7 @@ const Navbar = () => {
   const Auth = UseAuth()
   const [menuOpen, setMenuOpen] = useState(false)
   const [onSelect, setOnSelect] = useState(-1)
+  const [currentComponent, setCurrentComponent] = useState<JSX.Element | null>(null)
 
   const location = useLocation()
 
@@ -256,27 +257,19 @@ const Navbar = () => {
     )
   }
 
-  const navbarOnLocationList = [
-    { '/': navLandingPage() },
-    { '/login': navLoginPage() },
-    { '/consent': navLoginPage() },
-    { '/register': navRegisterPage() }
-  ]
+  const navbarOnLocationList: { [key: string]: JSX.Element } = {
+    '/': navLandingPage(),
+    '/login': navLoginPage(),
+    '/consent': navLoginPage(),
+    '/register': navRegisterPage()
+  }
 
-  return (
-    <>
-      {/* 
-        Display default navbar when it isn't contain in navbarOnLocationList.
-      */}
-      {navbarOnLocationList.some((item) => Object.keys(item)[0] === location.pathname)
-        ? navbarOnLocationList.map((item, index) => {
-            const path = Object.keys(item)[0]
-            const component = Object.values(item)[0]
-            return path === location.pathname ? <div key={index}>{component}</div> : null
-          })
-        : navLandingPage()}
-    </>
-  )
+  useEffect(() => {
+    const component = navbarOnLocationList[location.pathname] || navLandingPage()
+    setCurrentComponent(component)
+  }, [location.pathname])
+
+  return <>{currentComponent}</>
 }
 
 export default Navbar
