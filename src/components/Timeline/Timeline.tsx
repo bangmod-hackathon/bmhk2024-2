@@ -41,7 +41,7 @@ const Timeline: React.FC = () => {
   const isDesktop = windowWidth >= 1280 // Example breakpoint for desktop
 
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full pt-[6rem] pb-[10rem] 2xl:pt-[10rem] 2xl:pb-[16rem]">
       <div className=" flex w-full justify-center py-4">
         <p className=" text-5xl text-white font-heading">กำหนดการ</p>
       </div>

@@ -27,8 +27,8 @@ const getOrderClass = (index: number) => {
 
 const RewardsWaviez = () => {
   return (
-    <div className=" items-center py-32 flex flex-col justify-center sm:px-16 md:px-0">
-      <p className="text-center text-4xl text-white font-heading py-12">รางวัลการแข่งขัน</p>
+    <div className=" items-center pt-12 pb-32 flex flex-col justify-center sm:px-16 md:px-0">
+      <p className="text-center text-4xl sm:text-5xl text-white font-heading py-12">รางวัลการแข่งขัน</p>
       <div className=" w-3/4 md:w-11/12 xl:w-9/12 2xl:w-[70%] flex flex-col md:flex-row justify-center gap-x-6 2xl:gap-x-9 gap-y-16 items-baseline">
         {AwardData.map((award, index) => (
           <div key={index} className={`w-full flex flex-col items-center justify-end ${getOrderClass(index)}`}>

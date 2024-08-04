@@ -6,7 +6,7 @@ import Teacher from '/images/teacher.webp'
 const Qualifications: React.FC = () => {
   return (
     <React.Fragment>
-      <div className="flex w-full lg:py-[12rem] py-[8rem]">
+      <div className="flex w-full pt-[5rem] lg:pt-[8rem] lg:pb-[12rem] pb-[8rem]">
         <div className="m-auto flex w-full flex-col items-center justify-center gap-y-7">
           <div className="mb-9 text-center font-heading text-3xl text-white md:text-4xl lg:text-5xl ">
             คุณสมบัติผู้สมัคร
