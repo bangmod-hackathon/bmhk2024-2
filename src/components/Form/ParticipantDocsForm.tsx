@@ -14,7 +14,7 @@ const ParticipantDocsForm: React.FC = () => {
     <Form form={form} layout="vertical" requiredMark={customizeRequiredMark} scrollToFirstError>
       <div>
         <div className="rounded-t-md bg-primary-200 p-3">
-          <Text className="font-normal text-white text-lg">เอกสาร</Text>
+          <Text className="font-normal text-text_color-100 text-lg">เอกสาร</Text>
         </div>
         <div className="rounded-b-md bg-[#0C384E] bg-opacity-50 p-4 space-y-[30px]">
           <Upload

@@ -202,7 +202,7 @@ const Navbar = () => {
 
     return (
       <>
-        <div className="fixed w-full p-9">
+        <div className="absolute top-0 z-[999] w-full p-9">
           <motion.div
             variants={menuVariants}
             animate={menuOpen ? 'closed' : 'open'}

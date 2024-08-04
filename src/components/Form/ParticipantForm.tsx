@@ -34,7 +34,7 @@ export default function ParticipantForm(props: Props) {
     <Form form={form} layout="vertical" requiredMark={customizeRequiredMark} scrollToFirstError>
       <div>
         <div className="rounded-t-md bg-primary-200 p-3">
-          <Text className="font-normal text-white text-lg">รายละเอียดสมาชิกคนที่ {props.nth}</Text>
+          <Text className="font-normal text-text_color-100 text-lg">รายละเอียดสมาชิกคนที่ {props.nth}</Text>
         </div>
         <div className="rounded-b-md bg-[#0C384E] bg-opacity-50">
           <div className="flex flex-col flex-wrap md:flex-row">

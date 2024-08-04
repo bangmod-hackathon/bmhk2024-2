@@ -18,7 +18,7 @@ export default function ParticipantContactsForm() {
     <Form form={form} layout="vertical" requiredMark={customizeRequiredMark} scrollToFirstError>
       <div>
         <div className="rounded-t-md bg-primary-200 p-3">
-          <Text className="font-normal text-white text-lg">ข้อมูลติดต่อ</Text>
+          <Text className="font-normal text-text_color-100 text-lg">ข้อมูลติดต่อ</Text>
         </div>
         <div className="rounded-b-md bg-[#0C384E] bg-opacity-50">
           <div className="flex flex-col flex-wrap md:flex-row">
