@@ -4,9 +4,9 @@ import Docs from '../components/Docs'
 import Footer from '../components/Footer'
 import Hero from '../components/Hero/Hero'
 import Qualifications from '../components/Qualifications'
-import Rewards from '../components/Rewards'
 import Scope from '../components/Scope'
 import Timeline from '../components/Timeline/Timeline'
+import Rewards from '../components/Rewards'
 
 const LandingPage: React.FC = () => {
   return (

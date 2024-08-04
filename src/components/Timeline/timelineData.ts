@@ -23,8 +23,8 @@ export const timelineData = [
   {
     title: 'แข่งขันคัดเลือก',
     title2: 'รอบแรก (Online)',
-    date: new Date('2024-09-14'),
-    string_date: '14 SEPTEMBER 2024',
+    date: new Date('2024-09-15'),
+    string_date: '15 SEPTEMBER 2024',
     gem_pic: '/gems/gem3 red.svg',
     gem_pic_secondary: '/gems/gem3 blue.svg',
     className: 'top-10 lg:size-28 size-24',
@@ -34,8 +34,8 @@ export const timelineData = [
   {
     title: 'ประกาศรายชื่อ 36 ทีม',
     title2: 'ที่ผ่านเข้ารอบ',
-    date: new Date('2024-09-20'),
-    string_date: '20 SEPTEMBER 2024',
+    date: new Date('2024-09-22'),
+    string_date: '22 SEPTEMBER 2024',
     gem_pic: '/gems/gem4 red.svg',
     gem_pic_secondary: '/gems/gem4 blue.svg',
     className: 'top-9 lg:size-28 size-24',

@@ -6,7 +6,7 @@ const getIconClasses = (bgColor: string) => `flex h-9 w-9 items-center justify-c
 
 const statusColors: Record<'finish' | 'process' | 'wait', string> = {
   wait: 'bg-[#EBD176] bg-opacity-0 border-[#EBD176] border-2 text-[#EBD176] ',
-  process: 'bg-[#EBD176] text-[#274464] drop-shadow-2xl drop-shadow-[0_35px_35px_rgba(235,209,118,0.25)]',
+  process: 'bg-[#EBD176] text-[#274464] shadow-xl shadow-primary_yellow-300/30',
   finish: 'bg-[#9EDFFA] text-[#274464]'
 }
 

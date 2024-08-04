@@ -21,7 +21,7 @@ const ConsentForm = () => {
                   }
                 }}
               >
-                <Checkbox className="">ยินยอมข้อตกลงนโยบายข้อมูลส่วนบุคคล</Checkbox>
+                <Checkbox className=" text-white font-normal">ยินยอมข้อตกลงนโยบายข้อมูลส่วนบุคคล</Checkbox>
               </ConfigProvider>
             </div>
             <div className=" w-full">

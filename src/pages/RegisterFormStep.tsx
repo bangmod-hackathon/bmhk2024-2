@@ -64,7 +64,7 @@ const RegisterFormStep: React.FC = () => {
             </div>
             <h1 className="text-white font-heading text-[40px] font-normal text-center py-2">REGISTRATION</h1>
           </header>
-          <div className="pb-4">{PageSwither()}</div>
+          <div className="pb-4 px-4">{PageSwither()}</div>
           <PageChanger page={page} setPage={setPage} pageMaxSize={members + 1} />
         </div>
       </div>

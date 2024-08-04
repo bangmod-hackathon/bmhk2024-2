@@ -13,7 +13,7 @@ interface ImenuList {
 }
 
 const Navbar = () => {
-  const [Auth, setAuth] = useState(false)
+  const Auth = UseAuth()
   const [menuOpen, setMenuOpen] = useState(false)
   const [onSelect, setOnSelect] = useState(-1)
 
@@ -45,10 +45,6 @@ const Navbar = () => {
       link: 'footer'
     }
   ]
-
-  const handleAuth = () => {
-    setAuth(!Auth)
-  }
 
   const handleOnSelect = (index: number) => {
     setOnSelect(index)
@@ -91,7 +87,7 @@ const Navbar = () => {
           <motion.div
             variants={menuVariants}
             animate={menuOpen ? 'closed' : 'open'}
-            className={`flex w-full items-center justify-between rounded-[10px] bg-bg-200/40 px-6 py-2 ${menuOpen ? 'hidden' : ''}`}
+            className={` backdrop-blur-sm flex w-full items-center justify-between rounded-[10px] bg-bg-200/40 px-6 py-2 ${menuOpen ? 'hidden' : ''}`}
           >
             <div>
               <Link to="/">
@@ -100,7 +96,7 @@ const Navbar = () => {
             </div>
 
             <div className="hidden flex-1 justify-center lg:flex">
-              <div className="flex gap-x-12 px-3 font-body text-white">
+              <div className="flex gap-x-8 xl:gap-x-12 px-3 font-ibm text-white">
                 {menuList.map((item, index) => (
                   <Scroll.Link
                     key={index}
@@ -132,11 +128,11 @@ const Navbar = () => {
                 </div>
               )} */}
               <div className="hidden items-center space-x-4 lg:flex">
-                {Auth ? (
-                  <ButtonPrimary onClick={handleAuth}>ออกจากระบบ</ButtonPrimary>
+                {Auth?.isAuthenticated ? (
+                  <ButtonPrimary>ออกจากระบบ</ButtonPrimary>
                 ) : (
                   <Link to="/login">
-                    <ButtonPrimary onClick={handleAuth}>ลงทะเบียน</ButtonPrimary>
+                    <ButtonPrimary>ลงทะเบียน</ButtonPrimary>
                   </Link>
                 )}
               </div>
@@ -179,7 +175,10 @@ const Navbar = () => {
                 offset={-70}
                 duration={500}
                 className={`nav duration-300 hover:text-primary_yellow-200 py-2 text-lg content-center ${onSelect === index ? 'text-primary_yellow-200 text-xl font-medium' : 'text-white'} cursor-pointer`}
-                onClick={() => handleOnSelect(index)}
+                onClick={() => {
+                  handleOnSelect(index)
+                  toggleMenu()
+                }}
               >
                 {item.label}
               </Scroll.Link>
@@ -198,15 +197,13 @@ const Navbar = () => {
   }
 
   const navRegisterPage = () => {
-    const auth = UseAuth()
-
     return (
       <>
-        <div className="fixed w-full p-9">
+        <div className="fixed w-full p-9 z-[100]">
           <motion.div
             variants={menuVariants}
             animate={menuOpen ? 'closed' : 'open'}
-            className={`flex w-full items-center justify-between rounded-[10px] bg-bg-200/40 px-6 py-2 ${menuOpen ? 'hidden' : ''}`}
+            className={` backdrop-blur-sm flex w-full items-center justify-between rounded-[10px] bg-bg-200/40 px-6 py-2 ${menuOpen ? 'hidden' : ''}`}
           >
             <div className="flex items-center">
               <button>
@@ -221,7 +218,7 @@ const Navbar = () => {
                   <div className=" flex h-full items-center">
                     <CgProfile className="text-xl text-white" />
                   </div>
-                  <p className=" text-lg text-white">{auth?.user.email}</p> {/* Add email */}
+                  <p className=" text-lg text-white">{Auth?.user.email}</p> {/* Add email */}
                 </div>
                 <ButtonPrimary>ออกจากระบบ</ButtonPrimary>
               </div>
