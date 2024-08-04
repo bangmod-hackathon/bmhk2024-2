@@ -3,7 +3,6 @@ import ButtonPrimary from '../Buttons/ButtonPrimary'
 import './fade.css'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { reverse } from 'dns'
 
 // Function to get a random position
 const getRandomPosition = (maxWidth: number, maxHeight: number) => {

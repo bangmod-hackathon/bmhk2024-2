@@ -199,16 +199,16 @@ const Navbar = () => {
   const navRegisterPage = () => {
     return (
       <>
-        <div className="fixed w-full p-9 z-[100]">
+        <div className="absolute top-0 z-[999] w-full p-9">
           <motion.div
             variants={menuVariants}
             animate={menuOpen ? 'closed' : 'open'}
             className={` backdrop-blur-sm flex w-full items-center justify-between rounded-[10px] bg-bg-200/40 px-6 py-2 ${menuOpen ? 'hidden' : ''}`}
           >
             <div className="flex items-center">
-              <button>
+              <Link to="/">
                 <img src="Logo.svg" alt="Bangmod Hackathon 2024 Logo" className="h-12" />
-              </button>
+              </Link>
             </div>
 
             <div className="hidden flex-1 justify-center lg:flex"></div>
@@ -246,9 +246,9 @@ const Navbar = () => {
 
             <div className="hidden flex-1 justify-center lg:flex"></div>
             <div className="flex py-2">
-              <ButtonPrimary>
-                <Link to="/">กลับหน้าหลัก</Link>
-              </ButtonPrimary>
+              <Link to="/">
+                <ButtonPrimary>กลับหน้าหลัก</ButtonPrimary>
+              </Link>
             </div>
           </motion.div>
         </div>

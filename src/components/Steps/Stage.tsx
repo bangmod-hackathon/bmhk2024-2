@@ -21,7 +21,7 @@ const Stage: React.FC<StageProps> = ({ numberOfMembers, statuses }) => {
   const titles = ['ทีม-อาจารย์', ...Array.from({ length: numberOfMembers }, (_, i) => `สมาชิกคนที่ ${i + 1}`)]
 
   const items = titles.map((title, index) => ({
-    title: <div className="hidden font-body text-white sm:block">{title}</div>,
+    title: <div className="hidden font-body text-text_color-100 sm:block">{title}</div>,
     status: statuses[index],
     icon: <div className={getIconClasses(statusColors[statuses[index]])}>{index + 1}</div>
   }))

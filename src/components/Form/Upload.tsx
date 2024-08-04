@@ -89,16 +89,25 @@ const Upload: React.FC<UploadPropsForm> = ({ imageUpload = false, required = fal
 
   return (
     <div className="grid grid-cols-1 items-center gap-4 lg:grid-cols-2">
-      <label className="font-body text-lg text-text_color-100">
+      <label className="font-body text-lg text-text_color-400">
         {props.title} {required && <span className="text-primary_yellow-100">*</span>}
       </label>
       <div className=" col-span-1 flex flex-col justify-center gap-[10px]">
-        <AntdUpload {...props} showUploadList={false} beforeUpload={beforeUpload}>
+        <AntdUpload
+          {...props}
+          showUploadList={false}
+          beforeUpload={beforeUpload}
+          accept={imageUpload ? 'image/jpeg, image/png' : 'application/pdf'}
+        >
           {props.file ? null : uploadButton}
         </AntdUpload>
         {props.file ? previewUpload : null}
         <p className="text-sm text-white">
-          {errorUploadMessage === '' ? <p>{props.description}</p> : <p className="text-danger">{errorUploadMessage}</p>}
+          {errorUploadMessage === '' ? (
+            <>{props.description}</>
+          ) : (
+            <span className="text-danger">{errorUploadMessage}</span>
+          )}
         </p>
       </div>
     </div>
