@@ -19,6 +19,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/consent" element={<ConsentPage />} />
           <Route path="/register" element={<RegisterFormStep />} />
+          <Route path="/*" element={<LandingPage />} />
         </Routes>
       </Suspense>
     </AuthProvider>

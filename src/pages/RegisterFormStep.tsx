@@ -70,7 +70,7 @@ const RegisterFormStep: React.FC = () => {
         ref={topRef}
         className=" w-full h-full bg-[url('/register/bg-register.webp')] bg-top bg-no-repeat bg-cover scroll-smooth"
       >
-        <div className="container px-4 sm:px-6 xl:px-0 mx-auto max-w-[1280px] lg:pt-[8rem] pt-[6rem]">
+        <div className="container px-4 sm:px-6 xl:px-0 mx-auto max-w-[1280px] lg:pt-[8rem] pt-28">
           <header>
             <div className="py-8">
               <Stage numberOfMembers={members} statuses={stageStatus} />
