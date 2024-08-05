@@ -1,11 +1,9 @@
-import { Form, FormInstance, Typography } from 'antd'
+import { Form, Typography } from 'antd'
+import { ITeamTeacherForm } from '../../interfaces/user.interface'
 import Input from './Input/Input'
 import Select from './Input/Select'
-import { customizeRequiredMark } from '../../lib/antdForm'
-import { ITeamTeacherForm } from '../../interfaces/user.interface'
 
 interface Props {
-  form: FormInstance
   setMembers: React.Dispatch<React.SetStateAction<number>>
 }
 
@@ -13,15 +11,7 @@ export default function TeamForm(props: Props) {
   const { Text } = Typography
 
   return (
-    <Form
-      form={props.form}
-      layout="vertical"
-      requiredMark={customizeRequiredMark}
-      initialValues={{
-        member: '2'
-      }}
-      scrollToFirstError
-    >
+    <>
       <div className="rounded-t-md bg-primary-200 p-3">
         <Text className="font-normal text-text_color-100 text-lg">ข้อมูลทีม</Text>
       </div>
@@ -96,6 +86,6 @@ export default function TeamForm(props: Props) {
           </div>
         </div>
       </div>
-    </Form>
+    </>
   )
 }

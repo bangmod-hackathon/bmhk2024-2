@@ -1,17 +1,11 @@
-import { FormInstance, Typography } from 'antd'
-import Input from './Input/Input'
-import { Form } from 'antd'
-import { customizeRequiredMark } from '../../lib/antdForm'
+import { Form, Typography } from 'antd'
 import { IParticipant } from '../../interfaces/user.interface'
+import Input from './Input/Input'
 
-interface Props {
-  form: FormInstance
-}
-
-export default function ParticipantContactsForm({ form }: Props) {
+export default function ParticipantContactsForm() {
   const { Text } = Typography
   return (
-    <Form form={form} layout="vertical" requiredMark={customizeRequiredMark} scrollToFirstError>
+    <>
       <div>
         <div className="rounded-t-md bg-primary-200 p-3">
           <Text className="font-normal text-text_color-100 text-lg">ข้อมูลติดต่อ</Text>
@@ -60,6 +54,6 @@ export default function ParticipantContactsForm({ form }: Props) {
           </div>
         </div>
       </div>
-    </Form>
+    </>
   )
 }

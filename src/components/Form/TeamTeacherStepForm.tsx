@@ -1,9 +1,10 @@
-import { FormInstance } from 'antd'
+import { Form, FormInstance } from 'antd'
 import React, { useState } from 'react'
 import TeacherContactsForm from './TeacherContactsForm'
 import TeacherDocsForm from './TeacherDocsForm'
 import TeacherForm from './TeacherForm'
 import TeamForm from './TeamForm'
+import { customizeRequiredMark } from '../../lib/antdForm'
 
 interface Props {
   form: FormInstance
@@ -16,17 +17,27 @@ const TeamTeacherStepForm: React.FC<Props> = (props: Props) => {
 
   return (
     <React.Fragment>
-      <div className="space-y-8">
-        <TeamForm form={props.form} setMembers={props.setMembers} />
-        <TeacherForm form={props.form} />
-        <TeacherContactsForm form={props.form} />
-        <TeacherDocsForm
-          fileIDCard={fileIDCard}
-          setFileIDCard={setFileIDCard}
-          fileTeacherCert={fileTeacherCert}
-          setFileTeacherCert={setFileTeacherCert}
-        />
-      </div>
+      <Form
+        form={props.form}
+        layout="vertical"
+        requiredMark={customizeRequiredMark}
+        initialValues={{
+          member: '2'
+        }}
+        scrollToFirstError
+      >
+        <div className="space-y-8">
+          <TeamForm setMembers={props.setMembers} />
+          <TeacherForm />
+          <TeacherContactsForm />
+          <TeacherDocsForm
+            fileIDCard={fileIDCard}
+            setFileIDCard={setFileIDCard}
+            fileTeacherCert={fileTeacherCert}
+            setFileTeacherCert={setFileTeacherCert}
+          />
+        </div>
+      </Form>
     </React.Fragment>
   )
 }

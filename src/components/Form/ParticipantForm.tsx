@@ -1,13 +1,10 @@
-import { FormInstance, Typography } from 'antd'
+import { Form, Typography } from 'antd'
+import { IParticipant } from '../../interfaces/user.interface'
 import Input from './Input/Input'
 import Select from './Input/Select'
 import TextArea from './Input/TextArea'
-import { Form } from 'antd'
-import { customizeRequiredMark } from '../../lib/antdForm'
-import { IParticipant } from '../../interfaces/user.interface'
 
 interface Props {
-  form: FormInstance
   nth: number
 }
 
@@ -15,7 +12,7 @@ export default function ParticipantForm(props: Props) {
   const { Text } = Typography
 
   return (
-    <Form form={props.form} layout="vertical" requiredMark={customizeRequiredMark} scrollToFirstError>
+    <>
       <div>
         <div className="rounded-t-md bg-primary-200 p-3">
           <Text className="font-normal text-text_color-100 text-lg">รายละเอียดสมาชิกคนที่ {props.nth}</Text>
@@ -138,6 +135,6 @@ export default function ParticipantForm(props: Props) {
           </div>
         </div>
       </div>
-    </Form>
+    </>
   )
 }

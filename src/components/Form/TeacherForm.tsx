@@ -1,20 +1,15 @@
-import { Form, FormInstance, Typography } from 'antd'
+import { Form, Typography } from 'antd'
 import React from 'react'
-import { customizeRequiredMark } from '../../lib/antdForm'
+import { ITeamTeacherForm } from '../../interfaces/user.interface'
 import Input from './Input/Input'
 import Select from './Input/Select'
 import TextArea from './Input/TextArea'
-import { ITeamTeacherForm } from '../../interfaces/user.interface'
 
-interface Props {
-  form: FormInstance<ITeamTeacherForm>
-}
-
-const TeacherForm: React.FC<Props> = ({ form }) => {
+const TeacherForm: React.FC = () => {
   const { Text } = Typography
 
   return (
-    <Form form={form} layout="vertical" requiredMark={customizeRequiredMark} scrollToFirstError>
+    <>
       <div className="rounded-t-md bg-primary-200 p-3">
         <Text className="font-normal text-text_color-100 text-lg">ข้อมูลอาจารย์</Text>
       </div>
@@ -120,7 +115,7 @@ const TeacherForm: React.FC<Props> = ({ form }) => {
           </div>
         </div>
       </div>
-    </Form>
+    </>
   )
 }
 

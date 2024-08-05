@@ -2,7 +2,8 @@ import React from 'react'
 import ParticipantForm from './ParticipantForm'
 import ParticipantContactsForm from './ParticipantContactsForm'
 import ParticipantDocsForm from './ParticipantDocsForm'
-import { FormInstance } from 'antd'
+import { Form, FormInstance } from 'antd'
+import { customizeRequiredMark } from '../../lib/antdForm'
 
 interface Props {
   form: FormInstance
@@ -12,11 +13,20 @@ interface Props {
 const ParticipantStepForm: React.FC<Props> = (props: Props) => {
   return (
     <React.Fragment>
-      <div className="space-y-8">
-        <ParticipantForm nth={props.nth} form={props.form} />
-        <ParticipantContactsForm form={props.form} />
-        <ParticipantDocsForm form={props.form} />
-      </div>
+      <Form
+        form={props.form}
+        layout="vertical"
+        requiredMark={customizeRequiredMark}
+        scrollToFirstError
+        id={`id-participant-${props.nth}`}
+        name={`name-participant-${props.nth}`}
+      >
+        <div className="space-y-8">
+          <ParticipantForm nth={props.nth} />
+          <ParticipantContactsForm />
+          <ParticipantDocsForm />
+        </div>
+      </Form>
     </React.Fragment>
   )
 }

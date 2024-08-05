@@ -149,27 +149,20 @@ const RegisterFormStep: React.FC = () => {
     updateStage()
   }, [members, page])
 
-  const PageSwither = () => {
-    switch (page) {
-      case 1:
-        return <TeamTeacherStepForm form={formTeamTeacherStepForm} setMembers={setMembers} />
-      case 2:
-        return <ParticipantStepForm form={formParticipant1StepForm} nth={1} />
-      case 3:
-        return <ParticipantStepForm form={formParticipant2StepForm} nth={2} />
-      case 4:
-        return <ParticipantStepForm form={formParticipant3StepForm} nth={3} />
-      default:
-        return <></>
-    }
-  }
-
   const handlePrevious = () => {
     setPage(page === 1 ? 1 : page - 1)
   }
   const handleNext = async () => {
     try {
       if (page === 1) {
+        try {
+          await formTeamTeacherStepForm.validateFields()
+        } catch (error: any) {
+          formTeamTeacherStepForm.scrollToField(error.errorFields[0].name, {
+            behavior: 'smooth'
+          })
+          throw error
+        }
         await formTeamTeacherStepForm.validateFields()
         // Validate File
 
@@ -203,7 +196,14 @@ const RegisterFormStep: React.FC = () => {
 
         // console.log(response)
       } else if (page === 2) {
-        await formParticipant1StepForm.validateFields()
+        try {
+          await formParticipant1StepForm.validateFields()
+        } catch (error: any) {
+          formParticipant1StepForm.scrollToField(error.errorFields[0].name, {
+            behavior: 'smooth'
+          })
+          throw error
+        }
         // Validate File
 
         const values = await formParticipant1StepForm.getFieldsValue()
@@ -236,7 +236,14 @@ const RegisterFormStep: React.FC = () => {
           // member1DocumentPorPor7: values.memberDocumentPorPor7
         })
       } else if (page === 3) {
-        await formParticipant2StepForm.validateFields()
+        try {
+          await formParticipant2StepForm.validateFields()
+        } catch (error: any) {
+          formParticipant2StepForm.scrollToField(error.errorFields[0].name, {
+            behavior: 'smooth'
+          })
+          throw error
+        }
         const values = await formParticipant2StepForm.getFieldsValue()
         // Uploadfile
 
@@ -267,7 +274,14 @@ const RegisterFormStep: React.FC = () => {
           // member1DocumentPorPor7: values.memberDocumentPorPor7
         })
       } else if (page === 4 && members === 3) {
-        await formParticipant3StepForm.validateFields()
+        try {
+          await formParticipant3StepForm.validateFields()
+        } catch (error: any) {
+          formParticipant3StepForm.scrollToField(error.errorFields[0].name, {
+            behavior: 'smooth'
+          })
+          throw error
+        }
         const values = await formParticipant3StepForm.getFieldsValue()
         // Uploadfile
 
@@ -300,8 +314,8 @@ const RegisterFormStep: React.FC = () => {
       }
 
       setPage(page === members + 1 ? members + 1 : page + 1)
-    } catch {
-      console.log('error')
+    } catch (error) {
+      console.log(error)
     }
   }
 
@@ -319,7 +333,10 @@ const RegisterFormStep: React.FC = () => {
             <h1 className="text-text_color-100 font-heading text-[40px] font-normal text-center py-2">REGISTRATION</h1>
           </header>
           <div className={`pb-4 page-container ${transitionClass}`}>
-            {PageSwither()}
+            {page === 1 && <TeamTeacherStepForm form={formTeamTeacherStepForm} setMembers={setMembers} />}
+            {page === 2 && <ParticipantStepForm form={formParticipant1StepForm} nth={1} />}
+            {page === 3 && <ParticipantStepForm form={formParticipant2StepForm} nth={2} />}
+            {page === 4 && <ParticipantStepForm form={formParticipant3StepForm} nth={3} />}
             <PageChanger
               handlePrevious={handlePrevious}
               handleNext={handleNext}
