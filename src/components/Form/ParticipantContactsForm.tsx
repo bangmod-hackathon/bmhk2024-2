@@ -24,27 +24,47 @@ export default function ParticipantContactsForm() {
           <div className="flex flex-col flex-wrap md:flex-row">
             <div className="w-full p-4 lg:w-1/3">
               <Form.Item<FieldType>
-                label="email"
+                label="Email"
                 name="email"
-                rules={[{ required: true, message: 'Please input your username!' }]}
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please enter your Email'
+                  },
+                  { type: 'email', message: 'Please enter a valid email address' }
+                ]}
               >
                 <Input title="Email" required={true} placeholder="example@example.com" />
               </Form.Item>
             </div>
             <div className="w-full p-4 md:w-1/2 lg:w-1/3">
-              <Form.Item<FieldType> label="เบอร์โทรศัพท์" name="tel" rules={[{ required: true }]}>
+              <Form.Item<FieldType>
+                label="เบอร์โทรศัพท์"
+                name="tel"
+                rules={[
+                  { required: true, message: 'กรุณากรอกเบอร์โทรศัพท์' },
+                  { type: 'number', message: 'กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง' }
+                ]}
+              >
                 <Input title="เบอร์โทรศัพท์" required={true} placeholder="0812345678" />
               </Form.Item>
             </div>
             <div className="w-full p-4 md:w-1/2 lg:w-1/3">
-              <Form.Item<FieldType> label="ID LINE" name="idline" rules={[{ required: true }]}>
-                <Input title="ID LINE" required={true} placeholder="id line" />
+              <Form.Item<FieldType> label="Line ID" name="idline" rules={[{ required: true }]}>
+                <Input title="Line ID" required={true} placeholder="Line ID" />
               </Form.Item>
             </div>
           </div>
           <div className="flex flex-col flex-wrap md:flex-row">
             <div className="w-full p-4 md:w-1/2">
-              <Form.Item<FieldType> label="เบอร์โทรติดต่อฉุกเฉิน" name="emergencyTel" rules={[{ required: true }]}>
+              <Form.Item<FieldType>
+                label="เบอร์โทรติดต่อกรณีฉุกเฉิน"
+                name="emergencyTel"
+                rules={[
+                  { required: true, message: 'กรุณากรอกเบอร์โทรศัพท์' },
+                  { type: 'number', message: 'กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง' }
+                ]}
+              >
                 <Input title="เบอร์โทรติดต่อฉุกเฉิน" required={true} placeholder="0812345678" />
               </Form.Item>
             </div>

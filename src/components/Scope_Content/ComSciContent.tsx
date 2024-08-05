@@ -16,11 +16,11 @@ const ComSciContent: React.FC = (): JSX.Element => {
     <>
       <h1 className="mb-5 text-center text-2xl font-[550] text-primary_yellow-100">หมวดพื้นฐานวิทยาการคอมพิวเตอร์</h1>
       <div className="custom-scroll max-h-[500px] w-auto self-stretch overflow-y-auto pl-[25px]">
-        <ol className="list-decimal">
+        <ul className="ul">
           <li className={classNames.MainTopic}>พื้นฐานด้านการเขียนโปรแกรม</li>
           <li className={classNames.MainTopic}>ทักษะการแก้ปัญหา (problem-solving skill)</li>
           <li className={classNames.MainTopic}>พื้นฐานโครงสร้างข้อมูล</li>
-          <ul className={classNames.SubTopic}>
+          <ul className={classNames.SubTopic + ` ul`}>
             <li>ชนิดข้อมูลดั้งเดิม (Primitive data type) ได้แก่ Boolean, signed/unsigned integer, character</li>
             <li>แถวลำดับ (อาเรย์ อาเรย์หลายมิติ)</li>
             <li>Record/Struct</li>
@@ -32,13 +32,13 @@ const ComSciContent: React.FC = (): JSX.Element => {
             <li>คิวลำดับความสำคัญ (priority queue), ไดนามิกเซต (dynamic set), ไดนามิกแมพ (dynamic map)</li>
           </ul>
           <li className={classNames.MainTopic}>การเรียกตัวเองซ้ำ (Recursion)</li>
-          <ul className={classNames.SubTopic}>
+          <ul className={classNames.SubTopic + ` ul`}>
             <li>แนวคิด</li>
             <li>ฟังก์ชันทางคณิตศาสตร์ที่เรียกตัวเองซ้ำ</li>
             <li>วิธีแบ่งแยกและเอาชนะ (divide and conquer)</li>
             <li>อัลกอริทึมการย้อนรอยแบบเรียกตัวเองซ้ำ (recursive backtracking)</li>
           </ul>
-        </ol>
+        </ul>
       </div>
     </>
   )

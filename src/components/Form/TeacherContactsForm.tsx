@@ -32,8 +32,8 @@ export default function TeacherContactsForm() {
               </Form.Item>
             </div>
             <div className="w-full p-4 md:w-1/2 lg:w-1/3">
-              <Form.Item<FieldType> label="ID LINE" name="idline" rules={[{ required: true }]}>
-                <Input title="ID LINE" required={true} placeholder="id line" />
+              <Form.Item<FieldType> label="LINE ID" name="idline" rules={[{ required: true }]}>
+                <Input title="LINE ID" required={true} placeholder="LINE ID" />
               </Form.Item>
             </div>
           </div>
