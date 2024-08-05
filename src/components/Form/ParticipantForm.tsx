@@ -13,7 +13,6 @@ interface Props {
 
 export default function ParticipantForm(props: Props) {
   const { Text } = Typography
-  const [form] = Form.useForm()
 
   return (
     <Form form={props.form} layout="vertical" requiredMark={customizeRequiredMark} scrollToFirstError>

@@ -171,7 +171,7 @@ const RegisterFormStep: React.FC = () => {
         // Uploadfile
 
         // Patch Team Teacher
-        const response = await axiosInstance.patch('/api/user', {
+        await axiosInstance.patch('/api/user', {
           teamName: values.teamName,
           school: values.school,
           quote: values.quote,
@@ -204,7 +204,7 @@ const RegisterFormStep: React.FC = () => {
         // Uploadfile
 
         // Patch member 1
-        const response = await axiosInstance.patch('/api/user', {
+        await axiosInstance.patch('/api/user', {
           member1PrefixTH: values.memberPrefixTH,
           member1PrefixEN: values.memberPrefixEN,
           member1FirstnameTH: values.memberFirstnameTH,
@@ -235,7 +235,7 @@ const RegisterFormStep: React.FC = () => {
         // Uploadfile
 
         // Patch member 2
-        const response = await axiosInstance.patch('/api/user', {
+        await axiosInstance.patch('/api/user', {
           member2PrefixTH: values.memberPrefixTH,
           member2PrefixEN: values.memberPrefixEN,
           member2FirstnameTH: values.memberFirstnameTH,
@@ -265,7 +265,7 @@ const RegisterFormStep: React.FC = () => {
         // Uploadfile
 
         // Patch member 3
-        const response = await axiosInstance.patch('/api/user', {
+        await axiosInstance.patch('/api/user', {
           member3PrefixTH: values.memberPrefixTH,
           member3PrefixEN: values.memberPrefixEN,
           member3FirstnameTH: values.memberFirstnameTH,
