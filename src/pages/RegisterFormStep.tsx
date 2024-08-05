@@ -23,8 +23,6 @@ const RegisterFormStep: React.FC = () => {
     const fetchData = async () => {
       const response = await axiosInstance.get('/api/auth/me')
       const data = response.data as IUser
-      console.log(data)
-
       setMembers(data.member)
       formTeamTeacherStepForm.setFieldsValue({
         ...(data as ITeamTeacherForm),
@@ -157,11 +155,11 @@ const RegisterFormStep: React.FC = () => {
       if (page === 1) {
         try {
           await formTeamTeacherStepForm.validateFields()
-        } catch (error: any) {
-          formTeamTeacherStepForm.scrollToField(error.errorFields[0].name, {
+        } catch {
+          formTeamTeacherStepForm.scrollToField(formTeamTeacherStepForm.getFieldsError()[0].name[0], {
             behavior: 'smooth'
           })
-          throw error
+          throw new Error('error')
         }
         await formTeamTeacherStepForm.validateFields()
         // Validate File
@@ -198,11 +196,11 @@ const RegisterFormStep: React.FC = () => {
       } else if (page === 2) {
         try {
           await formParticipant1StepForm.validateFields()
-        } catch (error: any) {
-          formParticipant1StepForm.scrollToField(error.errorFields[0].name, {
+        } catch {
+          formParticipant1StepForm.scrollToField(formParticipant1StepForm.getFieldsError()[0].name[0], {
             behavior: 'smooth'
           })
-          throw error
+          throw new Error('error')
         }
         // Validate File
 
@@ -238,11 +236,11 @@ const RegisterFormStep: React.FC = () => {
       } else if (page === 3) {
         try {
           await formParticipant2StepForm.validateFields()
-        } catch (error: any) {
-          formParticipant2StepForm.scrollToField(error.errorFields[0].name, {
+        } catch {
+          formParticipant2StepForm.scrollToField(formParticipant2StepForm.getFieldsError()[0].name[0], {
             behavior: 'smooth'
           })
-          throw error
+          throw new Error('error')
         }
         const values = await formParticipant2StepForm.getFieldsValue()
         // Uploadfile
@@ -276,11 +274,11 @@ const RegisterFormStep: React.FC = () => {
       } else if (page === 4 && members === 3) {
         try {
           await formParticipant3StepForm.validateFields()
-        } catch (error: any) {
-          formParticipant3StepForm.scrollToField(error.errorFields[0].name, {
+        } catch {
+          formParticipant3StepForm.scrollToField(formParticipant3StepForm.getFieldsError()[0].name[0], {
             behavior: 'smooth'
           })
-          throw error
+          throw new Error('error')
         }
         const values = await formParticipant3StepForm.getFieldsValue()
         // Uploadfile
@@ -315,7 +313,7 @@ const RegisterFormStep: React.FC = () => {
 
       setPage(page === members + 1 ? members + 1 : page + 1)
     } catch (error) {
-      console.log(error)
+      return error
     }
   }
 
