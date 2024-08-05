@@ -24,7 +24,11 @@ export default function TeacherContactsForm({ form }: Props) {
               </Form.Item>
             </div>
             <div className="w-full p-4 md:w-1/2 lg:w-1/3">
-              <Form.Item<ITeamTeacherForm> label="เบอร์โทรศัพท์" name="advisorContactPhone" rules={[{ required: true }]}>
+              <Form.Item<ITeamTeacherForm>
+                label="เบอร์โทรศัพท์"
+                name="advisorContactPhone"
+                rules={[{ required: true }]}
+              >
                 <Input title="เบอร์โทรศัพท์" required={true} placeholder="0812345678" />
               </Form.Item>
             </div>

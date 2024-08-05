@@ -23,6 +23,8 @@ const RegisterFormStep: React.FC = () => {
     const fetchData = async () => {
       const response = await axiosInstance.get('/api/auth/me')
       const data = response.data as IUser
+      console.log(data)
+
       setMembers(data.member)
       formTeamTeacherStepForm.setFieldsValue({
         ...(data as ITeamTeacherForm),
@@ -40,6 +42,7 @@ const RegisterFormStep: React.FC = () => {
         memberLastnameEN: data.member1LastnameEN,
         memberNickname: data.member1Nickname,
         memberGradeLevel: data.member1GradeLevel,
+        memberFoodPreference: data.member1FoodPreference,
         memberFoodAllergy: data.member1FoodAllergy,
         memberDrugAllergy: data.member1DrugAllergy,
         memberChronicDisease: data.member1ChronicDisease,
@@ -53,6 +56,7 @@ const RegisterFormStep: React.FC = () => {
         // memberDocumentIDCard: values.member1DocumentIDCard,
         // memberDocumentPorPor7: values.member1DocumentPorPor7
       })
+
       formParticipant2StepForm.setFieldsValue({
         memberPrefixTH: data.member2PrefixTH,
         memberPrefixEN: data.member2PrefixEN,
@@ -64,6 +68,7 @@ const RegisterFormStep: React.FC = () => {
         memberLastnameEN: data.member2LastnameEN,
         memberNickname: data.member2Nickname,
         memberGradeLevel: data.member2GradeLevel,
+        memberFoodPreference: data.member2FoodPreference,
         memberFoodAllergy: data.member2FoodAllergy,
         memberDrugAllergy: data.member2DrugAllergy,
         memberChronicDisease: data.member2ChronicDisease,
@@ -77,6 +82,7 @@ const RegisterFormStep: React.FC = () => {
         // memberDocumentIDCard: values.member1DocumentIDCard,
         // memberDocumentPorPor7: values.member1DocumentPorPor7
       })
+
       formParticipant3StepForm.setFieldsValue({
         memberPrefixTH: data.member3PrefixTH,
         memberPrefixEN: data.member3PrefixEN,
@@ -88,6 +94,7 @@ const RegisterFormStep: React.FC = () => {
         memberLastnameEN: data.member3LastnameEN,
         memberNickname: data.member3Nickname,
         memberGradeLevel: data.member3GradeLevel,
+        memberFoodPreference: data.member3FoodPreference,
         memberFoodAllergy: data.member3FoodAllergy,
         memberDrugAllergy: data.member3DrugAllergy,
         memberChronicDisease: data.member3ChronicDisease,
@@ -167,7 +174,6 @@ const RegisterFormStep: React.FC = () => {
         // Validate File
 
         const values = await formTeamTeacherStepForm.getFieldsValue()
-        console.log(values)
         // Uploadfile
 
         // Patch Team Teacher
@@ -215,6 +221,7 @@ const RegisterFormStep: React.FC = () => {
           member1LastnameEN: values.memberLastnameEN,
           member1Nickname: values.memberNickname,
           member1GradeLevel: values.memberGradeLevel,
+          member1FoodPreference: values.memberFoodPreference,
           member1FoodAllergy: values.memberFoodAllergy,
           member1DrugAllergy: values.memberDrugAllergy,
           member1ChronicDisease: values.memberChronicDisease,
@@ -231,7 +238,6 @@ const RegisterFormStep: React.FC = () => {
       } else if (page === 3) {
         await formParticipant2StepForm.validateFields()
         const values = await formParticipant2StepForm.getFieldsValue()
-        console.log(values)
         // Uploadfile
 
         // Patch member 2
@@ -245,6 +251,7 @@ const RegisterFormStep: React.FC = () => {
           member2LastnameTH: values.memberLastnameTH,
           member2LastnameEN: values.memberLastnameEN,
           member2Nickname: values.memberNickname,
+          member2FoodPreference: values.memberFoodPreference,
           member2GradeLevel: values.memberGradeLevel,
           member2FoodAllergy: values.memberFoodAllergy,
           member2DrugAllergy: values.memberDrugAllergy,
@@ -276,6 +283,7 @@ const RegisterFormStep: React.FC = () => {
           member3LastnameEN: values.memberLastnameEN,
           member3Nickname: values.memberNickname,
           member3GradeLevel: values.memberGradeLevel,
+          member3FoodPreference: values.memberFoodPreference,
           member3FoodAllergy: values.memberFoodAllergy,
           member3DrugAllergy: values.memberDrugAllergy,
           member3ChronicDisease: values.memberChronicDisease,
