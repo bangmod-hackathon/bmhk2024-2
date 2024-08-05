@@ -1,13 +1,15 @@
+import { Form, FormInstance, Typography } from 'antd'
 import React, { useState } from 'react'
-import { Typography } from 'antd'
-import { customizeRequiredMark } from '../../lib/antdForm'
-import { Form } from 'antd'
-import Upload from './Upload'
 import { IoAddSharp } from 'react-icons/io5'
+import { customizeRequiredMark } from '../../lib/antdForm'
+import Upload from './Upload'
 
-const ParticipantDocsForm: React.FC = () => {
+interface Props {
+  form: FormInstance
+}
+
+const ParticipantDocsForm: React.FC<Props> = ({ form }) => {
   const { Text } = Typography
-  const [form] = Form.useForm()
   const [file, setFile] = useState<File | undefined>(undefined)
 
   return (
