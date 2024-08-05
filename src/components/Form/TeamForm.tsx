@@ -34,16 +34,16 @@ export default function TeamForm(props: Props) {
           </div>
           <div className="w-full px-4">
             <Form.Item
-              label="ชื่อโรงเรียน"
+              label="ชื่อสถานศึกษา"
               name={'school'}
               rules={[
                 {
                   required: true,
-                  message: 'กรุณากรอกชื่อโรงเรียน'
+                  message: 'กรุณากรอกชื่อสถานศึกษา'
                 }
               ]}
             >
-              <Input placeholder="กรอกชื่อโรงเรียน" />
+              <Input placeholder="กรอกชื่อสถานศึกษา" />
             </Form.Item>
           </div>
         </div>

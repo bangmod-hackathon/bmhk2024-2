@@ -117,6 +117,33 @@ body {
     
 }
 
+.ul {
+  list-style-type: decimal;
+  counter-reset: item;
+  margin: 0;
+  padding: 0;
+}
+
+.ul > li {
+  display: table;
+  counter-increment: item;
+  margin-bottom: 0.4em;
+}
+
+.ul > li:before {
+  content: counters(item, ".") ". ";
+  display: table-cell;
+  padding-right: 0.5em;    
+}
+
+.li ul > li {
+  margin: 0;
+}
+
+.li ul > li:before {
+  content: counters(item, ".") " ";
+}
+
 .ant-upload-wrapper{
     width: 100%;
 }

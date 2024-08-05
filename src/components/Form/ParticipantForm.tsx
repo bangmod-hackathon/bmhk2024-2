@@ -42,7 +42,10 @@ export default function ParticipantForm(props: Props) {
               <Form.Item<FieldType> label="คำนำหน้า" name="prefixTH" rules={[{ required: true }]}>
                 <Select
                   options={[
+                    { title: 'เด็กชาย', value: 'เด็กชาย' },
+                    { title: 'เด็กหญิง', value: 'เด็กหญิง' },
                     { title: 'นาย', value: 'นาย' },
+                    { title: 'นาง', value: 'นาง' },
                     { title: 'นางสาว', value: 'นางสาว' }
                   ]}
                   placeholder="คำนำหน้า"
@@ -50,17 +53,17 @@ export default function ParticipantForm(props: Props) {
               </Form.Item>
             </div>
             <div className="w-full p-4 md:w-1/2 lg:w-1/4">
-              <Form.Item<FieldType> label="ชื่อจริง(ภาษาไทย)" name="firstNameTH" rules={[{ required: true }]}>
+              <Form.Item<FieldType> label="ชื่อจริง" name="firstNameTH" rules={[{ required: true }]}>
                 <Input title="ชื่อจริง(ภาษาไทย)" required={true} placeholder="กรุณากรอกชื่อจริง" />
               </Form.Item>
             </div>
             <div className="w-full p-4 md:w-1/2 lg:w-1/4">
-              <Form.Item<FieldType> label="ชื่อกลาง(ภาษาไทย)" name="middleNameTH" rules={[{ required: true }]}>
-                <Input title="ชื่อกลาง(ภาษาไทย)" required={true} placeholder="กรุณากรอกชื่อกลาง" />
+              <Form.Item<FieldType> label="ชื่อกลาง (ถ้ามี)" name="middleNameTH">
+                <Input title="ชื่อกลาง(ภาษาไทย)" placeholder="กรุณากรอกชื่อกลาง (ถ้ามี)" />
               </Form.Item>
             </div>
             <div className="w-full p-4 md:w-1/2 lg:w-1/4">
-              <Form.Item<FieldType> label="นามสกุล(ภาษาไทย)" name="lastNameTH" rules={[{ required: true }]}>
+              <Form.Item<FieldType> label="นามสกุล" name="lastNameTH" rules={[{ required: true }]}>
                 <Input title="นามสกุล(ภาษาไทย)" required={true} placeholder="กรุณากรอกนามสกุล" />
               </Form.Item>
             </div>
@@ -70,7 +73,10 @@ export default function ParticipantForm(props: Props) {
               <Form.Item<FieldType> label="Prefix" name="prefixEN" rules={[{ required: true }]}>
                 <Select
                   options={[
+                    { title: 'Master', value: 'Master' },
+                    { title: 'Miss', value: 'Miss' },
                     { title: 'Mr.', value: 'Mr.' },
+                    { title: 'Mrs.', value: 'Mrs.' },
                     { title: 'Ms.', value: 'Ms.' }
                   ]}
                   placeholder="Prefix"
@@ -83,8 +89,8 @@ export default function ParticipantForm(props: Props) {
               </Form.Item>
             </div>
             <div className="w-full p-4 md:w-1/2 lg:w-1/4">
-              <Form.Item<FieldType> label="Middle Name" name="middleNameEN" rules={[{ required: true }]}>
-                <Input title="Middle name" required={true} placeholder="Middle Name" />
+              <Form.Item<FieldType> label="Middle Name (Optional)" name="middleNameEN">
+                <Input title="Middle name" placeholder="Middle Name (Optional)" />
               </Form.Item>
             </div>
             <div className="w-full p-4 md:w-1/2 lg:w-1/4">
@@ -100,55 +106,42 @@ export default function ParticipantForm(props: Props) {
               </Form.Item>
             </div>
             <div className="w-full p-4 md:w-1/2 lg:w-1/4">
-              <Form.Item<FieldType> label="ระดับการชั้น" name="education" rules={[{ required: true }]}>
+              <Form.Item<FieldType> label="ระดับชั้น" name="education" rules={[{ required: true }]}>
                 <Select
                   options={[
-                    { title: 'ประกาศนียบัตรวิชาชีพ ปีที่ 1', value: 'ประกาศนียบัตรวิชาชีพ ปีที่ 1' },
-                    { title: 'ประกาศนียบัตรวิชาชีพ ปีที่ 2.', value: 'ประกาศนียบัตรวิชาชีพ ปีที่ 2' },
-                    { title: 'ประกาศนียบัตรวิชาชีพ ปีที่ 3', value: 'ประกาศนียบัตรวิชาชีพ ปีที่ 3' },
                     { title: 'มัธยมศึกษาปีที่ 4', value: 'มัธยมศึกษาปีที่ 4' },
                     { title: 'มัธยมศึกษาปีที่ 5', value: 'มัธยมศึกษาปีที่ 5' },
-                    { title: 'มัธยมศึกษาปีที่ 6', value: 'มัธยมศึกษาปีที่ 6' }
+                    { title: 'มัธยมศึกษาปีที่ 6', value: 'มัธยมศึกษาปีที่ 6' },
+                    { title: 'ประกาศนียบัตรวิชาชีพ ชั้นปีที่ 1', value: 'ประกาศนียบัตรวิชาชีพ ปีที่ 1' },
+                    { title: 'ประกาศนียบัตรวิชาชีพ ชั้นปีที่ 2', value: 'ประกาศนียบัตรวิชาชีพ ปีที่ 2' },
+                    { title: 'ประกาศนียบัตรวิชาชีพ ชั้นปีที่ 3', value: 'ประกาศนียบัตรวิชาชีพ ปีที่ 3' }
                   ]}
                   placeholder="ระดับชั้น"
                 />
               </Form.Item>
             </div>
             <div className="w-full p-4 lg:w-1/4">
-              <Form.Item<FieldType>
-                label="ประเภทอาหาร(เช่น มังสวิรัต ฮาลาล)"
-                name="foodPreference"
-                rules={[{ required: true }]}
-              >
-                <Input title="ประเภทอาหาร(เช่น มังสวิรัต ฮาลาล)" required={true} placeholder="มังสวิรัต" />
+              <Form.Item<FieldType> label="ประเภทอาหาร (เช่น มังสวิรัติ ฮาลาล)" name="foodPreference">
+                <Input title="ประเภทอาหาร (เช่น มังสวิรัติ ฮาลาล)" placeholder="มังสวิรัติ" />
               </Form.Item>
             </div>
             <div className="w-full p-4 lg:w-1/4">
-              <Form.Item<FieldType> label="อาหารที่แพ้" name="foodAllergy" rules={[{ required: true }]}>
-                <Input title="อาหารที่แพ้" required={true} placeholder="อาหารที่แพ้" />
+              <Form.Item<FieldType> label="อาหารที่แพ้" name="foodAllergy">
+                <Input title="อาหารที่แพ้" placeholder="อาหารที่แพ้" />
               </Form.Item>
             </div>
           </div>
           <div className="flex flex-col flex-wrap md:flex-row">
             <div className="w-full p-4">
-              <Form.Item<FieldType> label="ยาที่แพ้" name="drugAllergy" rules={[{ required: true }]}>
-                <Input title="ยาที่แพ้" required={true} placeholder="ยาที่แพ้" />
+              <Form.Item<FieldType> label="ยาที่แพ้" name="drugAllergy">
+                <Input title="ยาที่แพ้" placeholder="ยาที่แพ้" />
               </Form.Item>
             </div>
           </div>
           <div className="flex flex-col flex-wrap md:flex-row">
             <div className="w-full p-4">
-              <Form.Item<FieldType>
-                label="โรคประจำตัว และวิธีประฐมพยาบาลเบื้องต้น"
-                name="medicalCondition"
-                rules={[{ required: true }]}
-              >
-                <TextArea
-                  title="โรคประจำตัว และวิธีประฐมพยาบาลเบื้องต้น"
-                  required={true}
-                  placeholder="รายละเอียด..."
-                  rows={3}
-                />
+              <Form.Item<FieldType> label="โรคประจำตัวและวิธีปฐมพยาบาลเบื้องต้น" name="medicalCondition">
+                <TextArea title="โรคประจำตัวและวิธีปฐมพยาบาลเบื้องต้น" placeholder="รายละเอียด..." rows={3} />
               </Form.Item>
             </div>
           </div>
