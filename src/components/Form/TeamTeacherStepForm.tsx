@@ -9,6 +9,8 @@ import { customizeRequiredMark } from '../../lib/antdForm'
 interface Props {
   form: FormInstance
   setMembers: React.Dispatch<React.SetStateAction<number>>
+  teamName: string
+  setTeamName: React.Dispatch<React.SetStateAction<string>>
 }
 
 const TeamTeacherStepForm: React.FC<Props> = (props: Props) => {
@@ -27,7 +29,7 @@ const TeamTeacherStepForm: React.FC<Props> = (props: Props) => {
         scrollToFirstError
       >
         <div className="space-y-8">
-          <TeamForm setMembers={props.setMembers} />
+          <TeamForm setMembers={props.setMembers} teamName={props.teamName} setTeamName={props.setTeamName} />
           <TeacherForm />
           <TeacherContactsForm />
           <TeacherDocsForm

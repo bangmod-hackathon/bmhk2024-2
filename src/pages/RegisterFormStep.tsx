@@ -11,6 +11,7 @@ import { ITeamTeacherForm, IParticipant, IUser } from '../interfaces/user.interf
 const RegisterFormStep: React.FC = () => {
   const [page, setPage] = useState<number>(1)
   const [members, setMembers] = useState<number>(2)
+  const [teamName, setTeamName] = useState<string>('')
   const [stageStatus, setStageStatus] = useState<StageStatus[]>([])
   const topRef = useRef<HTMLDivElement>(null)
   const [transitionClass, setTransitionClass] = useState('')
@@ -24,6 +25,7 @@ const RegisterFormStep: React.FC = () => {
       const response = await axiosInstance.get('/api/auth/me')
       const data = response.data as IUser
       setMembers(data.member)
+      setTeamName(data.teamName)
       formTeamTeacherStepForm.setFieldsValue({
         ...(data as ITeamTeacherForm),
         member: data.member
@@ -331,7 +333,14 @@ const RegisterFormStep: React.FC = () => {
             <h1 className="text-text_color-100 font-heading text-[40px] font-normal text-center py-2">REGISTRATION</h1>
           </header>
           <div className={`pb-4 page-container ${transitionClass}`}>
-            {page === 1 && <TeamTeacherStepForm form={formTeamTeacherStepForm} setMembers={setMembers} />}
+            {page === 1 && (
+              <TeamTeacherStepForm
+                form={formTeamTeacherStepForm}
+                setMembers={setMembers}
+                teamName={teamName}
+                setTeamName={setTeamName}
+              />
+            )}
             {page === 2 && <ParticipantStepForm form={formParticipant1StepForm} nth={1} />}
             {page === 3 && <ParticipantStepForm form={formParticipant2StepForm} nth={2} />}
             {page === 4 && <ParticipantStepForm form={formParticipant3StepForm} nth={3} />}
