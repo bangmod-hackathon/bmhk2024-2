@@ -21,8 +21,8 @@ const Docs: React.FC = () => {
             </div>
             <ul className="w-full list-disc text-left text-sm font-light text-text_color-100 md:text-base lg:text-lg">
               <li className="w-full font-body leading-6 md:leading-7 text-pretty">
-                สำเนาบัตรประจำตัวประชาชน หรือหนังสือเดินทาง (กรณีชาวต่างชาติ) ของอาจารย์่ที่ปรึกษา เฉพาะด้านหน้า
-                พร้อมเซ็นสำเนาถูกต้อง
+                สำเนาบัตรประจำตัวประชาชน หรือหนังสือเดินทาง (กรณีชาวต่างชาติ) ของอาจารย์่ที่ปรึกษาพร้อมเซ็นสำเนาถูกต้อง
+                เฉพาะด้านหน้า
               </li>
               <li className="w-full font-body leading-6 md:leading-7 text-pretty">
                 เอกสาร หรือหนังสือยืนยันสถานภาพการเป็นอาจารย์ประจำสถานศึกษา (บัตรประจำตัวครูอาจารย์,
@@ -46,8 +46,8 @@ const Docs: React.FC = () => {
             <ul className=" w-full list-disc text-left text-sm text-pretty font-ibm font-light leading-6 md:leading-7 text-text_color-100 md:text-base lg:text-lg">
               <li className="m-auto w-full ">รูปถ่ายนักเรียนผู้เข้าแข่งขัน</li>
               <li className="m-auto w-full ">
-                สำเนาบัตรประจำตัวประชาชน หรือหนังสือเดินทาง (กรณีชาวต่างชาติ) ของผู้เข้าแข่งขัน เฉพาะด้านหน้า
-                พร้อมเซ็นสำเนาถูกต้อง
+                สำเนาบัตรประจำตัวประชาชน หรือหนังสือเดินทาง (กรณีชาวต่างชาติ) ของผู้เข้าแข่งขันพร้อมเซ็นสำเนาถูกต้อง
+                เฉพาะด้านหน้า
               </li>
               <li className="m-auto w-full ">ปพ.7 ของผู้เข้าแข่งขันฉบับจริง</li>
             </ul>
