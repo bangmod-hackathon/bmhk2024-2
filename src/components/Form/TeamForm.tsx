@@ -1,7 +1,5 @@
 import { Form, Typography } from 'antd'
-import { debounce } from 'lodash'
 import { ITeamTeacherForm } from '../../interfaces/user.interface'
-import { axiosInstance } from '../../utils/axios'
 import Input from './Input/Input'
 import Select from './Input/Select'
 
@@ -13,12 +11,6 @@ interface Props {
 
 export default function TeamForm(props: Props) {
   const { Text } = Typography
-
-  const checkUnique = debounce(() => {
-    axiosInstance.post('/api/user/check-team-unique', {
-      teamName: props.teamName
-    })
-  }, 1000)
 
   return (
     <>
@@ -42,7 +34,6 @@ export default function TeamForm(props: Props) {
                 placeholder="กรอกชื่อทีม"
                 onChange={(e) => {
                   props.setTeamName(e.target.value)
-                  checkUnique()
                 }}
               />
             </Form.Item>
