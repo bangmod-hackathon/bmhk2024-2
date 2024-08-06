@@ -27,6 +27,7 @@ const initialContextValue: IAuthContext = {
   advisorFoodAllergy: '',
   advisorFoodPreference: '',
   advisorDrugAllergy: '',
+  advisorChronicDisease: '',
   // ** ข้อมูลติดต่อ Contact อาจารย์ที่ปรึกษา
   advisorContactEmail: '',
   advisorContactPhone: '',

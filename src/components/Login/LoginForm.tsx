@@ -11,7 +11,8 @@ const LoginForm: React.FC = () => {
           <button
             className=" rounded-[30px] bg-primary_yellow-200 py-3 px-5 flex items-center gap-x-2 group hover:bg-primary_yellow-300 duration-300"
             onClick={() => {
-              window.location.href = import.meta.env.APP_BACKEND_URL ?? 'http://localhost:4000' + '/api/auth/google'
+              window.location.href =
+                (import.meta.env.VITE_APP_BACKEND_URL ?? 'http://localhost:4000') + '/api/auth/google'
             }}
           >
             <img src="LoginPage/Google_G_logo.svg" alt="" className="bg-white rounded-full p-[2px]" />

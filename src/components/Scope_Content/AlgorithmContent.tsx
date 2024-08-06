@@ -17,10 +17,10 @@ const AlgorithmContent: React.FC = (): JSX.Element => {
     <>
       <h1 className="mb-5 text-center text-2xl font-[550] text-primary_yellow-100">หมวดอัลกอริทึม</h1>
       <div className="custom-scroll max-h-[500px] w-auto self-stretch overflow-y-auto pl-[25px]">
-        <ol className="list-decimal">
+        <ul className=" ul">
           <li className={classNames.MainTopic}>พื้นฐานการวิเคราะห์ความซับซ้อนของอัลกอริทึม (algorithmic complexity)</li>
           <li className={classNames.MainTopic}>กลวิธีทางอัลกอริทึม</li>
-          <ul className={classNames.SubTopic}>
+          <ul className={classNames.SubTopic + ` ul`}>
             <li>Brute-Force algorithm</li>
             <li>Greedy algorithm</li>
             <li>การแบ่งแยกและเอาชนะ</li>
@@ -30,7 +30,7 @@ const AlgorithmContent: React.FC = (): JSX.Element => {
             <li>Dynamic programming</li>
           </ul>
           <li className={classNames.MainTopic}>อัลกอริทึมเชิงคำนวณพื้นฐาน</li>
-          <ul className={classNames.SubTopic}>
+          <ul className={classNames.SubTopic + ` ul`}>
             <li>
               อัลกอริทึมเชิงตัวเลขพื้นฐานที่เกี่ยวข้องกับจำนวนเต็ม เช่น Radix Conversion, Euclid&apos;s algorithm,
               Primality test in O(√N), Sieve of Eratosthenes, Factorization, Efficient exponentiation
@@ -50,7 +50,7 @@ const AlgorithmContent: React.FC = (): JSX.Element => {
             <li>Minimum spanning tree</li>
             <li>Topological sort</li>
           </ul>
-        </ol>
+        </ul>
       </div>
     </>
   )

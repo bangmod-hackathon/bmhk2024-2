@@ -1,6 +1,4 @@
-export interface IUser {
-  email: string
-
+export interface ITeamTeacherForm {
   // ** Form #ทีม-อาจารย์ที่ปรึกษา
   // ** ข้อมูลทีม
   teamName: string
@@ -18,13 +16,35 @@ export interface IUser {
   advisorFoodAllergy: string
   advisorFoodPreference: string
   advisorDrugAllergy: string
+  advisorChronicDisease: string
   // ** ข้อมูลติดต่อ Contact อาจารย์ที่ปรึกษา
   advisorContactEmail: string
   advisorContactPhone: string
   advisorContactLine: string
-  advisorDocumentIDCard: string
-  advisorDocumentEmploymentStatus: string
+}
+export interface IParticipant {
+  memberPrefixTH: string
+  memberPrefixEN: string
+  memberFirstnameTH: string
+  memberFirstnameEN: string
+  memberMiddlenameTH: string
+  memberMiddlenameEN: string
+  memberLastnameTH: string
+  memberLastnameEN: string
+  memberNickname: string
+  memberGradeLevel: string
+  memberFoodPreference: string
+  memberFoodAllergy: string
+  memberDrugAllergy: string
+  memberChronicDisease: string
+  memberContactEmail: string
+  memberContactPhone: string
+  memberContactLine: string
+  memberContactEmergencyPhone: string
+  memberContactEmergencyRelation: string
+}
 
+export interface IParticipant1 {
   // ** Form #สมาชิกคนที่ 1
   // ** รายละเอียดสมาชิกคนที่ 1
   member1PrefixTH: string
@@ -46,11 +66,9 @@ export interface IUser {
   member1ContactLine: string
   member1ContactEmergencyPhone: string
   member1ContactEmergencyRelation: string
-  // ** เอกสาร สมาชิกคนที่ 1
-  member1DocumentPhoto: string
-  member1DocumentIDCard: string
-  member1DocumentPorPor7: string
+}
 
+export interface IParticipant2 {
   // ** Form #สมาชิกคนที่ 2
   // ** รายละเอียดสมาชิกคนที่ 2
   member2PrefixTH: string
@@ -72,11 +90,26 @@ export interface IUser {
   member2ContactLine: string
   member2ContactEmergencyPhone: string
   member2ContactEmergencyRelation: string
+}
+
+export interface IDocs {
+  advisorDocumentIDCard: string
+  advisorDocumentEmploymentStatus: string
+  // ** เอกสาร สมาชิกคนที่ 1
+  member1DocumentPhoto: string
+  member1DocumentIDCard: string
+  member1DocumentPorPor7: string
   // ** เอกสาร สมาชิกคนที่ 2
   member2DocumentPhoto: string
   member2DocumentIDCard: string
   member2DocumentPorPor7: string
+  // ** เอกสาร สมาชิกคนที่ 3
+  member3DocumentPhoto?: string
+  member3DocumentIDCard?: string
+  member3DocumentPorPor7?: string
+}
 
+export interface IParticipant3 {
   // ** Form #สมาชิกคนที่ 3
   // ** รายละเอียดสมาชิกคนที่ 3
   member3PrefixTH?: string
@@ -102,7 +135,9 @@ export interface IUser {
   member3DocumentPhoto?: string
   member3DocumentIDCard?: string
   member3DocumentPorPor7?: string
-
+}
+export interface IUser extends ITeamTeacherForm, IParticipant1, IParticipant2, IParticipant3, IDocs {
+  email: string
   isSubmitted: boolean
   submittedAt?: Date
 }

@@ -3,7 +3,11 @@ import React, { useState } from 'react'
 import ButtonOutlined from '../Buttons/ButtonOutlined'
 import ButtonPrimary from '../Buttons/ButtonPrimary'
 
-const ConfirmModal: React.FC = (): JSX.Element => {
+interface Props {
+  onConfirm?: () => void
+}
+
+const ConfirmModal: React.FC<Props> = (props): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
@@ -29,14 +33,20 @@ const ConfirmModal: React.FC = (): JSX.Element => {
             <ButtonOutlined key="cancel" onClick={() => setIsModalOpen(false)}>
               ยกเลิก
             </ButtonOutlined>
-            <ButtonPrimary key="confirm" onClick={() => setIsModalOpen(false)}>
+            <ButtonPrimary
+              key="confirm"
+              onClick={() => {
+                props.onConfirm && props.onConfirm()
+                setIsModalOpen(false)
+              }}
+            >
               ยืนยัน
             </ButtonPrimary>
           </div>
         ]}
       >
         <div className="flex items-center justify-center">
-          <img src="/Confirm_icon/AiTwotoneCheckCircle.png" />
+          <img src="/Confirm_icon/AiTwotoneCheckCircle.png" alt="" />
         </div>
         <h1 className="mb-2 text-center text-2xl font-normal text-white">ยืนยันความถูกต้อง</h1>
         <p className="text-center font-body text-sm font-normal text-white">

@@ -21,10 +21,11 @@ const Docs: React.FC = () => {
             </div>
             <ul className="w-full list-disc text-left text-sm font-light text-text_color-100 md:text-base lg:text-lg">
               <li className="w-full font-body leading-6 md:leading-7 text-pretty">
-                บัตรประจำตัวประชาชนอาจารย์ที่ปรึกษา หรือ บัตรประจำตัวสำหรับบุคคลที่ไม่ได้ถือสัญชาติไทย (เฉพาะด้านหน้า)
+                สำเนาบัตรประจำตัวประชาชน หรือหนังสือเดินทาง (กรณีชาวต่างชาติ) ของอาจารย์่ที่ปรึกษาพร้อมเซ็นสำเนาถูกต้อง
+                เฉพาะด้านหน้า
               </li>
               <li className="w-full font-body leading-6 md:leading-7 text-pretty">
-                เอกสาร หรือ หนังสือยืนยันสถานภาพ การเป็นอาจารย์ประจำสถาบันการศึกษา (บัตรประจำตัวครูอาจารย์,
+                เอกสาร หรือหนังสือยืนยันสถานภาพการเป็นอาจารย์ประจำสถานศึกษา (บัตรประจำตัวครูอาจารย์,
                 บัตรข้าราชการครูและบุคลากรทางการศึกษา)
               </li>
             </ul>
@@ -42,12 +43,13 @@ const Docs: React.FC = () => {
             <div className="mb-5 mt-16 lg:mt-[4rem] w-full font-medium font-ibm text-2xl text-primary_yellow-300 max-2xl:mt-12 max-lg:mt-16 max-md:mt-16 max-sm:mt-12 md:text-3xl">
               นักเรียน
             </div>
-            <ul className="w-full list-disc text-left text-sm text-pretty font-ibm font-light leading-6 md:leading-7 text-text_color-100 md:text-base lg:text-lg">
+            <ul className=" w-full list-disc text-left text-sm text-pretty font-ibm font-light leading-6 md:leading-7 text-text_color-100 md:text-base lg:text-lg">
+              <li className="m-auto w-full ">รูปถ่ายนักเรียนผู้เข้าแข่งขัน</li>
               <li className="m-auto w-full ">
-                บัตรประจำตัวประชาชนผู้เข้าแข่งขัน หรือบัตรประจำตัวสำหรับบุคคลที่ไม่ได้ถือสัญชาติไทย (เฉพาะด้านหน้า)
+                สำเนาบัตรประจำตัวประชาชน หรือหนังสือเดินทาง (กรณีชาวต่างชาติ) ของผู้เข้าแข่งขันพร้อมเซ็นสำเนาถูกต้อง
+                เฉพาะด้านหน้า
               </li>
               <li className="m-auto w-full ">ปพ.7 ของผู้เข้าแข่งขันฉบับจริง</li>
-              <li className="m-auto w-full ">รูปถ่ายนักเรียนผู้เข้าแข่งขัน</li>
             </ul>
             <div className="absolute inset-0 -z-10 rotate-6 scale-105 rounded-3xl bg-secondary_blue-100/50"></div>
             <div className="absolute inset-0 -z-10 scale-105 rounded-3xl bg-primary-200 "></div>

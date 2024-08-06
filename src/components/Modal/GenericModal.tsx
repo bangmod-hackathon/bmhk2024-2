@@ -2,6 +2,7 @@ import { Modal as AntModal } from 'antd'
 import React, { useState } from 'react'
 import ButtonOutlined from '../Buttons/ButtonOutlined'
 import ButtonPrimary from '../Buttons/ButtonPrimary'
+import { HiX } from 'react-icons/hi'
 
 interface GenericModalProps {
   content: React.ReactNode
@@ -27,12 +28,12 @@ const GenericModal: React.FC<GenericModalProps> = ({ content }): JSX.Element => 
         closable={false}
         footer={[
           <ButtonPrimary key="confirm" onClick={() => setIsModalOpen(false)}>
-            ยืนยัน
+            ปิด
           </ButtonPrimary>
         ]}
       >
-        <button onClick={() => setIsModalOpen(false)} className="absolute right-4 top-4 text-lg text-white">
-          <img src="/diamon_img/Angle-double.png" />
+        <button onClick={() => setIsModalOpen(false)} className="absolute right-4 top-4 text-2xl text-white">
+          <HiX />
         </button>
         {content}
       </AntModal>
