@@ -45,11 +45,11 @@ export default function TeamForm(props: Props) {
               rules={[
                 {
                   required: true,
-                  message: 'กรุณากรอกชื่อโรงเรียน'
+                  message: 'กรุณากรอกชื่อสถานศึกษา'
                 }
               ]}
             >
-              <Input placeholder="กรอกชื่อโรงเรียน" />
+              <Input placeholder="กรอกชื่อสถานศึกษา" />
             </Form.Item>
           </div>
         </div>

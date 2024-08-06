@@ -23,7 +23,10 @@ export default function ParticipantForm(props: Props) {
               <Form.Item<IParticipant> label="คำนำหน้า" name="memberPrefixTH" rules={[{ required: true }]}>
                 <Select
                   options={[
+                    { title: 'เด็กชาย', value: 'เด็กชาย' },
+                    { title: 'เด็กหญิง', value: 'เด็กหญิง' },
                     { title: 'นาย', value: 'นาย' },
+                    { title: 'นาง', value: 'นาง' },
                     { title: 'นางสาว', value: 'นางสาว' }
                   ]}
                   placeholder="คำนำหน้า"
@@ -51,7 +54,10 @@ export default function ParticipantForm(props: Props) {
               <Form.Item<IParticipant> label="Prefix" name="memberPrefixEN" rules={[{ required: true }]}>
                 <Select
                   options={[
+                    { title: 'Master', value: 'Master' },
+                    { title: 'Miss', value: 'Miss' },
                     { title: 'Mr.', value: 'Mr.' },
+                    { title: 'Mrs.', value: 'Mrs.' },
                     { title: 'Ms.', value: 'Ms.' }
                   ]}
                   placeholder="Prefix"
@@ -84,12 +90,12 @@ export default function ParticipantForm(props: Props) {
               <Form.Item<IParticipant> label="ระดับการชั้น" name="memberGradeLevel" rules={[{ required: true }]}>
                 <Select
                   options={[
-                    { title: 'ประกาศนียบัตรวิชาชีพ ปีที่ 1', value: 'ประกาศนียบัตรวิชาชีพ ปีที่ 1' },
-                    { title: 'ประกาศนียบัตรวิชาชีพ ปีที่ 2.', value: 'ประกาศนียบัตรวิชาชีพ ปีที่ 2' },
-                    { title: 'ประกาศนียบัตรวิชาชีพ ปีที่ 3', value: 'ประกาศนียบัตรวิชาชีพ ปีที่ 3' },
                     { title: 'มัธยมศึกษาปีที่ 4', value: 'มัธยมศึกษาปีที่ 4' },
                     { title: 'มัธยมศึกษาปีที่ 5', value: 'มัธยมศึกษาปีที่ 5' },
-                    { title: 'มัธยมศึกษาปีที่ 6', value: 'มัธยมศึกษาปีที่ 6' }
+                    { title: 'มัธยมศึกษาปีที่ 6', value: 'มัธยมศึกษาปีที่ 6' },
+                    { title: 'ประกาศนียบัตรวิชาชีพ ชั้นปีที่ 1', value: 'ประกาศนียบัตรวิชาชีพ ปีที่ 1' },
+                    { title: 'ประกาศนียบัตรวิชาชีพ ชั้นปีที่ 2', value: 'ประกาศนียบัตรวิชาชีพ ปีที่ 2' },
+                    { title: 'ประกาศนียบัตรวิชาชีพ ชั้นปีที่ 3', value: 'ประกาศนียบัตรวิชาชีพ ปีที่ 3' }
                   ]}
                   placeholder="ระดับชั้น"
                 />

@@ -20,6 +20,7 @@ const TeacherForm: React.FC = () => {
               <Select
                 options={[
                   { title: 'นาย', value: 'นาย' },
+                  { title: 'นาง', value: 'นาง' },
                   { title: 'นางสาว', value: 'นางสาว' }
                 ]}
                 placeholder="คำนำหน้า"
@@ -56,6 +57,7 @@ const TeacherForm: React.FC = () => {
               <Select
                 options={[
                   { title: 'Mr.', value: 'Mr.' },
+                  { title: 'Mrs.', value: 'Mrs.' },
                   { title: 'Ms.', value: 'Ms.' }
                 ]}
                 placeholder="Prefix"

@@ -21,7 +21,7 @@ const TeacherDocsForm: React.FC<Props> = (prop) => {
         <div className="rounded-t-md bg-primary-200 p-3">
           <Text className="font-normal text-text_color-100 text-lg">เอกสาร</Text>
         </div>
-        <div className="rounded-b-md bg-[#0C384E] bg-opacity-50 p-4 space-y-[30px]">
+        <div className="rounded-b-md bg-[#0C384E] bg-opacity-50 py-4 pl-8 pr-4 space-y-[30px]">
           <Upload
             title="1. สำเนาบัตรประชาชนอาจารย์ที่ปรึกษาพร้อมเซ็นสำเนาถูกต้องหรือบัตรประจำตัวคนที่ไม่ได้ถือสัญชาติไทยเฉพาะด้านหน้า"
             description="อัปโหลดเอกสารไม่เกิน 10 MB ( PDF เท่านั้น )"

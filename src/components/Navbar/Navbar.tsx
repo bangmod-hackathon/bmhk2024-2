@@ -34,7 +34,7 @@ const Navbar = () => {
       link: 'rewards'
     },
     {
-      label: 'ไทม์ไลน์',
+      label: 'กำหนดการ',
       link: 'timeline'
     },
     {
@@ -267,7 +267,7 @@ const Navbar = () => {
   useEffect(() => {
     const component = navbarOnLocationList[location.pathname] || navLandingPage()
     setCurrentComponent(component)
-  }, [location.pathname])
+  }, [location.pathname, menuOpen])
 
   return <>{currentComponent}</>
 }

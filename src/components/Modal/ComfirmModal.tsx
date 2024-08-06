@@ -46,7 +46,7 @@ const ConfirmModal: React.FC<Props> = (props): JSX.Element => {
         ]}
       >
         <div className="flex items-center justify-center">
-          <img src="/Confirm_icon/AiTwotoneCheckCircle.png" />
+          <img src="/Confirm_icon/AiTwotoneCheckCircle.png" alt="" />
         </div>
         <h1 className="mb-2 text-center text-2xl font-normal text-white">ยืนยันความถูกต้อง</h1>
         <p className="text-center font-body text-sm font-normal text-white">

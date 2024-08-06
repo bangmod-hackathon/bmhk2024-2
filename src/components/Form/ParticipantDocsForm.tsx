@@ -16,7 +16,7 @@ const ParticipantDocsForm: React.FC = () => {
         <div className="rounded-b-md bg-[#0C384E] bg-opacity-50 p-4 space-y-[30px]">
           <Upload
             title="1. รูปถ่ายนักเรียนขนาด 1.5 นิ้ว"
-            description="อัปโหลดเอกสารไม่เกิน 10 MB ( JPEG/PNG เท่านั้น )"
+            description="อัปโหลดเอกสารไม่เกิน 10 MB (JPEG/PNG เท่านั้น)"
             file={file}
             setFile={setFile}
             required
@@ -30,8 +30,8 @@ const ParticipantDocsForm: React.FC = () => {
             </p>
           </Upload>
           <Upload
-            title="2. สำเนาบัตรประชาชนผู้เข้าแข่งขันพร้อมเซ็นสำเนาถูกต้อง  หรือบัตรประจำตัวคนซึ่งไม่ได้ถือสัญชาติไทย เฉพาะด้านหน้า"
-            description="อัปโหลดเอกสารไม่เกิน 10 MB ( PDF เท่านั้น )"
+            title="2. สำเนาบัตรประจำตัวประชาชน หรือหนังสือเดินทาง (กรณีชาวต่างชาติ) ของผู้เข้าแข่งขันพร้อมเซ็นสำเนาถูกต้อง เฉพาะด้านหน้า"
+            description="อัปโหลดเอกสารไม่เกิน 10 MB (PDF เท่านั้น)"
             file={file}
             setFile={setFile}
             required
@@ -45,7 +45,7 @@ const ParticipantDocsForm: React.FC = () => {
           </Upload>
           <Upload
             title="3. ปพ.7 ฉบับจริงของผู้เข้าแข่งขัน"
-            description="อัปโหลดเอกสารไม่เกิน 10 MB ( PDF เท่านั้น )"
+            description="อัปโหลดเอกสารไม่เกิน 10 MB (PDF เท่านั้น)"
             file={file}
             setFile={setFile}
             required

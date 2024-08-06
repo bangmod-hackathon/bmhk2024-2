@@ -130,7 +130,7 @@ const Hero: React.FC = () => {
             <div className="m-0 flex w-full flex-col items-center gap-[22px] xl:h-[504px] xl:w-[756px] xl:px-[21.141px] xl:pb-[30px] xl:pt-[80px]">
               <div className="flex w-full items-center justify-center lg:h-[96px] lg:w-[333] xl:h-[58px] xl:w-[714]">
                 <h1 className="font-heading tracking-wide text-center text-[40px] text-white sm:text-[40px] lg:text-[40px] xl:text-[48px]">
-                  Now - 31 August 2024
+                  Now-31 August 2024
                 </h1>
               </div>
               <div className="flex w-full flex-col items-center text-center font-ibm font-normal text-text_color-100 lg:text-[16px] xl:h-full xl:w-[714] xl:text-[24px]">
@@ -141,10 +141,9 @@ const Hero: React.FC = () => {
               </div>
               <div className="flex w-full flex-col items-center text-center font-body text-[14px] font-normal text-text_color-100 xl:w-[714] xl:text-[18px]">
                 <p className="lg:w-[400px] xl:w-[420px]">
-                  เป็นโครงการที่เปิดโอกาสให้นักเรียนระดับชั้นมัธยมศึกษา ตอนต้น และ ตอนปลาย
-                  รวมถึงนักศึกษาอาชีวศึกษาในระดับ ปวช. หรือเทียบเท่า ได้เข้ามาแข่งขันการเขียน โปรแกรม โดยใช้ภาษาซี
-                  ซึ่งจะเป็นการแข่งขันในรูปแบบทีม ทำให้ผู้เข้าแข่งขันได้รับทั้งประสบการณ์ใหม่ ๆ ในการเขียนโปรแกรม
-                  และฝึกการทำงานร่วมกันเป็นทีม
+                  เป็นโครงการที่เปิดโอกาสให้นักเรียนระดับชั้นมัธยมศึกษาตอนปลาย รวมถึงนักศึกษาอาชีวศึกษาในระดับ ปวช.
+                  หรือเทียบเท่า ได้เข้ามาแข่งขันการเขียนโปรแกรมโดยใช้ภาษาซี ซึ่งจะเป็นการแข่งขันในรูปแบบทีม
+                  ทำให้ผู้เข้าแข่งขันได้รับทั้งประสบการณ์ใหม่ ๆ ในการเขียนโปรแกรม และฝึกการทำงานร่วมกันเป็นทีม
                 </p>
               </div>
               <Link to="/login">
