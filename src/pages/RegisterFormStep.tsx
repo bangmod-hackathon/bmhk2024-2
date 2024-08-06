@@ -152,6 +152,7 @@ const RegisterFormStep: React.FC = () => {
   const handlePrevious = () => {
     setPage(page === 1 ? 1 : page - 1)
   }
+
   const handleNext = async () => {
     try {
       if (page === 1) {
@@ -319,6 +320,14 @@ const RegisterFormStep: React.FC = () => {
     }
   }
 
+  const handleSubmit = async () => {
+    try {
+      await axiosInstance.post('/api/user/submit')
+    } catch (error) {
+      return error
+    }
+  }
+
   return (
     <React.Fragment>
       <div
@@ -347,6 +356,7 @@ const RegisterFormStep: React.FC = () => {
             <PageChanger
               handlePrevious={handlePrevious}
               handleNext={handleNext}
+              handleSubmit={handleSubmit}
               page={page}
               setPage={setPage}
               pageMaxSize={members + 1}

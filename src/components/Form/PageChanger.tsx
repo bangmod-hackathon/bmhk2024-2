@@ -6,6 +6,7 @@ interface Props {
   setPage: React.Dispatch<React.SetStateAction<number>>
   handlePrevious: () => void
   handleNext: () => void
+  handleSubmit: () => void
 }
 const PageChanger = (props: Props) => {
   return (
@@ -17,7 +18,7 @@ const PageChanger = (props: Props) => {
         ย้อนกลับ
       </button>
       {props.page === props.pageMaxSize ? (
-        <ConfirmModal />
+        <ConfirmModal onConfirm={props.handleSubmit} />
       ) : (
         <button
           className="text-bg-200 bg-secondary_blue-100 border font-normal text-lg py-4 px-8 rounded-[8px]"
