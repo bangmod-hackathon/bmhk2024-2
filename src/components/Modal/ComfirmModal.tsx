@@ -3,7 +3,11 @@ import React, { useState } from 'react'
 import ButtonOutlined from '../Buttons/ButtonOutlined'
 import ButtonPrimary from '../Buttons/ButtonPrimary'
 
-const ConfirmModal: React.FC = (): JSX.Element => {
+interface Props {
+  onConfirm?: () => void
+}
+
+const ConfirmModal: React.FC<Props> = (props): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
@@ -29,7 +33,13 @@ const ConfirmModal: React.FC = (): JSX.Element => {
             <ButtonOutlined key="cancel" onClick={() => setIsModalOpen(false)}>
               ยกเลิก
             </ButtonOutlined>
-            <ButtonPrimary key="confirm" onClick={() => setIsModalOpen(false)}>
+            <ButtonPrimary
+              key="confirm"
+              onClick={() => {
+                props.onConfirm && props.onConfirm()
+                setIsModalOpen(false)
+              }}
+            >
               ยืนยัน
             </ButtonPrimary>
           </div>

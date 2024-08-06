@@ -1,17 +1,14 @@
-import React, { useState } from 'react'
 import { Typography } from 'antd'
-import { customizeRequiredMark } from '../../lib/antdForm'
-import { Form } from 'antd'
-import Upload from './Upload'
+import React, { useState } from 'react'
 import { IoAddSharp } from 'react-icons/io5'
+import Upload from './Upload'
 
 const ParticipantDocsForm: React.FC = () => {
   const { Text } = Typography
-  const [form] = Form.useForm()
   const [file, setFile] = useState<File | undefined>(undefined)
 
   return (
-    <Form form={form} layout="vertical" requiredMark={customizeRequiredMark} scrollToFirstError>
+    <>
       <div>
         <div className="rounded-t-md bg-primary-200 p-3">
           <Text className="font-normal text-text_color-100 text-lg">เอกสาร</Text>
@@ -62,7 +59,7 @@ const ParticipantDocsForm: React.FC = () => {
           </Upload>
         </div>
       </div>
-    </Form>
+    </>
   )
 }
 

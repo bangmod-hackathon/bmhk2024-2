@@ -1,25 +1,26 @@
 import { Form, Typography } from 'antd'
+import { ITeamTeacherForm } from '../../interfaces/user.interface'
 import Input from './Input/Input'
 import Select from './Input/Select'
-import { customizeRequiredMark } from '../../lib/antdForm'
 
 interface Props {
   setMembers: React.Dispatch<React.SetStateAction<number>>
+  teamName: string
+  setTeamName: React.Dispatch<React.SetStateAction<string>>
 }
 
 export default function TeamForm(props: Props) {
   const { Text } = Typography
-  const [form] = Form.useForm()
 
   return (
-    <Form form={form} layout="vertical" requiredMark={customizeRequiredMark} scrollToFirstError>
+    <>
       <div className="rounded-t-md bg-primary-200 p-3">
         <Text className="font-normal text-text_color-100 text-lg">ข้อมูลทีม</Text>
       </div>
       <div className="rounded-b-md bg-[#0C384E] bg-opacity-50">
         <div className="flex flex-col py-4 md:flex-row gap-y-2">
           <div className="w-full px-4">
-            <Form.Item
+            <Form.Item<ITeamTeacherForm>
               label="ชื่ิอทีม"
               name={'teamName'}
               rules={[
@@ -29,12 +30,17 @@ export default function TeamForm(props: Props) {
                 }
               ]}
             >
-              <Input placeholder="กรอกชื่อทีม" />
+              <Input
+                placeholder="กรอกชื่อทีม"
+                onChange={(e) => {
+                  props.setTeamName(e.target.value)
+                }}
+              />
             </Form.Item>
           </div>
           <div className="w-full px-4">
-            <Form.Item
-              label="ชื่อสถานศึกษา"
+            <Form.Item<ITeamTeacherForm>
+              label="ชื่อโรงเรียน"
               name={'school'}
               rules={[
                 {
@@ -49,9 +55,9 @@ export default function TeamForm(props: Props) {
         </div>
         <div className="flex flex-col md:flex-row">
           <div className="w-full px-4">
-            <Form.Item
+            <Form.Item<ITeamTeacherForm>
               label="คำคมประจำทีม"
-              name={'qoute'}
+              name={'quote'}
               rules={[
                 {
                   required: true,
@@ -63,7 +69,7 @@ export default function TeamForm(props: Props) {
             </Form.Item>
           </div>
           <div className="w-full px-4">
-            <Form.Item
+            <Form.Item<ITeamTeacherForm>
               label="จำนวนสมาชิก"
               name={'member'}
               rules={[
@@ -87,6 +93,6 @@ export default function TeamForm(props: Props) {
           </div>
         </div>
       </div>
-    </Form>
+    </>
   )
 }

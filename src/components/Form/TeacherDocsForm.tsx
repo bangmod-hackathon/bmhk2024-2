@@ -1,14 +1,19 @@
-import React, { useState } from 'react'
-import { Typography } from 'antd'
-import { customizeRequiredMark } from '../../lib/antdForm'
-import { Form } from 'antd'
-import Upload from './Upload'
+import { Form, Typography } from 'antd'
+import React from 'react'
 import { IoAddSharp } from 'react-icons/io5'
+import { customizeRequiredMark } from '../../lib/antdForm'
+import Upload from './Upload'
 
-const TeacherDocsForm: React.FC = () => {
+interface Props {
+  fileIDCard: File | undefined
+  setFileIDCard: React.Dispatch<React.SetStateAction<File | undefined>>
+  fileTeacherCert: File | undefined
+  setFileTeacherCert: React.Dispatch<React.SetStateAction<File | undefined>>
+}
+
+const TeacherDocsForm: React.FC<Props> = (prop) => {
   const { Text } = Typography
   const [form] = Form.useForm()
-  const [file, setFile] = useState<File | undefined>(undefined)
 
   return (
     <Form form={form} layout="vertical" requiredMark={customizeRequiredMark} scrollToFirstError>
@@ -18,10 +23,10 @@ const TeacherDocsForm: React.FC = () => {
         </div>
         <div className="rounded-b-md bg-[#0C384E] bg-opacity-50 py-4 pl-8 pr-4 space-y-[30px]">
           <Upload
-            title="1. สำเนาบัตรประจำตัวประชาชน หรือหนังสือเดินทาง (กรณีชาวต่างชาติ) ของอาจารย์่ที่ปรึกษาพร้อมเซ็นสำเนาถูกต้อง เฉพาะด้านหน้า"
-            description="อัปโหลดเอกสารไม่เกิน 10 MB (PDF เท่านั้น)"
-            file={file}
-            setFile={setFile}
+            title="1. สำเนาบัตรประชาชนอาจารย์ที่ปรึกษาพร้อมเซ็นสำเนาถูกต้องหรือบัตรประจำตัวคนที่ไม่ได้ถือสัญชาติไทยเฉพาะด้านหน้า"
+            description="อัปโหลดเอกสารไม่เกิน 10 MB ( PDF เท่านั้น )"
+            file={prop.fileIDCard}
+            setFile={prop.setFileIDCard}
             required
           >
             <p className="flex flex-row gap-x-2">
@@ -32,10 +37,10 @@ const TeacherDocsForm: React.FC = () => {
             </p>
           </Upload>
           <Upload
-            title="2. เอกสาร หรือหนังสือยืนยันสถานภาพการเป็นอาจารย์ประจำสถานศึกษา (บัตรประจำตัวครูอาจารย์, บัตรข้าราชการครูและบุคลากรทางการศึกษา)"
-            description="อัปโหลดเอกสารไม่เกิน 10 MB (PDF เท่านั้น)"
-            file={file}
-            setFile={setFile}
+            title="2. เอกสารหรือหนังสือยืนยันสถานภาพการเป็นอาจารย์ประจำ สถาบันการศึกษา (บัตรประจำตัวครูอาจารย์, บัตรข้าราชการครูและบุคลากรทางการศึกษา)"
+            description="อัปโหลดเอกสารไม่เกิน 10 MB ( PDF เท่านั้น )"
+            file={prop.fileTeacherCert}
+            setFile={prop.setFileTeacherCert}
             required
           >
             <p className="flex flex-row gap-x-2">
