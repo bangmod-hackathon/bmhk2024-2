@@ -2,11 +2,11 @@ import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { CgProfile } from 'react-icons/cg'
 import { HiOutlineMenu, HiX } from 'react-icons/hi'
-import ButtonPrimary from '../Buttons/ButtonPrimary'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import Scroll from 'react-scroll'
 import { UseAuth } from '../../contexts/AuthContext'
 import { axiosInstance } from '../../utils/axios'
+import ButtonPrimary from '../Buttons/ButtonPrimary'
 
 interface ImenuList {
   label: string
@@ -14,7 +14,6 @@ interface ImenuList {
 }
 
 const Navbar = () => {
-  const navigation = useNavigate()
   const Auth = UseAuth()
   const [menuOpen, setMenuOpen] = useState(false)
   const [onSelect, setOnSelect] = useState(-1)
