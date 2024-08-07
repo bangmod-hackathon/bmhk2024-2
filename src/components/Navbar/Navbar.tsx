@@ -3,9 +3,10 @@ import { useEffect, useState } from 'react'
 import { CgProfile } from 'react-icons/cg'
 import { HiOutlineMenu, HiX } from 'react-icons/hi'
 import ButtonPrimary from '../Buttons/ButtonPrimary'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Scroll from 'react-scroll'
 import { UseAuth } from '../../contexts/AuthContext'
+import { axiosInstance } from '../../utils/axios'
 
 interface ImenuList {
   label: string
@@ -13,6 +14,7 @@ interface ImenuList {
 }
 
 const Navbar = () => {
+  const navigation = useNavigate()
   const Auth = UseAuth()
   const [menuOpen, setMenuOpen] = useState(false)
   const [onSelect, setOnSelect] = useState(-1)
@@ -130,7 +132,15 @@ const Navbar = () => {
               )} */}
               <div className="hidden items-center space-x-4 lg:flex">
                 {Auth?.isAuthenticated ? (
-                  <ButtonPrimary>ออกจากระบบ</ButtonPrimary>
+                  <ButtonPrimary
+                    onClick={() => {
+                      axiosInstance.get('/api/auth/logout').then(() => {
+                        window.location.reload()
+                      })
+                    }}
+                  >
+                    ออกจากระบบ
+                  </ButtonPrimary>
                 ) : (
                   <Link to="/login">
                     <ButtonPrimary>ลงทะเบียน</ButtonPrimary>
@@ -221,7 +231,15 @@ const Navbar = () => {
                   </div>
                   <p className=" text-lg text-white">{Auth?.user.email}</p> {/* Add email */}
                 </div>
-                <ButtonPrimary>ออกจากระบบ</ButtonPrimary>
+                <ButtonPrimary
+                  onClick={() => {
+                    axiosInstance.get('/api/auth/logout').then(() => {
+                      window.location.reload()
+                    })
+                  }}
+                >
+                  ออกจากระบบ
+                </ButtonPrimary>
               </div>
             </div>
           </motion.div>

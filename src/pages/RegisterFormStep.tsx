@@ -1,14 +1,17 @@
 import { Form } from 'antd'
+import { isAxiosError } from 'axios'
 import { debounce } from 'lodash'
 import React, { useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router'
 import PageChanger from '../components/Form/PageChanger'
 import ParticipantStepForm from '../components/Form/ParticipantStepForm'
 import TeamTeacherStepForm from '../components/Form/TeamTeacherStepForm'
 import Stage, { StageStatus } from '../components/Steps/Stage'
+import { IParticipant, ITeamTeacherForm, IUser } from '../interfaces/user.interface'
 import { axiosInstance } from '../utils/axios'
-import { ITeamTeacherForm, IParticipant, IUser } from '../interfaces/user.interface'
 
 const RegisterFormStep: React.FC = () => {
+  const navigate = useNavigate()
   const [page, setPage] = useState<number>(1)
   const [members, setMembers] = useState<number>(2)
   const [teamName, setTeamName] = useState<string>('')
@@ -22,92 +25,100 @@ const RegisterFormStep: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axiosInstance.get('/api/auth/me')
-      const data = response.data as IUser
-      setMembers(data.member)
-      setTeamName(data.teamName)
-      formTeamTeacherStepForm.setFieldsValue({
-        ...(data as ITeamTeacherForm),
-        member: data.member
-      })
+      try {
+        const response = await axiosInstance.get('/api/auth/me')
+        const data = response.data as IUser
+        setMembers(data.member)
+        setTeamName(data.teamName)
+        formTeamTeacherStepForm.setFieldsValue({
+          ...(data as ITeamTeacherForm),
+          member: data.member
+        })
 
-      formParticipant1StepForm.setFieldsValue({
-        memberPrefixTH: data.member1PrefixTH,
-        memberPrefixEN: data.member1PrefixEN,
-        memberFirstnameTH: data.member1FirstnameTH,
-        memberFirstnameEN: data.member1FirstnameEN,
-        memberMiddlenameTH: data.member1MiddlenameTH,
-        memberMiddlenameEN: data.member1MiddlenameEN,
-        memberLastnameTH: data.member1LastnameTH,
-        memberLastnameEN: data.member1LastnameEN,
-        memberNickname: data.member1Nickname,
-        memberGradeLevel: data.member1GradeLevel,
-        memberFoodPreference: data.member1FoodPreference,
-        memberFoodAllergy: data.member1FoodAllergy,
-        memberDrugAllergy: data.member1DrugAllergy,
-        memberChronicDisease: data.member1ChronicDisease,
-        memberContactEmail: data.member1ContactEmail,
-        memberContactPhone: data.member1ContactPhone,
-        memberContactLine: data.member1ContactLine,
-        memberContactEmergencyPhone: data.member1ContactEmergencyPhone,
-        memberContactEmergencyRelation: data.member1ContactEmergencyRelation
-        // Docs
-        // memberDocumentPhoto: values.member1DocumentPhoto,
-        // memberDocumentIDCard: values.member1DocumentIDCard,
-        // memberDocumentPorPor7: values.member1DocumentPorPor7
-      })
+        formParticipant1StepForm.setFieldsValue({
+          memberPrefixTH: data.member1PrefixTH,
+          memberPrefixEN: data.member1PrefixEN,
+          memberFirstnameTH: data.member1FirstnameTH,
+          memberFirstnameEN: data.member1FirstnameEN,
+          memberMiddlenameTH: data.member1MiddlenameTH,
+          memberMiddlenameEN: data.member1MiddlenameEN,
+          memberLastnameTH: data.member1LastnameTH,
+          memberLastnameEN: data.member1LastnameEN,
+          memberNickname: data.member1Nickname,
+          memberGradeLevel: data.member1GradeLevel,
+          memberFoodPreference: data.member1FoodPreference,
+          memberFoodAllergy: data.member1FoodAllergy,
+          memberDrugAllergy: data.member1DrugAllergy,
+          memberChronicDisease: data.member1ChronicDisease,
+          memberContactEmail: data.member1ContactEmail,
+          memberContactPhone: data.member1ContactPhone,
+          memberContactLine: data.member1ContactLine,
+          memberContactEmergencyPhone: data.member1ContactEmergencyPhone,
+          memberContactEmergencyRelation: data.member1ContactEmergencyRelation
+          // Docs
+          // memberDocumentPhoto: values.member1DocumentPhoto,
+          // memberDocumentIDCard: values.member1DocumentIDCard,
+          // memberDocumentPorPor7: values.member1DocumentPorPor7
+        })
 
-      formParticipant2StepForm.setFieldsValue({
-        memberPrefixTH: data.member2PrefixTH,
-        memberPrefixEN: data.member2PrefixEN,
-        memberFirstnameTH: data.member2FirstnameTH,
-        memberFirstnameEN: data.member2FirstnameEN,
-        memberMiddlenameTH: data.member2MiddlenameTH,
-        memberMiddlenameEN: data.member2MiddlenameEN,
-        memberLastnameTH: data.member2LastnameTH,
-        memberLastnameEN: data.member2LastnameEN,
-        memberNickname: data.member2Nickname,
-        memberGradeLevel: data.member2GradeLevel,
-        memberFoodPreference: data.member2FoodPreference,
-        memberFoodAllergy: data.member2FoodAllergy,
-        memberDrugAllergy: data.member2DrugAllergy,
-        memberChronicDisease: data.member2ChronicDisease,
-        memberContactEmail: data.member2ContactEmail,
-        memberContactPhone: data.member2ContactPhone,
-        memberContactLine: data.member2ContactLine,
-        memberContactEmergencyPhone: data.member2ContactEmergencyPhone,
-        memberContactEmergencyRelation: data.member2ContactEmergencyRelation
-        // Docs
-        // memberDocumentPhoto: values.member1DocumentPhoto,
-        // memberDocumentIDCard: values.member1DocumentIDCard,
-        // memberDocumentPorPor7: values.member1DocumentPorPor7
-      })
+        formParticipant2StepForm.setFieldsValue({
+          memberPrefixTH: data.member2PrefixTH,
+          memberPrefixEN: data.member2PrefixEN,
+          memberFirstnameTH: data.member2FirstnameTH,
+          memberFirstnameEN: data.member2FirstnameEN,
+          memberMiddlenameTH: data.member2MiddlenameTH,
+          memberMiddlenameEN: data.member2MiddlenameEN,
+          memberLastnameTH: data.member2LastnameTH,
+          memberLastnameEN: data.member2LastnameEN,
+          memberNickname: data.member2Nickname,
+          memberGradeLevel: data.member2GradeLevel,
+          memberFoodPreference: data.member2FoodPreference,
+          memberFoodAllergy: data.member2FoodAllergy,
+          memberDrugAllergy: data.member2DrugAllergy,
+          memberChronicDisease: data.member2ChronicDisease,
+          memberContactEmail: data.member2ContactEmail,
+          memberContactPhone: data.member2ContactPhone,
+          memberContactLine: data.member2ContactLine,
+          memberContactEmergencyPhone: data.member2ContactEmergencyPhone,
+          memberContactEmergencyRelation: data.member2ContactEmergencyRelation
+          // Docs
+          // memberDocumentPhoto: values.member1DocumentPhoto,
+          // memberDocumentIDCard: values.member1DocumentIDCard,
+          // memberDocumentPorPor7: values.member1DocumentPorPor7
+        })
 
-      formParticipant3StepForm.setFieldsValue({
-        memberPrefixTH: data.member3PrefixTH,
-        memberPrefixEN: data.member3PrefixEN,
-        memberFirstnameTH: data.member3FirstnameTH,
-        memberFirstnameEN: data.member3FirstnameEN,
-        memberMiddlenameTH: data.member3MiddlenameTH,
-        memberMiddlenameEN: data.member3MiddlenameEN,
-        memberLastnameTH: data.member3LastnameTH,
-        memberLastnameEN: data.member3LastnameEN,
-        memberNickname: data.member3Nickname,
-        memberGradeLevel: data.member3GradeLevel,
-        memberFoodPreference: data.member3FoodPreference,
-        memberFoodAllergy: data.member3FoodAllergy,
-        memberDrugAllergy: data.member3DrugAllergy,
-        memberChronicDisease: data.member3ChronicDisease,
-        memberContactEmail: data.member3ContactEmail,
-        memberContactPhone: data.member3ContactPhone,
-        memberContactLine: data.member3ContactLine,
-        memberContactEmergencyPhone: data.member3ContactEmergencyPhone,
-        memberContactEmergencyRelation: data.member3ContactEmergencyRelation
-        // Docs
-        // memberDocumentPhoto: values.member3DocumentPhoto,
-        // memberDocumentIDCard: values.member3DocumentIDCard,
-        // memberDocumentPorPor7: values.member3DocumentPorPor7
-      })
+        formParticipant3StepForm.setFieldsValue({
+          memberPrefixTH: data.member3PrefixTH,
+          memberPrefixEN: data.member3PrefixEN,
+          memberFirstnameTH: data.member3FirstnameTH,
+          memberFirstnameEN: data.member3FirstnameEN,
+          memberMiddlenameTH: data.member3MiddlenameTH,
+          memberMiddlenameEN: data.member3MiddlenameEN,
+          memberLastnameTH: data.member3LastnameTH,
+          memberLastnameEN: data.member3LastnameEN,
+          memberNickname: data.member3Nickname,
+          memberGradeLevel: data.member3GradeLevel,
+          memberFoodPreference: data.member3FoodPreference,
+          memberFoodAllergy: data.member3FoodAllergy,
+          memberDrugAllergy: data.member3DrugAllergy,
+          memberChronicDisease: data.member3ChronicDisease,
+          memberContactEmail: data.member3ContactEmail,
+          memberContactPhone: data.member3ContactPhone,
+          memberContactLine: data.member3ContactLine,
+          memberContactEmergencyPhone: data.member3ContactEmergencyPhone,
+          memberContactEmergencyRelation: data.member3ContactEmergencyRelation
+          // Docs
+          // memberDocumentPhoto: values.member3DocumentPhoto,
+          // memberDocumentIDCard: values.member3DocumentIDCard,
+          // memberDocumentPorPor7: values.member3DocumentPorPor7
+        })
+      } catch (error) {
+        if (isAxiosError(error)) {
+          if (error.response?.status === 401) {
+            navigate('/')
+          }
+        }
+      }
     }
     fetchData()
   }, [])

@@ -1,5 +1,6 @@
 import { Checkbox, ConfigProvider } from 'antd'
 import LoremIpsum from 'react-lorem-ipsum'
+import { Link } from 'react-router-dom'
 
 const ConsentForm = () => {
   return (
@@ -25,9 +26,12 @@ const ConsentForm = () => {
               </ConfigProvider>
             </div>
             <div className=" w-full">
-              <button className=" w-full bg-primary_yellow-100 font-body rounded-md py-2 text-primary-200 hover:bg-primary_yellow-300 hover:text-primary-300 duration-200">
+              <Link
+                to="/register"
+                className=" w-full bg-primary_yellow-100 font-body rounded-md py-2 text-primary-200 hover:bg-primary_yellow-300 hover:text-primary-300 duration-200"
+              >
                 ยืนยัน
-              </button>
+              </Link>
             </div>
           </div>
         </div>
