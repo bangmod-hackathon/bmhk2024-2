@@ -56,7 +56,7 @@ export default function ParticipantContactsForm() {
                   { pattern: /^[0-9]{10}$/, message: 'กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง' }
                 ]}
               >
-                <Input title="เบอร์โทรติดต่อฉุกเฉิน" required={true} placeholder="0812345678" />
+                <Input title="เบอร์โทรติดต่อฉุกเฉิน" maxLength={10} required={true} placeholder="0812345678" />
               </Form.Item>
             </div>
             <div className="w-full p-4 md:w-1/2">

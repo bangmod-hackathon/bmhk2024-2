@@ -4,6 +4,7 @@ import ButtonOutlined from '../Buttons/ButtonOutlined'
 import ButtonPrimary from '../Buttons/ButtonPrimary'
 
 interface Props {
+  onSubmit: () => Promise<boolean>
   onConfirm?: () => void
 }
 
@@ -14,7 +15,9 @@ const ConfirmModal: React.FC<Props> = (props): JSX.Element => {
     <>
       <button
         className="text-bg-200 bg-secondary_blue-100 border font-normal text-lg py-4 px-8 rounded-[8px]"
-        onClick={() => setIsModalOpen(true)}
+        onClick={async () => {
+          if (await props.onSubmit()) setIsModalOpen(true)
+        }}
       >
         ยืนยัน
       </button>

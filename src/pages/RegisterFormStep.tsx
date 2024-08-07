@@ -1,4 +1,5 @@
-import { Form } from 'antd'
+import { Form, message } from 'antd'
+import { NamePath } from 'antd/es/form/interface'
 import { isAxiosError } from 'axios'
 import { debounce } from 'lodash'
 import React, { useEffect, useRef, useState } from 'react'
@@ -9,6 +10,7 @@ import TeamTeacherStepForm from '../components/Form/TeamTeacherStepForm'
 import Stage, { StageStatus } from '../components/Steps/Stage'
 import { IParticipant, ITeamTeacherForm, IUser } from '../interfaces/user.interface'
 import { axiosInstance } from '../utils/axios'
+import { UploadFile } from '../utils/uploadFile'
 
 const RegisterFormStep: React.FC = () => {
   const navigate = useNavigate()
@@ -16,6 +18,7 @@ const RegisterFormStep: React.FC = () => {
   const [members, setMembers] = useState<number>(2)
   const [teamName, setTeamName] = useState<string>('')
   const [stageStatus, setStageStatus] = useState<StageStatus[]>([])
+  const [loading, setLoading] = useState<boolean>(false)
   const topRef = useRef<HTMLDivElement>(null)
   const [transitionClass, setTransitionClass] = useState('')
   const [formTeamTeacherStepForm] = Form.useForm<ITeamTeacherForm>()
@@ -23,19 +26,109 @@ const RegisterFormStep: React.FC = () => {
   const [formParticipant2StepForm] = Form.useForm<IParticipant>()
   const [formParticipant3StepForm] = Form.useForm<IParticipant>()
 
+  // formTeamTeacherStepForm
+  const [fileIDCardUrl, setFileIDCardUrl] = useState<string>('')
+  const [fileIDCard, setFileIDCard] = useState<File | undefined>(undefined)
+  const [isLatestIdcard, setIsLatestIdcard] = useState<boolean>(false)
+
+  const [fileTeacherCertURL, setFileTeacherCertUrl] = useState<string>('')
+  const [fileTeacherCert, setFileTeacherCert] = useState<File | undefined>(undefined)
+  const [isLatestTeacherCert, setIsLatestTeacherCert] = useState<boolean>(false)
+
+  // 1st participant file
+  const [fileParticipant1PhotoURL, setFileParticipant1PhotoURL] = useState<string>('')
+  const [fileParticipant1Photo, setFileParticipant1Photo] = useState<File | undefined>(undefined)
+  const [isLatestParticipantfile1Photo, setIsLatestParticipantfile1Photo] = useState<boolean>(false)
+
+  const [fileParticipant1IDcardURL, setFileParticipant1IDcardURL] = useState<string>('')
+  const [fileParticipant1IDcard, setFileParticipant1IDcard] = useState<File | undefined>(undefined)
+  const [isLatestParticipantfile1IDcard, setIsLatestParticipantfile1IDcard] = useState<boolean>(false)
+
+  const [fileParticipant1PorPor7URL, setFileParticipant1PorPor7URL] = useState<string>('')
+  const [fileParticipant1PorPor7, setFileParticipant1PorPor7] = useState<File | undefined>(undefined)
+  const [isLatestParticipantfile1PorPor7, setIsLatestParticipantfile1PorPor7] = useState<boolean>(false)
+
+  // 2nd participant file
+  const [fileParticipant2PhotoURL, setFileParticipant2PhotoURL] = useState<string>('')
+  const [fileParticipant2Photo, setFileParticipant2Photo] = useState<File | undefined>(undefined)
+  const [isLatestParticipantfile2Photo, setIsLatestParticipantfile2Photo] = useState<boolean>(false)
+
+  const [fileParticipant2IDcardURL, setFileParticipant2IDcardURL] = useState<string>('')
+  const [fileParticipant2IDcard, setFileParticipant2IDcard] = useState<File | undefined>(undefined)
+  const [isLatestParticipantfile2IDcard, setIsLatestParticipantfile2IDcard] = useState<boolean>(false)
+
+  const [fileParticipant2PorPor7URL, setFileParticipant2PorPor7URL] = useState<string>('')
+  const [fileParticipant2PorPor7, setFileParticipant2PorPor7] = useState<File | undefined>(undefined)
+  const [isLatestParticipantfile2PorPor7, setIsLatestParticipantfile2PorPor7] = useState<boolean>(false)
+
+  // 3rd participant file
+  const [fileParticipant3PhotoURL, setFileParticipant3PhotoURL] = useState<string>('')
+  const [fileParticipant3Photo, setFileParticipant3Photo] = useState<File | undefined>(undefined)
+  const [isLatestParticipantfile3Photo, setIsLatestParticipantfile3Photo] = useState<boolean>(false)
+
+  const [fileParticipant3IDcardURL, setFileParticipant3IDcardURL] = useState<string>('')
+  const [fileParticipant3IDcard, setFileParticipant3IDcard] = useState<File | undefined>(undefined)
+  const [isLatestParticipantfile3IDcard, setIsLatestParticipantfile3IDcard] = useState<boolean>(false)
+
+  const [fileParticipant3PorPor7URL, setFileParticipant3PorPor7URL] = useState<string>('')
+  const [fileParticipant3PorPor7, setFileParticipant3PorPor7] = useState<File | undefined>(undefined)
+  const [isLatestParticipantfile3PorPor7, setIsLatestParticipantfile3PorPor7] = useState<boolean>(false)
+
+  // formParticipant1StepForm
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axiosInstance.get('/api/auth/me')
         const data = response.data as IUser
+        if (data.isSubmitted) {
+          return navigate('/')
+        }
         if (data.consent === false) {
           return navigate('/consent')
         }
+
+        // formTeamTeacherStepForm
+        setFileIDCardUrl(data.advisorDocumentIDCard)
+        setIsLatestIdcard(data.advisorDocumentIDCard !== '')
+
+        setFileTeacherCertUrl(data.advisorDocumentEmploymentStatus)
+        setIsLatestTeacherCert(data.advisorDocumentEmploymentStatus !== '')
+
+        // formParticipant1StepForm
+        setFileParticipant1PhotoURL(data.member1DocumentPhoto)
+        setIsLatestParticipantfile1Photo(data.member1DocumentPhoto !== '')
+
+        setFileParticipant1IDcardURL(data.member1DocumentIDCard)
+        setIsLatestParticipantfile1IDcard(data.member1DocumentIDCard !== '')
+
+        setFileParticipant1PorPor7URL(data.member1DocumentPorPor7)
+        setIsLatestParticipantfile1PorPor7(data.member1DocumentPorPor7 !== '')
+
+        // formParticipant2StepForm
+        setFileParticipant2PhotoURL(data.member2DocumentPhoto)
+        setIsLatestParticipantfile2Photo(data.member2DocumentPhoto !== '')
+
+        setFileParticipant2IDcardURL(data.member2DocumentIDCard)
+        setIsLatestParticipantfile2IDcard(data.member2DocumentIDCard !== '')
+
+        setFileParticipant2PorPor7URL(data.member2DocumentPorPor7)
+        setIsLatestParticipantfile2PorPor7(data.member2DocumentPorPor7 !== '')
+
+        // formParticipant3StepForm
+        setFileParticipant3PhotoURL(data.member3DocumentPhoto || '')
+        setIsLatestParticipantfile3Photo(data.member3DocumentPhoto !== '')
+
+        setFileParticipant3IDcardURL(data.member3DocumentIDCard || '')
+        setIsLatestParticipantfile3IDcard(data.member3DocumentIDCard !== '')
+
+        setFileParticipant3PorPor7URL(data.member3DocumentPorPor7 || '')
+        setIsLatestParticipantfile3PorPor7(data.member3DocumentPorPor7 !== '')
+
         setMembers(data.member)
         setTeamName(data.teamName)
         formTeamTeacherStepForm.setFieldsValue({
-          ...(data as ITeamTeacherForm),
-          member: data.member
+          ...(data as ITeamTeacherForm)
         })
 
         formParticipant1StepForm.setFieldsValue({
@@ -58,10 +151,6 @@ const RegisterFormStep: React.FC = () => {
           memberContactLine: data.member1ContactLine,
           memberContactEmergencyPhone: data.member1ContactEmergencyPhone,
           memberContactEmergencyRelation: data.member1ContactEmergencyRelation
-          // Docs
-          // memberDocumentPhoto: values.member1DocumentPhoto,
-          // memberDocumentIDCard: values.member1DocumentIDCard,
-          // memberDocumentPorPor7: values.member1DocumentPorPor7
         })
 
         formParticipant2StepForm.setFieldsValue({
@@ -84,10 +173,6 @@ const RegisterFormStep: React.FC = () => {
           memberContactLine: data.member2ContactLine,
           memberContactEmergencyPhone: data.member2ContactEmergencyPhone,
           memberContactEmergencyRelation: data.member2ContactEmergencyRelation
-          // Docs
-          // memberDocumentPhoto: values.member1DocumentPhoto,
-          // memberDocumentIDCard: values.member1DocumentIDCard,
-          // memberDocumentPorPor7: values.member1DocumentPorPor7
         })
 
         formParticipant3StepForm.setFieldsValue({
@@ -108,12 +193,7 @@ const RegisterFormStep: React.FC = () => {
           memberContactEmail: data.member3ContactEmail,
           memberContactPhone: data.member3ContactPhone,
           memberContactLine: data.member3ContactLine,
-          memberContactEmergencyPhone: data.member3ContactEmergencyPhone,
-          memberContactEmergencyRelation: data.member3ContactEmergencyRelation
-          // Docs
-          // memberDocumentPhoto: values.member3DocumentPhoto,
-          // memberDocumentIDCard: values.member3DocumentIDCard,
-          // memberDocumentPorPor7: values.member3DocumentPorPor7
+          memberContactEmergencyPhone: data.member3ContactEmergencyPhone
         })
       } catch (error) {
         if (isAxiosError(error)) {
@@ -169,20 +249,28 @@ const RegisterFormStep: React.FC = () => {
 
   const handleNext = async () => {
     try {
+      setLoading(true)
       if (page === 1) {
         try {
           await formTeamTeacherStepForm.validateFields()
         } catch {
-          formTeamTeacherStepForm.scrollToField(formTeamTeacherStepForm.getFieldsError()[0].name[0], {
+          let FieldsError: NamePath
+          for (const Fields of formTeamTeacherStepForm.getFieldsError()) {
+            if (Fields.errors.length > 0) {
+              FieldsError = Fields.name[0]
+              break
+            }
+          }
+
+          formTeamTeacherStepForm.scrollToField(FieldsError, {
             behavior: 'smooth'
           })
           throw new Error('error')
         }
-        await formTeamTeacherStepForm.validateFields()
-        // Validate File
 
+        const advisorDocumentIDCard = await UploadFile('advisorDocumentIDCard', fileIDCard!)
+        const advisorDocumentEmploymentStatus = await UploadFile('advisorDocumentEmploymentStatus', fileTeacherCert!)
         const values = await formTeamTeacherStepForm.getFieldsValue()
-        // Uploadfile
 
         // Patch Team Teacher
         await axiosInstance.patch('/api/user', {
@@ -204,9 +292,9 @@ const RegisterFormStep: React.FC = () => {
           advisorChronicDisease: values.advisorChronicDisease,
           advisorContactEmail: values.advisorContactEmail,
           advisorContactPhone: values.advisorContactPhone,
-          advisorContactLine: values.advisorContactLine
-          // advisorDocumentIDCard: values.advisorDocumentIDCard,
-          // advisorDocumentEmploymentStatus: values.advisorDocumentEmploymentStatus
+          advisorContactLine: values.advisorContactLine,
+          advisorDocumentIDCard: advisorDocumentIDCard,
+          advisorDocumentEmploymentStatus: advisorDocumentEmploymentStatus
         })
 
         // console.log(response)
@@ -214,15 +302,24 @@ const RegisterFormStep: React.FC = () => {
         try {
           await formParticipant1StepForm.validateFields()
         } catch {
-          formParticipant1StepForm.scrollToField(formParticipant1StepForm.getFieldsError()[0].name[0], {
+          let FieldsError: NamePath
+          for (const Fields of formParticipant1StepForm.getFieldsError()) {
+            if (Fields.errors.length > 0) {
+              FieldsError = Fields.name[0]
+              break
+            }
+          }
+
+          formParticipant1StepForm.scrollToField(FieldsError, {
             behavior: 'smooth'
           })
           throw new Error('error')
         }
-        // Validate File
-
-        const values = await formParticipant1StepForm.getFieldsValue()
         // Uploadfile
+        const memberDocumentPhoto = await UploadFile('memberDocumentPhoto', fileParticipant1Photo!)
+        const memberDocumentIDCard = await UploadFile('memberDocumentIDCard', fileParticipant1IDcard!)
+        const memberDocumentPorPor7 = await UploadFile('memberDocumentPorPor7', fileParticipant1PorPor7!)
+        const values = await formParticipant1StepForm.getFieldsValue()
 
         // Patch member 1
         await axiosInstance.patch('/api/user', {
@@ -244,23 +341,33 @@ const RegisterFormStep: React.FC = () => {
           member1ContactPhone: values.memberContactPhone,
           member1ContactLine: values.memberContactLine,
           member1ContactEmergencyPhone: values.memberContactEmergencyPhone,
-          member1ContactEmergencyRelation: values.memberContactEmergencyRelation
-          // Docs
-          // member1DocumentPhoto: values.memberDocumentPhoto,
-          // member1DocumentIDCard: values.memberDocumentIDCard,
-          // member1DocumentPorPor7: values.memberDocumentPorPor7
+          member1ContactEmergencyRelation: values.memberContactEmergencyRelation,
+          member1DocumentPhoto: memberDocumentPhoto,
+          member1DocumentIDCard: memberDocumentIDCard,
+          member1DocumentPorPor7: memberDocumentPorPor7
         })
       } else if (page === 3) {
         try {
           await formParticipant2StepForm.validateFields()
         } catch {
-          formParticipant2StepForm.scrollToField(formParticipant2StepForm.getFieldsError()[0].name[0], {
+          let FieldsError: NamePath
+          for (const Fields of formParticipant2StepForm.getFieldsError()) {
+            if (Fields.errors.length > 0) {
+              FieldsError = Fields.name[0]
+              break
+            }
+          }
+
+          formParticipant2StepForm.scrollToField(FieldsError, {
             behavior: 'smooth'
           })
           throw new Error('error')
         }
-        const values = await formParticipant2StepForm.getFieldsValue()
         // Uploadfile
+        const memberDocumentPhoto = await UploadFile('memberDocumentPhoto', fileParticipant2Photo!)
+        const memberDocumentIDCard = await UploadFile('memberDocumentIDCard', fileParticipant2IDcard!)
+        const memberDocumentPorPor7 = await UploadFile('memberDocumentPorPor7', fileParticipant2PorPor7!)
+        const values = await formParticipant2StepForm.getFieldsValue()
 
         // Patch member 2
         await axiosInstance.patch('/api/user', {
@@ -282,23 +389,33 @@ const RegisterFormStep: React.FC = () => {
           member2ContactPhone: values.memberContactPhone,
           member2ContactLine: values.memberContactLine,
           member2ContactEmergencyPhone: values.memberContactEmergencyPhone,
-          member2ContactEmergencyRelation: values.memberContactEmergencyRelation
-          // Docs
-          // member1DocumentPhoto: values.memberDocumentPhoto,
-          // member1DocumentIDCard: values.memberDocumentIDCard,
-          // member1DocumentPorPor7: values.memberDocumentPorPor7
+          member2ContactEmergencyRelation: values.memberContactEmergencyRelation,
+          member2DocumentPhoto: memberDocumentPhoto,
+          member2DocumentIDCard: memberDocumentIDCard,
+          member2DocumentPorPor7: memberDocumentPorPor7
         })
       } else if (page === 4 && members === 3) {
         try {
           await formParticipant3StepForm.validateFields()
         } catch {
-          formParticipant3StepForm.scrollToField(formParticipant3StepForm.getFieldsError()[0].name[0], {
+          let FieldsError: NamePath
+          for (const Fields of formParticipant3StepForm.getFieldsError()) {
+            if (Fields.errors.length > 0) {
+              FieldsError = Fields.name[0]
+              break
+            }
+          }
+
+          formParticipant3StepForm.scrollToField(FieldsError, {
             behavior: 'smooth'
           })
           throw new Error('error')
         }
-        const values = await formParticipant3StepForm.getFieldsValue()
         // Uploadfile
+        const memberDocumentPhoto = await UploadFile('memberDocumentPhoto', fileParticipant3Photo!)
+        const memberDocumentIDCard = await UploadFile('memberDocumentIDCard', fileParticipant3IDcard!)
+        const memberDocumentPorPor7 = await UploadFile('memberDocumentPorPor7', fileParticipant3PorPor7!)
+        const values = await formParticipant3StepForm.getFieldsValue()
 
         // Patch member 3
         await axiosInstance.patch('/api/user', {
@@ -320,23 +437,133 @@ const RegisterFormStep: React.FC = () => {
           member3ContactPhone: values.memberContactPhone,
           member3ContactLine: values.memberContactLine,
           member3ContactEmergencyPhone: values.memberContactEmergencyPhone,
-          member3ContactEmergencyRelation: values.memberContactEmergencyRelation
-          // Docs
-          // member3DocumentPhoto: values.memberDocumentPhoto,
-          // member3DocumentIDCard: values.memberDocumentIDCard,
-          // member3DocumentPorPor7: values.memberDocumentPorPor7
+          member3ContactEmergencyRelation: values.memberContactEmergencyRelation,
+          member3DocumentPhoto: memberDocumentPhoto,
+          member3DocumentIDCard: memberDocumentIDCard,
+          member3DocumentPorPor7: memberDocumentPorPor7
         })
       }
 
       setPage(page === members + 1 ? members + 1 : page + 1)
+      setLoading(false)
     } catch (error) {
+      setLoading(false)
       return error
+    }
+  }
+
+  const handleLastPage = async () => {
+    try {
+      if (page === 3) {
+        try {
+          await formParticipant2StepForm.validateFields()
+        } catch {
+          let FieldsError: NamePath
+          for (const Fields of formParticipant2StepForm.getFieldsError()) {
+            if (Fields.errors.length > 0) {
+              FieldsError = Fields.name[0]
+              break
+            }
+          }
+          formParticipant2StepForm.scrollToField(FieldsError, {
+            behavior: 'smooth'
+          })
+          throw new Error('error')
+        }
+        // Uploadfile
+        const memberDocumentPhoto = await UploadFile('memberDocumentPhoto', fileParticipant2Photo!)
+        const memberDocumentIDCard = await UploadFile('memberDocumentIDCard', fileParticipant2IDcard!)
+        const memberDocumentPorPor7 = await UploadFile('memberDocumentPorPor7', fileParticipant2PorPor7!)
+        const values = await formParticipant2StepForm.getFieldsValue()
+
+        // Patch member 2
+        await axiosInstance.patch('/api/user', {
+          member2PrefixTH: values.memberPrefixTH,
+          member2PrefixEN: values.memberPrefixEN,
+          member2FirstnameTH: values.memberFirstnameTH,
+          member2FirstnameEN: values.memberFirstnameEN,
+          member2MiddlenameTH: values.memberMiddlenameTH,
+          member2MiddlenameEN: values.memberMiddlenameEN,
+          member2LastnameTH: values.memberLastnameTH,
+          member2LastnameEN: values.memberLastnameEN,
+          member2Nickname: values.memberNickname,
+          member2FoodPreference: values.memberFoodPreference,
+          member2GradeLevel: values.memberGradeLevel,
+          member2FoodAllergy: values.memberFoodAllergy,
+          member2DrugAllergy: values.memberDrugAllergy,
+          member2ChronicDisease: values.memberChronicDisease,
+          member2ContactEmail: values.memberContactEmail,
+          member2ContactPhone: values.memberContactPhone,
+          member2ContactLine: values.memberContactLine,
+          member2ContactEmergencyPhone: values.memberContactEmergencyPhone,
+          member2ContactEmergencyRelation: values.memberContactEmergencyRelation,
+          member2DocumentPhoto: memberDocumentPhoto,
+          member2DocumentIDCard: memberDocumentIDCard,
+          member2DocumentPorPor7: memberDocumentPorPor7
+        })
+      } else if (page === 4 && members === 3) {
+        try {
+          await formParticipant3StepForm.validateFields()
+        } catch {
+          let FieldsError: NamePath
+          for (const Fields of formParticipant3StepForm.getFieldsError()) {
+            if (Fields.errors.length > 0) {
+              FieldsError = Fields.name[0]
+              break
+            }
+          }
+
+          formParticipant3StepForm.scrollToField(FieldsError, {
+            behavior: 'smooth'
+          })
+          throw new Error('error')
+        }
+        // Uploadfile
+        const memberDocumentPhoto = await UploadFile('memberDocumentPhoto', fileParticipant3Photo!)
+        const memberDocumentIDCard = await UploadFile('memberDocumentIDCard', fileParticipant3IDcard!)
+        const memberDocumentPorPor7 = await UploadFile('memberDocumentPorPor7', fileParticipant3PorPor7!)
+        const values = await formParticipant3StepForm.getFieldsValue()
+
+        // Patch member 3
+        await axiosInstance.patch('/api/user', {
+          member3PrefixTH: values.memberPrefixTH,
+          member3PrefixEN: values.memberPrefixEN,
+          member3FirstnameTH: values.memberFirstnameTH,
+          member3FirstnameEN: values.memberFirstnameEN,
+          member3MiddlenameTH: values.memberMiddlenameTH,
+          member3MiddlenameEN: values.memberMiddlenameEN,
+          member3LastnameTH: values.memberLastnameTH,
+          member3LastnameEN: values.memberLastnameEN,
+          member3Nickname: values.memberNickname,
+          member3GradeLevel: values.memberGradeLevel,
+          member3FoodPreference: values.memberFoodPreference,
+          member3FoodAllergy: values.memberFoodAllergy,
+          member3DrugAllergy: values.memberDrugAllergy,
+          member3ChronicDisease: values.memberChronicDisease,
+          member3ContactEmail: values.memberContactEmail,
+          member3ContactPhone: values.memberContactPhone,
+          member3ContactLine: values.memberContactLine,
+          member3ContactEmergencyPhone: values.memberContactEmergencyPhone,
+          member3ContactEmergencyRelation: values.memberContactEmergencyRelation,
+          member3DocumentPhoto: memberDocumentPhoto,
+          member3DocumentIDCard: memberDocumentIDCard,
+          member3DocumentPorPor7: memberDocumentPorPor7
+        })
+      }
+      return true
+    } catch (error) {
+      return false
     }
   }
 
   const handleSubmit = async () => {
     try {
       await axiosInstance.post('/api/user/submit')
+      message.open({
+        type: 'success',
+        content: 'ลงทะเบียนสำเร็จ'
+      })
+      navigate('/')
     } catch (error) {
       return error
     }
@@ -359,21 +586,93 @@ const RegisterFormStep: React.FC = () => {
             {page === 1 && (
               <TeamTeacherStepForm
                 form={formTeamTeacherStepForm}
-                setMembers={setMembers}
                 teamName={teamName}
                 setTeamName={setTeamName}
+                setMembers={setMembers}
+                fileIDCard={fileIDCard}
+                fileIdCardURL={fileIDCardUrl}
+                setFileIDCard={setFileIDCard}
+                fileTeacherCert={fileTeacherCert}
+                setFileTeacherCert={setFileTeacherCert}
+                setIsLatestIdcard={setIsLatestIdcard}
+                isLatestIdcard={isLatestIdcard}
+                fileTeacherCertURL={fileTeacherCertURL}
+                isLatestTeacherCert={isLatestTeacherCert}
+                setIsLatestTeacherCert={setIsLatestTeacherCert}
               />
             )}
-            {page === 2 && <ParticipantStepForm form={formParticipant1StepForm} nth={1} />}
-            {page === 3 && <ParticipantStepForm form={formParticipant2StepForm} nth={2} />}
-            {page === 4 && <ParticipantStepForm form={formParticipant3StepForm} nth={3} />}
+            {page === 2 && (
+              <ParticipantStepForm
+                form={formParticipant1StepForm}
+                nth={1}
+                fileParticipantPhotoURL={fileParticipant1PhotoURL}
+                fileParticipantPhoto={fileParticipant1Photo}
+                setFileParticipantPhoto={setFileParticipant1Photo}
+                isLatestParticipantPhoto={isLatestParticipantfile1Photo}
+                setIsLatestParticipantPhoto={setIsLatestParticipantfile1Photo}
+                fileParticipantIDCardURL={fileParticipant1IDcardURL}
+                fileParticipantIDCard={fileParticipant1IDcard}
+                setFileParticipantIDCard={setFileParticipant1IDcard}
+                isLatestParticipantIDCard={isLatestParticipantfile1IDcard}
+                setIsLatestParticipantIDCard={setIsLatestParticipantfile1IDcard}
+                fileParticipantPorPor7URL={fileParticipant1PorPor7URL}
+                fileParticipantPorPor7={fileParticipant1PorPor7}
+                setFileParticipantPorPor7={setFileParticipant1PorPor7}
+                isLatestParticipantPorPor7={isLatestParticipantfile1PorPor7}
+                setIsLatestParticipantPorPor7={setIsLatestParticipantfile1PorPor7}
+              />
+            )}
+            {page === 3 && (
+              <ParticipantStepForm
+                form={formParticipant2StepForm}
+                nth={2}
+                fileParticipantPhotoURL={fileParticipant2PhotoURL}
+                fileParticipantPhoto={fileParticipant2Photo}
+                setFileParticipantPhoto={setFileParticipant2Photo}
+                isLatestParticipantPhoto={isLatestParticipantfile2Photo}
+                setIsLatestParticipantPhoto={setIsLatestParticipantfile2Photo}
+                fileParticipantIDCardURL={fileParticipant2IDcardURL}
+                fileParticipantIDCard={fileParticipant2IDcard}
+                setFileParticipantIDCard={setFileParticipant2IDcard}
+                isLatestParticipantIDCard={isLatestParticipantfile2IDcard}
+                setIsLatestParticipantIDCard={setIsLatestParticipantfile2IDcard}
+                fileParticipantPorPor7URL={fileParticipant2PorPor7URL}
+                fileParticipantPorPor7={fileParticipant2PorPor7}
+                setFileParticipantPorPor7={setFileParticipant2PorPor7}
+                isLatestParticipantPorPor7={isLatestParticipantfile2PorPor7}
+                setIsLatestParticipantPorPor7={setIsLatestParticipantfile2PorPor7}
+              />
+            )}
+            {page === 4 && (
+              <ParticipantStepForm
+                form={formParticipant3StepForm}
+                nth={3}
+                fileParticipantPhotoURL={fileParticipant3PhotoURL}
+                fileParticipantPhoto={fileParticipant3Photo}
+                setFileParticipantPhoto={setFileParticipant3Photo}
+                isLatestParticipantPhoto={isLatestParticipantfile3Photo}
+                setIsLatestParticipantPhoto={setIsLatestParticipantfile3Photo}
+                fileParticipantIDCardURL={fileParticipant3IDcardURL}
+                fileParticipantIDCard={fileParticipant3IDcard}
+                setFileParticipantIDCard={setFileParticipant3IDcard}
+                isLatestParticipantIDCard={isLatestParticipantfile3IDcard}
+                setIsLatestParticipantIDCard={setIsLatestParticipantfile3IDcard}
+                fileParticipantPorPor7URL={fileParticipant3PorPor7URL}
+                fileParticipantPorPor7={fileParticipant3PorPor7}
+                setFileParticipantPorPor7={setFileParticipant3PorPor7}
+                isLatestParticipantPorPor7={isLatestParticipantfile3PorPor7}
+                setIsLatestParticipantPorPor7={setIsLatestParticipantfile3PorPor7}
+              />
+            )}
             <PageChanger
               handlePrevious={handlePrevious}
               handleNext={handleNext}
+              handleLastPage={handleLastPage}
               handleSubmit={handleSubmit}
               page={page}
               setPage={setPage}
               pageMaxSize={members + 1}
+              loading={loading}
             />
           </div>
         </div>

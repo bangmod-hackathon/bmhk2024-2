@@ -2,6 +2,7 @@ import { Form, Typography } from 'antd'
 import { ITeamTeacherForm } from '../../interfaces/user.interface'
 import Input from './Input/Input'
 import Select from './Input/Select'
+import { axiosInstance } from '../../utils/axios'
 
 interface Props {
   setMembers: React.Dispatch<React.SetStateAction<number>>
@@ -27,6 +28,20 @@ export default function TeamForm(props: Props) {
                 {
                   required: true,
                   message: 'กรุณากรอกชื่อทีม'
+                },
+                {
+                  async validator(_, value) {
+                    const isUnique = (
+                      await axiosInstance.post('/api/user/check-team-unique', {
+                        teamName: value
+                      })
+                    ).data
+                    if (isUnique) {
+                      return Promise.resolve()
+                    } else {
+                      return Promise.reject(new Error('ชื่อทีมถูกใช้ไปแล้ว'))
+                    }
+                  }
                 }
               ]}
             >

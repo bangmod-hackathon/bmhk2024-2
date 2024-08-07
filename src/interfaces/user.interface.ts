@@ -95,6 +95,8 @@ export interface IParticipant2 {
 export interface IDocs {
   advisorDocumentIDCard: string
   advisorDocumentEmploymentStatus: string
+  advisorDocumentIDCard: string
+  advisorDocumentEmploymentStatus: string
   // ** เอกสาร สมาชิกคนที่ 1
   member1DocumentPhoto: string
   member1DocumentIDCard: string

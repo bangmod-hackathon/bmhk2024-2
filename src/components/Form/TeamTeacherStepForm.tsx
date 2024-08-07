@@ -1,21 +1,46 @@
 import { Form, FormInstance } from 'antd'
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
+import { customizeRequiredMark } from '../../lib/antdForm'
 import TeacherContactsForm from './TeacherContactsForm'
 import TeacherDocsForm from './TeacherDocsForm'
 import TeacherForm from './TeacherForm'
 import TeamForm from './TeamForm'
-import { customizeRequiredMark } from '../../lib/antdForm'
+import { ref } from 'firebase/storage'
+import { storage } from '../../utils/firebase'
 
 interface Props {
   form: FormInstance
-  setMembers: React.Dispatch<React.SetStateAction<number>>
   teamName: string
   setTeamName: React.Dispatch<React.SetStateAction<string>>
+  setMembers: React.Dispatch<React.SetStateAction<number>>
+  fileIDCard: File | undefined
+  setFileIDCard: React.Dispatch<React.SetStateAction<File | undefined>>
+  fileTeacherCert: File | undefined
+  setFileTeacherCert: React.Dispatch<React.SetStateAction<File | undefined>>
+  fileIdCardURL: string
+  isLatestIdcard: boolean
+  setIsLatestIdcard: React.Dispatch<React.SetStateAction<boolean>>
+  fileTeacherCertURL: string
+  isLatestTeacherCert: boolean
+  setIsLatestTeacherCert: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const TeamTeacherStepForm: React.FC<Props> = (props: Props) => {
-  const [fileIDCard, setFileIDCard] = useState<File | undefined>(undefined)
-  const [fileTeacherCert, setFileTeacherCert] = useState<File | undefined>(undefined)
+  const getFileName = (url: string) => {
+    return new File([], ref(storage, url).name)
+  }
+
+  useEffect(() => {
+    if (props.fileIdCardURL) {
+      props.setFileIDCard(getFileName(props.fileIdCardURL))
+    }
+  }, [props.fileIdCardURL])
+
+  useEffect(() => {
+    if (props.fileTeacherCertURL) {
+      props.setFileTeacherCert(getFileName(props.fileTeacherCertURL))
+    }
+  }, [props.fileTeacherCertURL])
 
   return (
     <React.Fragment>
@@ -33,10 +58,16 @@ const TeamTeacherStepForm: React.FC<Props> = (props: Props) => {
           <TeacherForm />
           <TeacherContactsForm />
           <TeacherDocsForm
-            fileIDCard={fileIDCard}
-            setFileIDCard={setFileIDCard}
-            fileTeacherCert={fileTeacherCert}
-            setFileTeacherCert={setFileTeacherCert}
+            fileIDCard={props.fileIDCard}
+            fileIDCardURL={props.fileIdCardURL}
+            setFileIDCard={props.setFileIDCard}
+            fileTeacherCertURL={props.fileTeacherCertURL}
+            fileTeacherCert={props.fileTeacherCert}
+            setFileTeacherCert={props.setFileTeacherCert}
+            isLatestIdcard={props.isLatestIdcard}
+            setIsLatestIdcard={props.setIsLatestIdcard}
+            isLatestTeacherCert={props.isLatestTeacherCert}
+            setIsLatestTeacherCert={props.setIsLatestTeacherCert}
           />
         </div>
       </Form>
