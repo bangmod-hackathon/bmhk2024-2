@@ -1,8 +1,8 @@
+import { motion } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import ButtonPrimary from '../Buttons/ButtonPrimary'
 import './fade.css'
-import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
 
 // Function to get a random position
 const getRandomPosition = (maxWidth: number, maxHeight: number) => {
