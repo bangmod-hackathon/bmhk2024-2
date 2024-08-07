@@ -25,7 +25,7 @@ const Qualifications: React.FC = () => {
                 <img className="scale-125" src={Teacher} alt="" />
               </div>
               <div className="m-auto w-full font-body text-sm text-white md:text-base lg:text-lg text-balance">
-                ต้องมีอาจารย์ที่ปรึกษาโรงเรียนละ 1 คน โดยอาจารย์ที่ปรึกษาต้องเป็นอาจารย์ที่สอนในสถานศึกษานั้น ๆ
+                โดยมีอาจารย์ที่ปรึกษาสถานศึกษาละ 1 ท่าน โดยอาจารย์ที่ปรึกษาต้องเป็นอาจารย์ที่สอนในสถานศึกษานั้น ๆ
               </div>
             </div>
             <div className=" flex rounded-full border border-secondary_blue-100 bg-gradient-to-b from-bg-400/25 to-secondary_blue-200/25 p-5 pr-12 shadow-md shadow-primary_yellow-300/20">

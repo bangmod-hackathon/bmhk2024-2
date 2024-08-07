@@ -23,8 +23,9 @@ const TeacherDocsForm: React.FC<Props> = (prop) => {
         </div>
         <div className="rounded-b-md bg-[#0C384E] bg-opacity-50 py-4 pl-8 pr-4 space-y-[30px]">
           <Upload
-            title="1. สำเนาบัตรประชาชนอาจารย์ที่ปรึกษาพร้อมเซ็นสำเนาถูกต้องหรือบัตรประจำตัวคนที่ไม่ได้ถือสัญชาติไทยเฉพาะด้านหน้า"
-            description="อัปโหลดเอกสารไม่เกิน 10 MB ( PDF เท่านั้น )"
+            title="1. สำเนาบัตรประจำตัวประชาชน หรือหนังสือเดินทาง (กรณีชาวต่างชาติ) ของอาจารย์่ที่ปรึกษาพร้อมเซ็นสำเนาถูกต้อง
+                เฉพาะด้านหน้า"
+            description="อัปโหลดเอกสารไม่เกิน 10 MB (PDF เท่านั้น)"
             file={prop.fileIDCard}
             setFile={prop.setFileIDCard}
             required
@@ -37,8 +38,9 @@ const TeacherDocsForm: React.FC<Props> = (prop) => {
             </p>
           </Upload>
           <Upload
-            title="2. เอกสารหรือหนังสือยืนยันสถานภาพการเป็นอาจารย์ประจำ สถาบันการศึกษา (บัตรประจำตัวครูอาจารย์, บัตรข้าราชการครูและบุคลากรทางการศึกษา)"
-            description="อัปโหลดเอกสารไม่เกิน 10 MB ( PDF เท่านั้น )"
+            title="2. เอกสาร หรือหนังสือยืนยันสถานภาพการเป็นอาจารย์ประจำสถานศึกษา (บัตรประจำตัวครูอาจารย์,
+                บัตรข้าราชการครูและบุคลากรทางการศึกษา)"
+            description="อัปโหลดเอกสารไม่เกิน 10 MB (PDF เท่านั้น)"
             file={prop.fileTeacherCert}
             setFile={prop.setFileTeacherCert}
             required

@@ -7,6 +7,7 @@ import Scroll from 'react-scroll'
 import { UseAuth } from '../../contexts/AuthContext'
 import { axiosInstance } from '../../utils/axios'
 import ButtonPrimary from '../Buttons/ButtonPrimary'
+import { IoLogOutOutline } from 'react-icons/io5'
 
 interface ImenuList {
   label: string
@@ -98,7 +99,7 @@ const Navbar = () => {
             </div>
 
             <div className="hidden flex-1 justify-center lg:flex">
-              <div className="flex gap-x-8 xl:gap-x-12 px-3 font-ibm text-white">
+              <div className="flex text-center gap-x-8 xl:gap-x-12 px-3 font-ibm text-white">
                 {menuList.map((item, index) => (
                   <Scroll.Link
                     key={index}
@@ -107,7 +108,7 @@ const Navbar = () => {
                     smooth={true}
                     offset={-70}
                     duration={500}
-                    className={`nav duration-300 hover:text-primary_yellow-200 content-center ${onSelect === index ? 'text-primary_yellow-200 text-xl font-medium' : 'text-white'} cursor-pointer`}
+                    className={`nav duration-300 hover:text-primary_yellow-200 content-center ${onSelect === index ? `text-primary_yellow-200 text-xl font-medium` : `text-white`} cursor-pointer`}
                     onClick={() => handleOnSelect(index)}
                   >
                     {item.label}
@@ -116,30 +117,26 @@ const Navbar = () => {
               </div>
             </div>
             <div className="flex py-2">
-              {/* {Auth && (
-                <div className="hidden items-center justify-end gap-x-3 lg:flex">
-                  <ButtonPrimary className="bg-primary_yellow-100 px-6 py-2 text-primary-200 hover:bg-primary_yellow-300 hover:text-primary-300">
-                    <p className=" font-normal">ลงทะเบียนต่อ</p>
-                  </ButtonPrimary>
-                  <button
-                    className="rounded-[5px] border-2 border-primary_yellow-200 bg-transparent p-[6px] text-2xl text-primary_yellow-200 duration-300 hover:bg-red-500 hover:text-white"
-                    onClick={handleAuth}
-                  >
-                    <IoLogOutOutline />
-                  </button>
-                </div>
-              )} */}
               <div className="hidden items-center space-x-4 lg:flex">
                 {Auth?.isAuthenticated ? (
-                  <ButtonPrimary
-                    onClick={() => {
-                      axiosInstance.get('/api/auth/logout').then(() => {
-                        window.location.reload()
-                      })
-                    }}
-                  >
-                    ออกจากระบบ
-                  </ButtonPrimary>
+                  <>
+                    <Link to="/register">
+                      <ButtonPrimary className="bg-primary_yellow-100 px-6 py-2 text-primary-200 hover:bg-primary_yellow-300 hover:text-primary-300">
+                        <p className=" font-normal">ลงทะเบียนต่อ</p>
+                      </ButtonPrimary>
+                    </Link>
+                    <button
+                      title="ออกจากระบบ"
+                      className="rounded-[5px] border-2 border-primary_yellow-200 bg-transparent p-[6px] text-2xl text-primary_yellow-200 duration-300 hover:bg-red-500 hover:text-white"
+                      onClick={() => {
+                        axiosInstance.get('/api/auth/logout').then(() => {
+                          window.location.reload()
+                        })
+                      }}
+                    >
+                      <IoLogOutOutline />
+                    </button>
+                  </>
                 ) : (
                   <Link to="/login">
                     <ButtonPrimary>ลงทะเบียน</ButtonPrimary>
@@ -194,11 +191,30 @@ const Navbar = () => {
               </Scroll.Link>
             ))}
             <div className="py-2">
-              <Link to="/login">
-                <ButtonPrimary>
-                  <p className=" text-lg">ลงทะเบียน</p>
-                </ButtonPrimary>
-              </Link>
+              {Auth?.isAuthenticated ? (
+                <div className=" flex flex-col gap-y-5">
+                  <Link to="/register">
+                    <ButtonPrimary className="bg-primary_yellow-100 px-6 py-2 text-primary-200 hover:bg-primary_yellow-300 hover:text-primary-300">
+                      <p className=" font-normal">ลงทะเบียนต่อ</p>
+                    </ButtonPrimary>
+                  </Link>
+                  <button
+                    title="ออกจากระบบ"
+                    className="rounded-[5px] bg-primary_yellow-100 py-2 text-primary-200 duration-300 hover:bg-red-500 font-normal hover:text-white"
+                    onClick={() => {
+                      axiosInstance.get('/api/auth/logout').then(() => {
+                        window.location.reload()
+                      })
+                    }}
+                  >
+                    ออกจากระบบ
+                  </button>
+                </div>
+              ) : (
+                <Link to="/login">
+                  <ButtonPrimary>ลงทะเบียน</ButtonPrimary>
+                </Link>
+              )}
             </div>
           </motion.div>
         </div>
