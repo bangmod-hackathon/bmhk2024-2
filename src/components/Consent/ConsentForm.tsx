@@ -1,8 +1,13 @@
-import { Checkbox, ConfigProvider } from 'antd'
+import { Checkbox } from 'antd'
+import { CheckboxChangeEvent } from 'antd/es/checkbox'
+import { useState } from 'react'
 import LoremIpsum from 'react-lorem-ipsum'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router'
 
 const ConsentForm = () => {
+  const navigate = useNavigate()
+  const [Check, setCheck] = useState<boolean>(false)
+
   return (
     <>
       <div className="xl:bg-[url(/LoginPage/LoginPageBg.webp)] md:bg-[url(/LoginPage/LoginPageIpadBg.webp)] w-full h-screen bg-no-repeat bg-cover bg-center bg-[url(/LoginPage/LoginPageMobileBg.webp)]">
@@ -15,23 +20,25 @@ const ConsentForm = () => {
               <LoremIpsum p={10} />
             </div>
             <div className=" w-full">
-              <ConfigProvider
-                theme={{
-                  token: {
-                    colorPrimary: '#8ad5f4'
-                  }
+              <Checkbox
+                className="text-white font-normal select-none"
+                onChange={(e: CheckboxChangeEvent) => {
+                  setCheck(e.target.checked)
                 }}
               >
-                <Checkbox className=" text-white font-normal">ยินยอมข้อตกลงนโยบายข้อมูลส่วนบุคคล</Checkbox>
-              </ConfigProvider>
+                ยินยอมข้อตกลงนโยบายข้อมูลส่วนบุคคล
+              </Checkbox>
             </div>
-            <div className=" w-full">
-              <Link
-                to="/register"
-                className=" w-full bg-primary_yellow-100 font-body rounded-md py-2 text-primary-200 hover:bg-primary_yellow-300 hover:text-primary-300 duration-200"
+            <div className="w-full">
+              <button
+                disabled={!Check}
+                onClick={() => {
+                  navigate('/register')
+                }}
+                className="w-full bg-primary_yellow-100 font-body rounded-md py-2 text-primary-200 hover:bg-primary_yellow-300 hover:text-primary-300 duration-200 disabled:cursor-not-allowed disabled:rounded-[5px] disabled:bg-[#FFF0BF] disabled:px-4 disabled:py-2 disabled:text-[#A5A6A7]"
               >
                 ยืนยัน
-              </Link>
+              </button>
             </div>
           </div>
         </div>

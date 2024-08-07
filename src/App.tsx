@@ -4,6 +4,7 @@ import { AuthProvider } from './contexts/AuthContext'
 import Loading from './components/Loading'
 import Navbar from './components/Navbar/Navbar'
 import './App.css'
+import { ConfigProvider } from 'antd'
 
 const ConsentPage = lazy(() => import('./pages/ConsentPage'))
 const LandingPage = lazy(() => import('./pages/LandingPage'))
@@ -21,20 +22,28 @@ function App() {
   }, [location])
 
   return (
-    <AuthProvider>
-      <Suspense fallback={<Loading />}>
-        <Navbar />
-        <div className={`page ${transition ? 'fade' : ''}`}>
-          <Routes location={location}>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/consent" element={<ConsentPage />} />
-            <Route path="/register" element={<RegisterFormStep />} />
-            <Route path="*" element={<LandingPage />} />
-          </Routes>
-        </div>
-      </Suspense>
-    </AuthProvider>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: '#8ad5f4'
+        }
+      }}
+    >
+      <AuthProvider>
+        <Suspense fallback={<Loading />}>
+          <Navbar />
+          <div className={`page ${transition ? 'fade' : ''}`}>
+            <Routes location={location}>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/consent" element={<ConsentPage />} />
+              <Route path="/register" element={<RegisterFormStep />} />
+              <Route path="*" element={<LandingPage />} />
+            </Routes>
+          </div>
+        </Suspense>
+      </AuthProvider>
+    </ConfigProvider>
   )
 }
 
