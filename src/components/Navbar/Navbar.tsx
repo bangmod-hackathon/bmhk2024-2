@@ -121,31 +121,49 @@ const Navbar = () => {
               <div className="hidden items-center space-x-4 lg:flex">
                 {Auth?.isAuthenticated ? (
                   <>
-                    <ButtonPrimary
-                      className="bg-primary_yellow-100 px-6 py-2 text-primary-200 hover:bg-primary_yellow-300 hover:text-primary-300"
-                      onClick={() => {
-                        if (Auth?.isAuthenticated === false) {
-                          return navigate('/login')
-                        } else if (Auth?.user.consent === false) {
-                          return navigate('/consent')
-                        } else {
-                          return navigate('/register')
-                        }
-                      }}
-                    >
-                      <p className=" font-normal">ลงทะเบียนต่อ</p>
-                    </ButtonPrimary>
-                    <button
-                      title="ออกจากระบบ"
-                      className="rounded-[5px] border-2 border-primary_yellow-200 bg-transparent p-[6px] text-2xl text-primary_yellow-200 duration-300 hover:bg-red-500 hover:text-white"
-                      onClick={() => {
-                        axiosInstance.get('/api/auth/logout').then(() => {
-                          window.location.reload()
-                        })
-                      }}
-                    >
-                      <IoLogOutOutline />
-                    </button>
+                    {Auth.user.isSubmitted ? (
+                      <>
+                        <button
+                          title="ออกจากระบบ"
+                          className="rounded-[5px] border-2 border-primary_yellow-200 bg-transparent p-[6px] text-2xl text-primary_yellow-200 duration-300 hover:bg-red-500 hover:text-white"
+                          onClick={() => {
+                            axiosInstance.get('/api/auth/logout').then(() => {
+                              window.location.reload()
+                            })
+                          }}
+                        >
+                          <IoLogOutOutline />
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <ButtonPrimary
+                          className="bg-primary_yellow-100 px-6 py-2 text-primary-200 hover:bg-primary_yellow-300 hover:text-primary-300"
+                          onClick={() => {
+                            if (Auth?.isAuthenticated === false) {
+                              return navigate('/login')
+                            } else if (Auth?.user.consent === false) {
+                              return navigate('/consent')
+                            } else {
+                              return navigate('/register')
+                            }
+                          }}
+                        >
+                          <p className=" font-normal">ลงทะเบียนต่อ</p>
+                        </ButtonPrimary>
+                        <button
+                          title="ออกจากระบบ"
+                          className="rounded-[5px] border-2 border-primary_yellow-200 bg-transparent p-[6px] text-2xl text-primary_yellow-200 duration-300 hover:bg-red-500 hover:text-white"
+                          onClick={() => {
+                            axiosInstance.get('/api/auth/logout').then(() => {
+                              window.location.reload()
+                            })
+                          }}
+                        >
+                          <IoLogOutOutline />
+                        </button>
+                      </>
+                    )}
                   </>
                 ) : (
                   <Link to="/login">
@@ -203,23 +221,25 @@ const Navbar = () => {
             <div className="py-2">
               {Auth?.isAuthenticated ? (
                 <div className=" flex flex-col gap-y-5">
-                  <ButtonPrimary
-                    className="bg-primary_yellow-100 px-6 py-2 text-primary-200 hover:bg-primary_yellow-300 hover:text-primary-300"
-                    onClick={() => {
-                      if (Auth?.isAuthenticated === false) {
-                        return navigate('/login')
-                      } else if (Auth?.user.consent === false) {
-                        return navigate('/consent')
-                      } else {
-                        return navigate('/register')
-                      }
-                    }}
-                  >
-                    <p className=" font-normal">ลงทะเบียนต่อ</p>
-                  </ButtonPrimary>
+                  {!Auth.user.isSubmitted && (
+                    <ButtonPrimary
+                      className="bg-primary_yellow-100 px-6 p-2 text-primary-200 hover:bg-primary_yellow-300 hover:text-primary-300"
+                      onClick={() => {
+                        if (Auth?.isAuthenticated === false) {
+                          return navigate('/login')
+                        } else if (Auth?.user.consent === false) {
+                          return navigate('/consent')
+                        } else {
+                          return navigate('/register')
+                        }
+                      }}
+                    >
+                      <p className=" font-normal">ลงทะเบียนต่อ</p>
+                    </ButtonPrimary>
+                  )}
                   <button
                     title="ออกจากระบบ"
-                    className="rounded-[5px] bg-primary_yellow-100 py-2 text-primary-200 duration-300 hover:bg-red-500 font-normal hover:text-white"
+                    className="rounded-[5px] bg-primary_yellow-100 p-2 text-primary-200 duration-300 hover:bg-red-500 font-normal hover:text-white"
                     onClick={() => {
                       axiosInstance.get('/api/auth/logout').then(() => {
                         window.location.reload()
