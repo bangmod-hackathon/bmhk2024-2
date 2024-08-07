@@ -5,7 +5,7 @@ import Input from './Input/Input'
 export default function ParticipantContactsForm() {
   const { Text } = Typography
   return (
-    <>
+    <div>
       <div>
         <div className="rounded-t-md bg-primary-200 p-3">
           <Text className="font-normal text-text_color-100 text-lg">ข้อมูลติดต่อ</Text>
@@ -16,19 +16,33 @@ export default function ParticipantContactsForm() {
               <Form.Item<IParticipant>
                 label="email"
                 name="memberContactEmail"
-                rules={[{ required: true, message: 'Please input your username!' }]}
+                rules={[
+                  { required: true, message: 'กรุณากรอกอีเมล์' },
+                  { type: 'email', message: 'กรุณากรอกอีเมล์ให้ถูกต้อง' }
+                ]}
               >
                 <Input title="Email" required={true} placeholder="example@example.com" />
               </Form.Item>
             </div>
             <div className="w-full p-4 md:w-1/2 lg:w-1/3">
-              <Form.Item<IParticipant> label="เบอร์โทรศัพท์" name="memberContactPhone" rules={[{ required: true }]}>
+              <Form.Item<IParticipant>
+                label="เบอร์โทรศัพท์"
+                name="memberContactPhone"
+                rules={[
+                  { required: true, message: 'กรุณากรอกเบอร์โทรศัพท์' },
+                  { pattern: /^[0-9]{10}$/, message: 'กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง' }
+                ]}
+              >
                 <Input title="เบอร์โทรศัพท์" required={true} placeholder="0812345678" />
               </Form.Item>
             </div>
             <div className="w-full p-4 md:w-1/2 lg:w-1/3">
-              <Form.Item<IParticipant> label="ID LINE" name="memberContactLine" rules={[{ required: true }]}>
-                <Input title="ID LINE" required={true} placeholder="id line" />
+              <Form.Item<IParticipant>
+                label="ID LINE"
+                name="memberContactLine"
+                rules={[{ required: true, message: 'กรุณากรอกไอดีไลน์' }]}
+              >
+                <Input title="ID LINE" required={true} placeholder="กรุณากรอกไอดีไลน์" />
               </Form.Item>
             </div>
           </div>
@@ -37,7 +51,10 @@ export default function ParticipantContactsForm() {
               <Form.Item<IParticipant>
                 label="เบอร์โทรติดต่อฉุกเฉิน"
                 name="memberContactEmergencyPhone"
-                rules={[{ required: true }]}
+                rules={[
+                  { required: true, message: 'กรุณากรอกเบอร์โทรศัพท์' },
+                  { pattern: /^[0-9]{10}$/, message: 'กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง' }
+                ]}
               >
                 <Input title="เบอร์โทรติดต่อฉุกเฉิน" required={true} placeholder="0812345678" />
               </Form.Item>
@@ -46,7 +63,7 @@ export default function ParticipantContactsForm() {
               <Form.Item<IParticipant>
                 label="ผู้ติดต่อฉุกเฉินเกี่ยวข้องเป็น"
                 name="memberContactEmergencyRelation"
-                rules={[{ required: true }]}
+                rules={[{ required: true, message: 'กรุณากรอกความสัมพันธ์' }]}
               >
                 <Input title="ผู้ติดต่อฉุกเฉินเกี่ยวข้องเป็น" required={true} placeholder="Ex. บิดา มารดา" />
               </Form.Item>
@@ -54,6 +71,6 @@ export default function ParticipantContactsForm() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }

@@ -13,7 +13,7 @@ export default function TeamForm(props: Props) {
   const { Text } = Typography
 
   return (
-    <>
+    <div>
       <div className="rounded-t-md bg-primary-200 p-3">
         <Text className="font-normal text-text_color-100 text-lg">ข้อมูลทีม</Text>
       </div>
@@ -40,7 +40,7 @@ export default function TeamForm(props: Props) {
           </div>
           <div className="w-full px-4">
             <Form.Item<ITeamTeacherForm>
-              label="ชื่อโรงเรียน"
+              label="ชื่อสถานศึกษา"
               name={'school'}
               rules={[
                 {
@@ -93,6 +93,6 @@ export default function TeamForm(props: Props) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
