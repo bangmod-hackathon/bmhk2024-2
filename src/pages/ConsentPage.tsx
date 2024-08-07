@@ -8,9 +8,9 @@ const ConsentPage: React.FC = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (!Auth?.isAuthenticated) {
-      return navigate('/')
-    }
+    // if (!Auth?.isAuthenticated) {
+    //   return navigate('/')
+    // }
     if (Auth?.user.isSubmitted) {
       return navigate('/')
     }

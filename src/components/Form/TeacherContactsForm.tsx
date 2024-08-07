@@ -18,8 +18,8 @@ export default function TeacherContactsForm() {
                 label="Email"
                 name="advisorContactEmail"
                 rules={[
-                  { required: true, message: 'กรุณากรอกอีเมล์' },
-                  { type: 'email', message: 'กรุณากรอกอีเมล์ให้ถูกต้อง' }
+                  { required: true, message: 'กรุณากรอกอีเมล' },
+                  { type: 'email', message: 'กรุณากรอกอีเมลให้ถูกต้อง' }
                 ]}
               >
                 <Input title="Email" required={true} placeholder="example@example.com" />

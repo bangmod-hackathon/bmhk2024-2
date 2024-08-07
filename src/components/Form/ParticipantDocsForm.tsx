@@ -22,6 +22,8 @@ interface Props {
   setFileParticipantPorPor7: React.Dispatch<React.SetStateAction<File | undefined>>
   isLatestParticipantPorPor7: boolean
   setIsLatestParticipantPorPor7: React.Dispatch<React.SetStateAction<boolean>>
+
+  isLoading: boolean
 }
 
 const ParticipantDocsForm: React.FC<Props> = (props) => {
@@ -66,6 +68,7 @@ const ParticipantDocsForm: React.FC<Props> = (props) => {
               fileURL={props.fileParticipantPhotoURL}
               isLatest={props.isLatestParticipantPhoto}
               setIsLatest={props.setIsLatestParticipantPhoto}
+              isLoading={props.isLoading}
             >
               <p className="flex flex-row gap-x-2">
                 เพิ่มไฟล์
@@ -102,6 +105,7 @@ const ParticipantDocsForm: React.FC<Props> = (props) => {
               fileURL={props.fileParticipantIDCardURL}
               isLatest={props.isLatestParticipantIDCard}
               setIsLatest={props.setIsLatestParticipantIDCard}
+              isLoading={props.isLoading}
             >
               <p className="flex flex-row gap-x-2">
                 เพิ่มไฟล์
@@ -138,6 +142,7 @@ const ParticipantDocsForm: React.FC<Props> = (props) => {
               fileURL={props.fileParticipantPorPor7URL}
               isLatest={props.isLatestParticipantPorPor7}
               setIsLatest={props.setIsLatestParticipantPorPor7}
+              isLoading={props.isLoading}
             >
               <p className="flex flex-row gap-x-2">
                 เพิ่มไฟล์

@@ -1,4 +1,5 @@
-import { Modal as AntModal } from 'antd'
+import { LoadingOutlined } from '@ant-design/icons'
+import { Modal as AntModal, Spin } from 'antd'
 import React, { useState } from 'react'
 import ButtonOutlined from '../Buttons/ButtonOutlined'
 import ButtonPrimary from '../Buttons/ButtonPrimary'
@@ -6,6 +7,7 @@ import ButtonPrimary from '../Buttons/ButtonPrimary'
 interface Props {
   onSubmit: () => Promise<boolean>
   onConfirm?: () => void
+  loading?: boolean
 }
 
 const ConfirmModal: React.FC<Props> = (props): JSX.Element => {
@@ -14,12 +16,13 @@ const ConfirmModal: React.FC<Props> = (props): JSX.Element => {
   return (
     <>
       <button
-        className="text-bg-200 bg-secondary_blue-100 border font-normal text-lg py-4 px-8 rounded-[8px]"
+        className="text-bg-200 bg-secondary_blue-100 border font-normal text-lg py-4 px-8 rounded-[8px] disabled:cursor-wait"
         onClick={async () => {
           if (await props.onSubmit()) setIsModalOpen(true)
         }}
+        disabled={props.loading}
       >
-        ยืนยัน
+        {props.loading ? <Spin indicator={<LoadingOutlined spin className="text-white" />} size="large" /> : 'ยืนยัน'}
       </button>
       <AntModal
         open={isModalOpen}

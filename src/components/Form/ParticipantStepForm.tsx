@@ -25,6 +25,7 @@ interface Props {
   setFileParticipantPorPor7: React.Dispatch<React.SetStateAction<File | undefined>>
   isLatestParticipantPorPor7: boolean
   setIsLatestParticipantPorPor7: React.Dispatch<React.SetStateAction<boolean>>
+  isLoading: boolean
 }
 
 const ParticipantStepForm: React.FC<Props> = (props: Props) => {
@@ -59,6 +60,7 @@ const ParticipantStepForm: React.FC<Props> = (props: Props) => {
         scrollToFirstError
         id={`id-participant-${props.nth}`}
         name={`name-participant-${props.nth}`}
+        disabled={props.isLoading}
       >
         <div className="space-y-8">
           <ParticipantForm nth={props.nth} />
@@ -79,6 +81,7 @@ const ParticipantStepForm: React.FC<Props> = (props: Props) => {
             setFileParticipantPorPor7={props.setFileParticipantPorPor7}
             isLatestParticipantPorPor7={props.isLatestParticipantPorPor7}
             setIsLatestParticipantPorPor7={props.setIsLatestParticipantPorPor7}
+            isLoading={props.isLoading}
           />
         </div>
       </Form>

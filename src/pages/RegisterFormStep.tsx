@@ -1,7 +1,7 @@
-import { Form, message } from 'antd'
+import { Form, Modal } from 'antd'
 import { NamePath } from 'antd/es/form/interface'
 import { isAxiosError } from 'axios'
-import { debounce } from 'lodash'
+import { debounce, set } from 'lodash'
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router'
 import PageChanger from '../components/Form/PageChanger'
@@ -11,6 +11,7 @@ import Stage, { StageStatus } from '../components/Steps/Stage'
 import { IParticipant, ITeamTeacherForm, IUser } from '../interfaces/user.interface'
 import { axiosInstance } from '../utils/axios'
 import { UploadFile } from '../utils/uploadFile'
+import ButtonPrimary from '../components/Buttons/ButtonPrimary'
 
 const RegisterFormStep: React.FC = () => {
   const navigate = useNavigate()
@@ -73,8 +74,6 @@ const RegisterFormStep: React.FC = () => {
   const [fileParticipant3PorPor7URL, setFileParticipant3PorPor7URL] = useState<string>('')
   const [fileParticipant3PorPor7, setFileParticipant3PorPor7] = useState<File | undefined>(undefined)
   const [isLatestParticipantfile3PorPor7, setIsLatestParticipantfile3PorPor7] = useState<boolean>(false)
-
-  // formParticipant1StepForm
 
   useEffect(() => {
     const fetchData = async () => {
@@ -267,9 +266,20 @@ const RegisterFormStep: React.FC = () => {
           })
           throw new Error('error')
         }
+        let advisorDocumentIDCard = fileIDCardUrl
+        let advisorDocumentEmploymentStatus = fileTeacherCertURL
 
-        const advisorDocumentIDCard = await UploadFile('advisorDocumentIDCard', fileIDCard!)
-        const advisorDocumentEmploymentStatus = await UploadFile('advisorDocumentEmploymentStatus', fileTeacherCert!)
+        if (!isLatestIdcard) {
+          advisorDocumentIDCard = await UploadFile('advisorDocumentIDCard', fileIDCard!)
+          setFileIDCardUrl(advisorDocumentIDCard)
+          setIsLatestIdcard(true)
+        }
+        if (!isLatestTeacherCert) {
+          advisorDocumentEmploymentStatus = await UploadFile('advisorDocumentEmploymentStatus', fileTeacherCert!)
+          setFileTeacherCertUrl(advisorDocumentEmploymentStatus)
+          setIsLatestTeacherCert(true)
+        }
+
         const values = await formTeamTeacherStepForm.getFieldsValue()
 
         // Patch Team Teacher
@@ -316,9 +326,26 @@ const RegisterFormStep: React.FC = () => {
           throw new Error('error')
         }
         // Uploadfile
-        const memberDocumentPhoto = await UploadFile('memberDocumentPhoto', fileParticipant1Photo!)
-        const memberDocumentIDCard = await UploadFile('memberDocumentIDCard', fileParticipant1IDcard!)
-        const memberDocumentPorPor7 = await UploadFile('memberDocumentPorPor7', fileParticipant1PorPor7!)
+        let memberDocumentPhoto = fileParticipant1PhotoURL
+        let memberDocumentIDCard = fileParticipant1IDcardURL
+        let memberDocumentPorPor7 = fileParticipant1PorPor7URL
+
+        if (!isLatestParticipantfile1Photo) {
+          memberDocumentPhoto = await UploadFile('memberDocumentPhoto', fileParticipant1Photo!)
+          setFileParticipant1PhotoURL(memberDocumentPhoto)
+          setIsLatestParticipantfile1Photo(true)
+        }
+        if (!isLatestParticipantfile1IDcard) {
+          memberDocumentIDCard = await UploadFile('memberDocumentIDCard', fileParticipant1IDcard!)
+          setFileParticipant1IDcardURL(memberDocumentIDCard)
+          setIsLatestParticipantfile1IDcard(true)
+        }
+        if (!isLatestParticipantfile1PorPor7) {
+          memberDocumentPorPor7 = await UploadFile('memberDocumentPorPor7', fileParticipant1PorPor7!)
+          setFileParticipant1PorPor7URL(memberDocumentPorPor7)
+          setIsLatestParticipantfile1PorPor7(true)
+        }
+
         const values = await formParticipant1StepForm.getFieldsValue()
 
         // Patch member 1
@@ -364,9 +391,26 @@ const RegisterFormStep: React.FC = () => {
           throw new Error('error')
         }
         // Uploadfile
-        const memberDocumentPhoto = await UploadFile('memberDocumentPhoto', fileParticipant2Photo!)
-        const memberDocumentIDCard = await UploadFile('memberDocumentIDCard', fileParticipant2IDcard!)
-        const memberDocumentPorPor7 = await UploadFile('memberDocumentPorPor7', fileParticipant2PorPor7!)
+
+        let memberDocumentPhoto = fileParticipant2PhotoURL
+        let memberDocumentIDCard = fileParticipant2IDcardURL
+        let memberDocumentPorPor7 = fileParticipant2PorPor7URL
+
+        if (!isLatestParticipantfile2Photo) {
+          memberDocumentPhoto = await UploadFile('memberDocumentPhoto', fileParticipant2Photo!)
+          setFileParticipant2PhotoURL(memberDocumentPhoto)
+          setIsLatestParticipantfile2Photo(true)
+        }
+        if (!isLatestParticipantfile2IDcard) {
+          memberDocumentIDCard = await UploadFile('memberDocumentIDCard', fileParticipant2IDcard!)
+          setFileParticipant2IDcardURL(memberDocumentIDCard)
+          setIsLatestParticipantfile2IDcard(true)
+        }
+        if (!isLatestParticipantfile2PorPor7) {
+          memberDocumentPorPor7 = await UploadFile('memberDocumentPorPor7', fileParticipant2PorPor7!)
+          setFileParticipant2PorPor7URL(memberDocumentPorPor7)
+          setIsLatestParticipantfile2PorPor7(true)
+        }
         const values = await formParticipant2StepForm.getFieldsValue()
 
         // Patch member 2
@@ -412,9 +456,24 @@ const RegisterFormStep: React.FC = () => {
           throw new Error('error')
         }
         // Uploadfile
-        const memberDocumentPhoto = await UploadFile('memberDocumentPhoto', fileParticipant3Photo!)
-        const memberDocumentIDCard = await UploadFile('memberDocumentIDCard', fileParticipant3IDcard!)
-        const memberDocumentPorPor7 = await UploadFile('memberDocumentPorPor7', fileParticipant3PorPor7!)
+        let memberDocumentPhoto = fileParticipant3PhotoURL
+        let memberDocumentIDCard = fileParticipant3IDcardURL
+        let memberDocumentPorPor7 = fileParticipant3PorPor7URL
+        if (!isLatestParticipantfile3Photo) {
+          memberDocumentPhoto = await UploadFile('memberDocumentPhoto', fileParticipant3Photo!)
+          setFileParticipant3PhotoURL(memberDocumentPhoto)
+          setIsLatestParticipantfile3Photo(true)
+        }
+        if (!isLatestParticipantfile3IDcard) {
+          memberDocumentIDCard = await UploadFile('memberDocumentIDCard', fileParticipant3IDcard!)
+          setFileParticipant3IDcardURL(memberDocumentIDCard)
+          setIsLatestParticipantfile3IDcard(true)
+        }
+        if (!isLatestParticipantfile3PorPor7) {
+          memberDocumentPorPor7 = await UploadFile('memberDocumentPorPor7', fileParticipant3PorPor7!)
+          setFileParticipant3PorPor7URL(memberDocumentPorPor7)
+          setIsLatestParticipantfile3PorPor7(true)
+        }
         const values = await formParticipant3StepForm.getFieldsValue()
 
         // Patch member 3
@@ -454,6 +513,7 @@ const RegisterFormStep: React.FC = () => {
 
   const handleLastPage = async () => {
     try {
+      setLoading(true)
       if (page === 3) {
         try {
           await formParticipant2StepForm.validateFields()
@@ -471,9 +531,25 @@ const RegisterFormStep: React.FC = () => {
           throw new Error('error')
         }
         // Uploadfile
-        const memberDocumentPhoto = await UploadFile('memberDocumentPhoto', fileParticipant2Photo!)
-        const memberDocumentIDCard = await UploadFile('memberDocumentIDCard', fileParticipant2IDcard!)
-        const memberDocumentPorPor7 = await UploadFile('memberDocumentPorPor7', fileParticipant2PorPor7!)
+        let memberDocumentPhoto = fileParticipant2PhotoURL
+        let memberDocumentIDCard = fileParticipant2IDcardURL
+        let memberDocumentPorPor7 = fileParticipant2PorPor7URL
+
+        if (!isLatestParticipantfile2Photo) {
+          memberDocumentPhoto = await UploadFile('memberDocumentPhoto', fileParticipant2Photo!)
+          setFileParticipant2PhotoURL(memberDocumentPhoto)
+          setIsLatestParticipantfile2Photo(true)
+        }
+        if (!isLatestParticipantfile2IDcard) {
+          memberDocumentIDCard = await UploadFile('memberDocumentIDCard', fileParticipant2IDcard!)
+          setFileParticipant2IDcardURL(memberDocumentIDCard)
+          setIsLatestParticipantfile2IDcard(true)
+        }
+        if (!isLatestParticipantfile2PorPor7) {
+          memberDocumentPorPor7 = await UploadFile('memberDocumentPorPor7', fileParticipant2PorPor7!)
+          setFileParticipant2PorPor7URL(memberDocumentPorPor7)
+          setIsLatestParticipantfile2PorPor7(true)
+        }
         const values = await formParticipant2StepForm.getFieldsValue()
 
         // Patch member 2
@@ -519,9 +595,24 @@ const RegisterFormStep: React.FC = () => {
           throw new Error('error')
         }
         // Uploadfile
-        const memberDocumentPhoto = await UploadFile('memberDocumentPhoto', fileParticipant3Photo!)
-        const memberDocumentIDCard = await UploadFile('memberDocumentIDCard', fileParticipant3IDcard!)
-        const memberDocumentPorPor7 = await UploadFile('memberDocumentPorPor7', fileParticipant3PorPor7!)
+        let memberDocumentPhoto = fileParticipant3PhotoURL
+        let memberDocumentIDCard = fileParticipant3IDcardURL
+        let memberDocumentPorPor7 = fileParticipant3PorPor7URL
+        if (!isLatestParticipantfile3Photo) {
+          memberDocumentPhoto = await UploadFile('memberDocumentPhoto', fileParticipant3Photo!)
+          setFileParticipant3PhotoURL(memberDocumentPhoto)
+          setIsLatestParticipantfile3Photo(true)
+        }
+        if (!isLatestParticipantfile3IDcard) {
+          memberDocumentIDCard = await UploadFile('memberDocumentIDCard', fileParticipant3IDcard!)
+          setFileParticipant3IDcardURL(memberDocumentIDCard)
+          setIsLatestParticipantfile3IDcard(true)
+        }
+        if (!isLatestParticipantfile3PorPor7) {
+          memberDocumentPorPor7 = await UploadFile('memberDocumentPorPor7', fileParticipant3PorPor7!)
+          setFileParticipant3PorPor7URL(memberDocumentPorPor7)
+          setIsLatestParticipantfile3PorPor7(true)
+        }
         const values = await formParticipant3StepForm.getFieldsValue()
 
         // Patch member 3
@@ -550,20 +641,20 @@ const RegisterFormStep: React.FC = () => {
           member3DocumentPorPor7: memberDocumentPorPor7
         })
       }
+      setLoading(false)
       return true
     } catch (error) {
+      setLoading(false)
       return false
     }
   }
 
+  const [isModalSubmitOpen, setIsModalSubmitOpen] = useState<boolean>(false)
+
   const handleSubmit = async () => {
     try {
       await axiosInstance.post('/api/user/submit')
-      message.open({
-        type: 'success',
-        content: 'ลงทะเบียนสำเร็จ'
-      })
-      navigate('/')
+      await setIsModalSubmitOpen(true)
     } catch (error) {
       return error
     }
@@ -571,6 +662,31 @@ const RegisterFormStep: React.FC = () => {
 
   return (
     <React.Fragment>
+      <Modal
+        title={<p className="text-xl text-white text-center">ลงทะเบียนสำเร็จ</p>}
+        open={isModalSubmitOpen}
+        centered
+        closable
+        footer={[]}
+      >
+        <div className="flex items-center justify-center">
+          <img src="/Confirm_icon/AiTwotoneCheckCircle.png" alt="" />
+        </div>
+        <h1 className="mb-2 text-center text-2xl font-normal text-white"></h1>
+        <p className="text-center font-body text-sm font-normal text-white">
+          หากทีมงานตรวจสอบแล้วพบว่าข้อมูลไม่ตรงตามเงื่อนไข ขอใช้อำนาจในการตัดสิทธิ์ของผู้สมัคร
+        </p>
+
+        <div className="flex justify-center py-2">
+          <ButtonPrimary
+            onClick={() => {
+              window.location.href = '/'
+            }}
+          >
+            กลับหน้าหลัก
+          </ButtonPrimary>
+        </div>
+      </Modal>
       <div
         ref={topRef}
         className=" w-full h-full bg-[url('/register/bg-register.webp')] bg-top bg-no-repeat bg-cover scroll-smooth"
@@ -599,6 +715,7 @@ const RegisterFormStep: React.FC = () => {
                 fileTeacherCertURL={fileTeacherCertURL}
                 isLatestTeacherCert={isLatestTeacherCert}
                 setIsLatestTeacherCert={setIsLatestTeacherCert}
+                isLoading={loading}
               />
             )}
             {page === 2 && (
@@ -620,6 +737,7 @@ const RegisterFormStep: React.FC = () => {
                 setFileParticipantPorPor7={setFileParticipant1PorPor7}
                 isLatestParticipantPorPor7={isLatestParticipantfile1PorPor7}
                 setIsLatestParticipantPorPor7={setIsLatestParticipantfile1PorPor7}
+                isLoading={loading}
               />
             )}
             {page === 3 && (
@@ -641,6 +759,7 @@ const RegisterFormStep: React.FC = () => {
                 setFileParticipantPorPor7={setFileParticipant2PorPor7}
                 isLatestParticipantPorPor7={isLatestParticipantfile2PorPor7}
                 setIsLatestParticipantPorPor7={setIsLatestParticipantfile2PorPor7}
+                isLoading={loading}
               />
             )}
             {page === 4 && (
@@ -662,6 +781,7 @@ const RegisterFormStep: React.FC = () => {
                 setFileParticipantPorPor7={setFileParticipant3PorPor7}
                 isLatestParticipantPorPor7={isLatestParticipantfile3PorPor7}
                 setIsLatestParticipantPorPor7={setIsLatestParticipantfile3PorPor7}
+                isLoading={loading}
               />
             )}
             <PageChanger

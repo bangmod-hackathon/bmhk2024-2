@@ -1,6 +1,6 @@
+import { LoadingOutlined } from '@ant-design/icons'
 import { Spin } from 'antd'
 import ConfirmModal from '../Modal/ComfirmModal'
-import { LoadingOutlined } from '@ant-design/icons'
 
 interface Props {
   page: number
@@ -24,6 +24,7 @@ const PageChanger = (props: Props) => {
       </button>
       {props.page === props.pageMaxSize ? (
         <ConfirmModal
+          loading={props.loading}
           onSubmit={() => {
             return props.handleLastPage()
           }}

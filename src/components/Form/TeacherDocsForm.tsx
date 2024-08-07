@@ -16,6 +16,7 @@ interface Props {
   setFileTeacherCert: React.Dispatch<React.SetStateAction<File | undefined>>
   isLatestTeacherCert: boolean
   setIsLatestTeacherCert: React.Dispatch<React.SetStateAction<boolean>>
+  isLoading: boolean
 }
 
 const TeacherDocsForm: React.FC<Props> = (prop) => {
@@ -57,6 +58,7 @@ const TeacherDocsForm: React.FC<Props> = (prop) => {
             fileURL={prop.fileIDCardURL}
             isLatest={prop.isLatestIdcard}
             setIsLatest={prop.setIsLatestIdcard}
+            isLoading={prop.isLoading}
           >
             <p className="flex flex-row gap-x-2">
               เพิ่มไฟล์
@@ -94,6 +96,7 @@ const TeacherDocsForm: React.FC<Props> = (prop) => {
             fileURL={prop.fileTeacherCertURL}
             isLatest={prop.isLatestTeacherCert}
             setIsLatest={prop.setIsLatestTeacherCert}
+            isLoading={prop.isLoading}
           >
             <p className="flex flex-row gap-x-2">
               เพิ่มไฟล์

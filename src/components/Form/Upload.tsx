@@ -26,6 +26,7 @@ interface UploadPropsForm extends UploadProps {
   fileURL: string
   isLatest: boolean
   setIsLatest: React.Dispatch<React.SetStateAction<boolean>>
+  isLoading: boolean
 }
 
 const Upload: React.FC<UploadPropsForm> = ({ imageUpload = false, required = false, ...props }: UploadPropsForm) => {
@@ -95,10 +96,12 @@ const Upload: React.FC<UploadPropsForm> = ({ imageUpload = false, required = fal
       </div>
       {props.errorUploadMessage === '' ? (
         <ImBin
-          className="size-6 cursor-pointer text-[#C7C7C7]"
+          className={`size-6 ${props.isLoading ? 'cursor-not-allowed' : 'cursor-pointer'} text-[#C7C7C7]`}
           onClick={() => {
-            props.setErrorUploadMessage('')
-            props.setFile(undefined)
+            if (!props.isLoading) {
+              props.setErrorUploadMessage('')
+              props.setFile(undefined)
+            }
           }}
         />
       ) : (

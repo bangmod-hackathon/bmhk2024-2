@@ -23,6 +23,7 @@ interface Props {
   fileTeacherCertURL: string
   isLatestTeacherCert: boolean
   setIsLatestTeacherCert: React.Dispatch<React.SetStateAction<boolean>>
+  isLoading: boolean
 }
 
 const TeamTeacherStepForm: React.FC<Props> = (props: Props) => {
@@ -52,6 +53,7 @@ const TeamTeacherStepForm: React.FC<Props> = (props: Props) => {
           member: '2'
         }}
         scrollToFirstError
+        disabled={props.isLoading}
       >
         <div className="space-y-8">
           <TeamForm setMembers={props.setMembers} teamName={props.teamName} setTeamName={props.setTeamName} />
@@ -68,6 +70,7 @@ const TeamTeacherStepForm: React.FC<Props> = (props: Props) => {
             setIsLatestIdcard={props.setIsLatestIdcard}
             isLatestTeacherCert={props.isLatestTeacherCert}
             setIsLatestTeacherCert={props.setIsLatestTeacherCert}
+            isLoading={props.isLoading}
           />
         </div>
       </Form>
