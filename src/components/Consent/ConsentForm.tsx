@@ -2,6 +2,7 @@ import { Checkbox } from 'antd'
 import { CheckboxChangeEvent } from 'antd/es/checkbox'
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
+import { axiosInstance } from '../../utils/axios'
 
 const ConsentForm = () => {
   const navigate = useNavigate()
@@ -117,7 +118,10 @@ const ConsentForm = () => {
             <div className="w-full">
               <button
                 disabled={!Check}
-                onClick={() => {
+                onClick={async () => {
+                  await axiosInstance.patch('/api/user', {
+                    consent: true
+                  })
                   navigate('/register')
                 }}
                 className="w-full bg-primary_yellow-100 font-body rounded-md py-2 text-primary-200 hover:bg-primary_yellow-300 hover:text-primary-300 duration-200 disabled:cursor-not-allowed disabled:rounded-[5px] disabled:bg-[#FFF0BF] disabled:px-4 disabled:py-2 disabled:text-[#A5A6A7]"

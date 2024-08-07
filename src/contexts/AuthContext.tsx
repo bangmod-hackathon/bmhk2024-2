@@ -10,6 +10,7 @@ export interface IAuthContext extends IUser {
 
 const initialContextValue: IAuthContext = {
   email: '',
+  consent: false,
   // ** Form #ทีม-อาจารย์ที่ปรึกษา
   // ** ข้อมูลทีม
   teamName: '',

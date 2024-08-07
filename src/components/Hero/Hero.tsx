@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { UseAuth } from '../../contexts/AuthContext'
 import ButtonPrimary from '../Buttons/ButtonPrimary'
 import './fade.css'
 
@@ -16,6 +17,8 @@ const images = ['Landing/watashiwastart.gif', 'Landing/Starr.gif']
 const getRandomImage = () => images[Math.floor(Math.random() * images.length)]
 
 const Hero: React.FC = () => {
+  const Auth = UseAuth()
+  const navigate = useNavigate()
   // State to hold the positions of the stars
   const [positions, setPositions] = useState({
     container1: Array.from({ length: 5 }, () => ({ ...getRandomPosition(0, 0), img: getRandomImage() })),
@@ -146,11 +149,19 @@ const Hero: React.FC = () => {
                   ทำให้ผู้เข้าแข่งขันได้รับทั้งประสบการณ์ใหม่ ๆ ในการเขียนโปรแกรม และฝึกการทำงานร่วมกันเป็นทีม
                 </p>
               </div>
-              <Link to="/login">
-                <ButtonPrimary>
-                  <div className="font-body text-[18px]">ลงทะเบียน</div>
-                </ButtonPrimary>
-              </Link>
+              <ButtonPrimary
+                onClick={() => {
+                  if (Auth?.isAuthenticated === false) {
+                    return navigate('/login')
+                  } else if (Auth?.user.consent === false) {
+                    return navigate('/consent')
+                  } else {
+                    return navigate('/register')
+                  }
+                }}
+              >
+                <div className="font-body text-[18px]">ลงทะเบียน</div>
+              </ButtonPrimary>
             </div>
           </div>
         </div>

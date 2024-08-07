@@ -9,7 +9,7 @@ const LoginPage: React.FC = () => {
 
   useEffect(() => {
     if (Auth?.isAuthenticated) {
-      navigate('/register')
+      navigate('/consent')
     }
   }, [])
 

@@ -28,6 +28,9 @@ const RegisterFormStep: React.FC = () => {
       try {
         const response = await axiosInstance.get('/api/auth/me')
         const data = response.data as IUser
+        if (data.consent === false) {
+          return navigate('/consent')
+        }
         setMembers(data.member)
         setTeamName(data.teamName)
         formTeamTeacherStepForm.setFieldsValue({

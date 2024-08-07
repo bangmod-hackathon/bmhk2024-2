@@ -138,6 +138,7 @@ export interface IParticipant3 {
 }
 export interface IUser extends ITeamTeacherForm, IParticipant1, IParticipant2, IParticipant3, IDocs {
   email: string
+  consent: boolean
   isSubmitted: boolean
   submittedAt?: Date
 }

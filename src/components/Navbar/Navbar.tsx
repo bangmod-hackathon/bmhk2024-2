@@ -2,12 +2,12 @@ import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { CgProfile } from 'react-icons/cg'
 import { HiOutlineMenu, HiX } from 'react-icons/hi'
-import { Link, useLocation } from 'react-router-dom'
+import { IoLogOutOutline } from 'react-icons/io5'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Scroll from 'react-scroll'
 import { UseAuth } from '../../contexts/AuthContext'
 import { axiosInstance } from '../../utils/axios'
 import ButtonPrimary from '../Buttons/ButtonPrimary'
-import { IoLogOutOutline } from 'react-icons/io5'
 
 interface ImenuList {
   label: string
@@ -16,6 +16,7 @@ interface ImenuList {
 
 const Navbar = () => {
   const Auth = UseAuth()
+  const navigate = useNavigate()
   const [menuOpen, setMenuOpen] = useState(false)
   const [onSelect, setOnSelect] = useState(-1)
   const [currentComponent, setCurrentComponent] = useState<JSX.Element | null>(null)
@@ -120,11 +121,20 @@ const Navbar = () => {
               <div className="hidden items-center space-x-4 lg:flex">
                 {Auth?.isAuthenticated ? (
                   <>
-                    <Link to="/register">
-                      <ButtonPrimary className="bg-primary_yellow-100 px-6 py-2 text-primary-200 hover:bg-primary_yellow-300 hover:text-primary-300">
-                        <p className=" font-normal">ลงทะเบียนต่อ</p>
-                      </ButtonPrimary>
-                    </Link>
+                    <ButtonPrimary
+                      className="bg-primary_yellow-100 px-6 py-2 text-primary-200 hover:bg-primary_yellow-300 hover:text-primary-300"
+                      onClick={() => {
+                        if (Auth?.isAuthenticated === false) {
+                          return navigate('/login')
+                        } else if (Auth?.user.consent === false) {
+                          return navigate('/consent')
+                        } else {
+                          return navigate('/register')
+                        }
+                      }}
+                    >
+                      <p className=" font-normal">ลงทะเบียนต่อ</p>
+                    </ButtonPrimary>
                     <button
                       title="ออกจากระบบ"
                       className="rounded-[5px] border-2 border-primary_yellow-200 bg-transparent p-[6px] text-2xl text-primary_yellow-200 duration-300 hover:bg-red-500 hover:text-white"
@@ -193,11 +203,20 @@ const Navbar = () => {
             <div className="py-2">
               {Auth?.isAuthenticated ? (
                 <div className=" flex flex-col gap-y-5">
-                  <Link to="/register">
-                    <ButtonPrimary className="bg-primary_yellow-100 px-6 py-2 text-primary-200 hover:bg-primary_yellow-300 hover:text-primary-300">
-                      <p className=" font-normal">ลงทะเบียนต่อ</p>
-                    </ButtonPrimary>
-                  </Link>
+                  <ButtonPrimary
+                    className="bg-primary_yellow-100 px-6 py-2 text-primary-200 hover:bg-primary_yellow-300 hover:text-primary-300"
+                    onClick={() => {
+                      if (Auth?.isAuthenticated === false) {
+                        return navigate('/login')
+                      } else if (Auth?.user.consent === false) {
+                        return navigate('/consent')
+                      } else {
+                        return navigate('/register')
+                      }
+                    }}
+                  >
+                    <p className=" font-normal">ลงทะเบียนต่อ</p>
+                  </ButtonPrimary>
                   <button
                     title="ออกจากระบบ"
                     className="rounded-[5px] bg-primary_yellow-100 py-2 text-primary-200 duration-300 hover:bg-red-500 font-normal hover:text-white"
