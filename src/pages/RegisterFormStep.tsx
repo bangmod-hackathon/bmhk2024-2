@@ -78,8 +78,14 @@ const RegisterFormStep: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axiosInstance.get('/api/auth/me')
-        const data = response.data as IUser
+        let data
+        try {
+          data = (await axiosInstance.get('/api/auth/me')).data
+        } catch {
+          navigate('/')
+          throw new Error('')
+        }
+
         if (data.isSubmitted) {
           return navigate('/')
         }

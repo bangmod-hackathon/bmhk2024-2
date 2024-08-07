@@ -126,7 +126,7 @@ const Hero: React.FC = () => {
             <motion.img
               animate={{ y: [10, 0] }}
               transition={{ duration: 1, repeat: Infinity, repeatType: 'reverse' }}
-              src={'Landing/Logo.svg'}
+              src={'Landing/Logo.webp'}
               alt="Logo-bmhk2025"
               className="min-h-[280px] min-w-[349px] sm:h-[280px] sm:w-[349px] lg:h-[280px] lg:w-[349px] xl:h-[466px] xl:w-[580px]"
             />

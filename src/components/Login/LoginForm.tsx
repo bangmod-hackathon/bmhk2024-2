@@ -3,7 +3,7 @@ const LoginForm: React.FC = () => {
     <div className="xl:bg-[url(/LoginPage/LoginPageBg.webp)] md:bg-[url(/LoginPage/LoginPageIpadBg.webp)] w-full h-screen bg-no-repeat bg-cover bg-center bg-[url(/LoginPage/LoginPageMobileBg.webp)]">
       <div className="flex flex-col h-full w-auto items-center justify-center gap-y-6">
         <div className=" size-auto">
-          <img src="Landing/Logo.svg" alt="" className=" h-72" />
+          <img src="Landing/Logo.webp" alt="" className=" h-72" />
         </div>
         <div className="bg-[#9ddef9]/10 h-48 px-6 sm:px-24 py-8 rounded-3xl flex flex-col items-center gap-y-6 justify-center">
           <p className=" text-white font-dm_oceanic text-[32px] tracking-wider">เข้าสู่ระบบ</p>
