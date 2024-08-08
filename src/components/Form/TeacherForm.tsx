@@ -103,7 +103,7 @@ const TeacherForm: React.FC = () => {
             </Form.Item>
           </div>
           <div className="w-full p-4 lg:w-1/3">
-            <Form.Item<ITeamTeacherForm> label="ประเภทอาหาร (เช่น มังสวิรัต ฮาลาล)" name="advisorFoodPreference">
+            <Form.Item<ITeamTeacherForm> label="ประเภทอาหาร (เช่น มังสวิรัติ ฮาลาล)" name="advisorFoodPreference">
               <Input title="ประเภทอาหาร (เช่น มังสวิรัติ ฮาลาล)" placeholder="Food preference Ex. Vegan Halal" />
             </Form.Item>
           </div>
