@@ -4,6 +4,7 @@ import { isAxiosError } from 'axios'
 import { debounce } from 'lodash'
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router'
+import ButtonPrimary from '../components/Buttons/ButtonPrimary'
 import PageChanger from '../components/Form/PageChanger'
 import ParticipantStepForm from '../components/Form/ParticipantStepForm'
 import TeamTeacherStepForm from '../components/Form/TeamTeacherStepForm'
@@ -11,7 +12,6 @@ import Stage, { StageStatus } from '../components/Steps/Stage'
 import { IParticipant, ITeamTeacherForm, IUser } from '../interfaces/user.interface'
 import { axiosInstance } from '../utils/axios'
 import { UploadFile } from '../utils/uploadFile'
-import ButtonPrimary from '../components/Buttons/ButtonPrimary'
 
 const RegisterFormStep: React.FC = () => {
   const navigate = useNavigate()
@@ -78,7 +78,7 @@ const RegisterFormStep: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let data
+        let data: IUser
         try {
           data = (await axiosInstance.get('/api/auth/me')).data
         } catch {

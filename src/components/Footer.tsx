@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
               <img src="/Landing/Logo.svg" alt="Bangmod Hackathon Logo" className="mb-4 w-32" />
               <div className="mt-6">
                 <p className="font-[500]">
-                  ภาควิชาวิศวกรรมคอมพิวเตอร์ คณะวิศวกรรมศาสตร์ <br />
+                  ภาควิชาวิศวกรรมคอมพิวเตอร์ <br /> คณะวิศวกรรมศาสตร์ <br />
                   มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี
                 </p>
                 <div className="font-normal">

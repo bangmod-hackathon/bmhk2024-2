@@ -31,6 +31,7 @@ const LandingPage: React.FC = () => {
           <Scope />
         </Element>
         {/* <Sponsor /> */}
+        <div className=" w-full py-[50rem]"></div> {/* Add padding กราฟิกอยากได้ทะเล*/}
         <Element id="footer" name="footer">
           <Footer />
         </Element>
