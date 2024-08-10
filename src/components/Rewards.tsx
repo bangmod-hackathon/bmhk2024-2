@@ -58,7 +58,9 @@ const RewardsWaviez = () => {
           <p className=" text-xl md:text-2xl text-primary_yellow-100 font-ibm font-normal text_shadow text-balance md:text-wrap lg:whitespace-nowrap">
             รางวัลชมเชย
           </p>
-          <p className=" md:text-lg text-[#9ddef9] font-ibm font-normal text_shadow">2,000 บาท</p>
+          <p className=" md:text-lg text-[#9ddef9] font-ibm font-normal text_shadow">
+            2,000 บาท <span>(2 รางวัล)</span>
+          </p>
         </div>
       </div>
     </div>
