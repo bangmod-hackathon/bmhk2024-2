@@ -6,10 +6,10 @@ import Navbar from './components/Navbar/Navbar'
 import './App.css'
 import { ConfigProvider } from 'antd'
 
-const ConsentPage = lazy(() => import('./pages/ConsentPage'))
+// const ConsentPage = lazy(() => import('./pages/ConsentPage'))
 const LandingPage = lazy(() => import('./pages/LandingPage'))
-const LoginPage = lazy(() => import('./pages/LoginPage'))
-const RegisterFormStep = lazy(() => import('./pages/RegisterFormStep'))
+// const LoginPage = lazy(() => import('./pages/LoginPage'))
+// const RegisterFormStep = lazy(() => import('./pages/RegisterFormStep'))
 
 function App() {
   const location = useLocation()
@@ -35,9 +35,9 @@ function App() {
           <div className={`page ${transition ? 'fade' : ''}`}>
             <Routes location={location}>
               <Route path="/" element={<LandingPage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/consent" element={<ConsentPage />} />
-              <Route path="/register" element={<RegisterFormStep />} />
+              {/* <Route path="/login" element={<LoginPage />} /> */}
+              {/* <Route path="/consent" element={<ConsentPage />} /> */}
+              {/* <Route path="/register" element={<RegisterFormStep />} /> */}
               <Route path="*" element={<LandingPage />} />
             </Routes>
           </div>

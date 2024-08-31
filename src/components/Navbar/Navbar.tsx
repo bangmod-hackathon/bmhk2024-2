@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
-import { CgProfile } from 'react-icons/cg'
+// import { CgProfile } from 'react-icons/cg'
 import { HiOutlineMenu, HiX } from 'react-icons/hi'
 import { IoLogOutOutline } from 'react-icons/io5'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
@@ -139,17 +139,17 @@ const Navbar = () => {
                       <>
                         <ButtonPrimary
                           className="bg-primary_yellow-100 px-6 py-2 text-primary-200 hover:bg-primary_yellow-300 hover:text-primary-300"
-                          onClick={() => {
-                            if (Auth?.isAuthenticated === false) {
-                              return navigate('/login')
-                            } else if (Auth?.user.consent === false) {
-                              return navigate('/consent')
-                            } else {
-                              return navigate('/register')
-                            }
-                          }}
+                          // onClick={() => {
+                          //   if (Auth?.isAuthenticated === false) {
+                          //     return navigate('/login')
+                          //   } else if (Auth?.user.consent === false) {
+                          //     return navigate('/consent')
+                          //   } else {
+                          //     return navigate('/register')
+                          //   }
+                          // }}
                         >
-                          <p className=" font-normal">ลงทะเบียนต่อ</p>
+                          <p className=" font-normal">ปิดการลงทะเบียน</p>
                         </ButtonPrimary>
                         <button
                           title="ออกจากระบบ"
@@ -166,9 +166,7 @@ const Navbar = () => {
                     )}
                   </>
                 ) : (
-                  <Link to="/login">
-                    <ButtonPrimary>ลงทะเบียน</ButtonPrimary>
-                  </Link>
+                  <ButtonPrimary>ปิดการลงทะเบียน</ButtonPrimary>
                 )}
               </div>
             </div>
@@ -261,79 +259,79 @@ const Navbar = () => {
     )
   }
 
-  const navRegisterPage = () => {
-    return (
-      <>
-        <div className="absolute top-0 z-[999] w-full p-9">
-          <motion.div
-            variants={menuVariants}
-            animate={menuOpen ? 'closed' : 'open'}
-            className={` backdrop-blur-sm flex w-full items-center justify-between rounded-[10px] bg-bg-200/40 px-6 py-2 ${menuOpen ? 'hidden' : ''}`}
-          >
-            <div className="flex items-center">
-              <Link to="/">
-                <img src="Logo.svg" alt="Bangmod Hackathon 2024 Logo" className="h-12" />
-              </Link>
-            </div>
+  // const navRegisterPage = () => {
+  //   return (
+  //     <>
+  //       <div className="absolute top-0 z-[999] w-full p-9">
+  //         <motion.div
+  //           variants={menuVariants}
+  //           animate={menuOpen ? 'closed' : 'open'}
+  //           className={` backdrop-blur-sm flex w-full items-center justify-between rounded-[10px] bg-bg-200/40 px-6 py-2 ${menuOpen ? 'hidden' : ''}`}
+  //         >
+  //           <div className="flex items-center">
+  //             <Link to="/">
+  //               <img src="Logo.svg" alt="Bangmod Hackathon 2024 Logo" className="h-12" />
+  //             </Link>
+  //           </div>
 
-            <div className="hidden flex-1 justify-center lg:flex"></div>
-            <div className="flex py-2">
-              <div className=" flex items-center space-x-7">
-                <div className="hidden items-center space-x-2 sm:flex">
-                  <div className=" flex h-full items-center">
-                    <CgProfile className="text-xl text-white" />
-                  </div>
-                  <p className=" text-lg text-white">{Auth?.user.email}</p> {/* Add email */}
-                </div>
-                <ButtonPrimary
-                  onClick={() => {
-                    axiosInstance.get('/api/auth/logout').then(() => {
-                      window.location.reload()
-                    })
-                  }}
-                >
-                  ออกจากระบบ
-                </ButtonPrimary>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </>
-    )
-  }
+  //           <div className="hidden flex-1 justify-center lg:flex"></div>
+  //           <div className="flex py-2">
+  //             <div className=" flex items-center space-x-7">
+  //               <div className="hidden items-center space-x-2 sm:flex">
+  //                 <div className=" flex h-full items-center">
+  //                   <CgProfile className="text-xl text-white" />
+  //                 </div>
+  //                 <p className=" text-lg text-white">{Auth?.user.email}</p> {/* Add email */}
+  //               </div>
+  //               <ButtonPrimary
+  //                 onClick={() => {
+  //                   axiosInstance.get('/api/auth/logout').then(() => {
+  //                     window.location.reload()
+  //                   })
+  //                 }}
+  //               >
+  //                 ออกจากระบบ
+  //               </ButtonPrimary>
+  //             </div>
+  //           </div>
+  //         </motion.div>
+  //       </div>
+  //     </>
+  //   )
+  // }
 
-  const navLoginPage = () => {
-    return (
-      <>
-        <div className="fixed w-full p-9 z-[100]">
-          <motion.div
-            variants={menuVariants}
-            animate={menuOpen ? 'closed' : 'open'}
-            className={`flex w-full items-center justify-between rounded-[10px] bg-bg-200/40 px-6 py-2 ${menuOpen ? 'hidden' : ''}`}
-          >
-            <div className="flex">
-              <Link to="/">
-                <img src="Logo.svg" alt="Bangmod Hackathon 2024 Logo" className="h-12" />
-              </Link>
-            </div>
+  // const navLoginPage = () => {
+  //   return (
+  //     <>
+  //       <div className="fixed w-full p-9 z-[100]">
+  //         <motion.div
+  //           variants={menuVariants}
+  //           animate={menuOpen ? 'closed' : 'open'}
+  //           className={`flex w-full items-center justify-between rounded-[10px] bg-bg-200/40 px-6 py-2 ${menuOpen ? 'hidden' : ''}`}
+  //         >
+  //           <div className="flex">
+  //             <Link to="/">
+  //               <img src="Logo.svg" alt="Bangmod Hackathon 2024 Logo" className="h-12" />
+  //             </Link>
+  //           </div>
 
-            <div className="hidden flex-1 justify-center lg:flex"></div>
-            <div className="flex py-2">
-              <Link to="/">
-                <ButtonPrimary>กลับหน้าหลัก</ButtonPrimary>
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </>
-    )
-  }
+  //           <div className="hidden flex-1 justify-center lg:flex"></div>
+  //           <div className="flex py-2">
+  //             <Link to="/">
+  //               <ButtonPrimary>กลับหน้าหลัก</ButtonPrimary>
+  //             </Link>
+  //           </div>
+  //         </motion.div>
+  //       </div>
+  //     </>
+  //   )
+  // }
 
   const navbarOnLocationList: { [key: string]: JSX.Element } = {
-    '/': navLandingPage(),
-    '/login': navLoginPage(),
-    '/consent': navLoginPage(),
-    '/register': navRegisterPage()
+    '/': navLandingPage()
+    // '/login': navLoginPage(),
+    // '/consent': navLoginPage(),
+    // '/register': navRegisterPage()
   }
 
   useEffect(() => {
